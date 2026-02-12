@@ -223,12 +223,14 @@
   .current-month {
     text-align: center;
     flex: 1;
+	min-width: 0;
   }
 
   .current-month h1 {
     margin: 0;
     font-size: 2.5rem;
     color: #2E7D32;
+	word-wrap: break-word;
   }
 
   .current-month p {

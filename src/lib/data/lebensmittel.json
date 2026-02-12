@@ -2509,5 +2509,1353 @@
       "vitamin_e_mg": 0.3,
       "folsaeure_ug": 10
     }
+  },
+  {
+    "id": 66,
+    "name": "Schwarzwurzel",
+    "kategorie": "Gemüse",
+    "unterkategorie": "Wurzelgemüse",
+    "saison": {
+      "monate": [10, 11, 12, 1, 2, 3],
+      "typ": "Frischware",
+      "haupternte": "Oktober-März",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 19,
+      "energie_kj": 79,
+      "protein_g": 1.4,
+      "fett_g": 0.4,
+      "kohlenhydrate_g": 2.1,
+      "ballaststoffe_g": 18.3,
+      "wasser_g": 77.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 320,
+      "magnesium_mg": 23,
+      "calcium_mg": 53,
+      "phosphor_mg": 75,
+      "eisen_mg": 3.3,
+      "natrium_mg": 4,
+      "zink_mg": 0.3
+    },
+    "vitamine": {
+      "vitamin_c_mg": 4,
+      "vitamin_b1_mg": 0.11,
+      "vitamin_b2_mg": 0.02,
+      "vitamin_b6_mg": 0.23,
+      "folsaeure_ug": 33,
+      "vitamin_e_mg": 0.0
+    }
+  },
+  {
+    "id": 67,
+    "name": "Steckrübe",
+    "kategorie": "Gemüse",
+    "unterkategorie": "Wurzelgemüse",
+    "saison": {
+      "monate": [9, 10, 11, 12, 1, 2, 3],
+      "typ": "Lagerware",
+      "haupternte": "September-März",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 34,
+      "energie_kj": 142,
+      "protein_g": 1.1,
+      "fett_g": 0.2,
+      "kohlenhydrate_g": 6.4,
+      "ballaststoffe_g": 2.3,
+      "wasser_g": 89.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 236,
+      "magnesium_mg": 13,
+      "calcium_mg": 35,
+      "phosphor_mg": 35,
+      "eisen_mg": 0.5,
+      "natrium_mg": 20,
+      "zink_mg": 0.2
+    },
+    "vitamine": {
+      "vitamin_c_mg": 33,
+      "vitamin_b1_mg": 0.09,
+      "vitamin_b2_mg": 0.04,
+      "vitamin_b6_mg": 0.10,
+      "folsaeure_ug": 8,
+      "vitamin_e_mg": 0.0
+    }
+  },
+  {
+    "id": 68,
+    "name": "Mangold",
+    "kategorie": "Gemüse",
+    "unterkategorie": "Blattgemüse",
+    "saison": {
+      "monate": [5, 6, 7, 8, 9, 10],
+      "typ": "Frischware",
+      "haupternte": "Mai-Oktober",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 19,
+      "energie_kj": 79,
+      "protein_g": 1.8,
+      "fett_g": 0.2,
+      "kohlenhydrate_g": 3.7,
+      "ballaststoffe_g": 1.6,
+      "wasser_g": 93.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 379,
+      "magnesium_mg": 81,
+      "calcium_mg": 103,
+      "phosphor_mg": 46,
+      "eisen_mg": 2.7,
+      "natrium_mg": 213,
+      "zink_mg": 0.4
+    },
+    "vitamine": {
+      "vitamin_a_ug": 306,
+      "vitamin_c_mg": 30,
+      "vitamin_b1_mg": 0.06,
+      "vitamin_b2_mg": 0.09,
+      "vitamin_b6_mg": 0.10,
+      "folsaeure_ug": 14,
+      "vitamin_e_mg": 1.9,
+      "vitamin_k_ug": 830
+    }
+  },
+  {
+    "id": 69,
+    "name": "Meerrettich",
+    "kategorie": "Gemüse",
+    "unterkategorie": "Wurzelgemüse",
+    "saison": {
+      "monate": [10, 11, 12, 1, 2, 3],
+      "typ": "Frischware",
+      "haupternte": "Oktober-März",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 48,
+      "energie_kj": 201,
+      "protein_g": 2.5,
+      "fett_g": 0.4,
+      "kohlenhydrate_g": 8.6,
+      "ballaststoffe_g": 6.6,
+      "wasser_g": 79.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 628,
+      "magnesium_mg": 36,
+      "calcium_mg": 105,
+      "phosphor_mg": 64,
+      "eisen_mg": 1.4,
+      "natrium_mg": 4,
+      "zink_mg": 0.8
+    },
+    "vitamine": {
+      "vitamin_c_mg": 114,
+      "vitamin_b1_mg": 0.14,
+      "vitamin_b2_mg": 0.11,
+      "vitamin_b6_mg": 0.31,
+      "folsaeure_ug": 57,
+      "vitamin_e_mg": 0.1
+    }
+  },
+  {
+    "id": 70,
+    "name": "Rettich",
+    "kategorie": "Gemüse",
+    "unterkategorie": "Wurzelgemüse",
+    "saison": {
+      "monate": [5, 6, 7, 8, 9, 10],
+      "typ": "Frischware",
+      "haupternte": "Mai-Oktober",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 14,
+      "energie_kj": 59,
+      "protein_g": 1.1,
+      "fett_g": 0.1,
+      "kohlenhydrate_g": 2.0,
+      "ballaststoffe_g": 1.6,
+      "wasser_g": 94.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 255,
+      "magnesium_mg": 10,
+      "calcium_mg": 35,
+      "phosphor_mg": 28,
+      "eisen_mg": 1.2,
+      "natrium_mg": 17,
+      "zink_mg": 0.3
+    },
+    "vitamine": {
+      "vitamin_c_mg": 27,
+      "vitamin_b1_mg": 0.04,
+      "vitamin_b2_mg": 0.04,
+      "vitamin_b6_mg": 0.06,
+      "folsaeure_ug": 39,
+      "vitamin_e_mg": 0.0
+    }
+  },
+  {
+    "id": 71,
+    "name": "Aubergine",
+    "kategorie": "Gemüse",
+    "unterkategorie": "Fruchtgemüse",
+    "saison": {
+      "monate": [7, 8, 9, 10],
+      "typ": "Frischware",
+      "haupternte": "Juli-Oktober",
+      "herkunft": "Freiland/Gewächshaus"
+    },
+    "naehrwerte": {
+      "energie_kcal": 24,
+      "energie_kj": 100,
+      "protein_g": 1.2,
+      "fett_g": 0.2,
+      "kohlenhydrate_g": 3.2,
+      "ballaststoffe_g": 2.5,
+      "wasser_g": 92.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 184,
+      "magnesium_mg": 14,
+      "calcium_mg": 13,
+      "phosphor_mg": 25,
+      "eisen_mg": 0.4,
+      "natrium_mg": 3,
+      "zink_mg": 0.2
+    },
+    "vitamine": {
+      "vitamin_c_mg": 5,
+      "vitamin_b1_mg": 0.04,
+      "vitamin_b2_mg": 0.05,
+      "vitamin_b6_mg": 0.08,
+      "folsaeure_ug": 14,
+      "vitamin_e_mg": 0.2
+    }
+  },
+  {
+    "id": 72,
+    "name": "Porree/Lauchzwiebel",
+    "kategorie": "Gemüse",
+    "unterkategorie": "Zwiebelgewächse",
+    "saison": {
+      "monate": [4, 5, 6, 7, 8, 9, 10],
+      "typ": "Frischware",
+      "haupternte": "April-Oktober",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 27,
+      "energie_kj": 113,
+      "protein_g": 1.5,
+      "fett_g": 0.3,
+      "kohlenhydrate_g": 4.3,
+      "ballaststoffe_g": 2.2,
+      "wasser_g": 90.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 276,
+      "magnesium_mg": 18,
+      "calcium_mg": 72,
+      "phosphor_mg": 37,
+      "eisen_mg": 1.5,
+      "natrium_mg": 16,
+      "zink_mg": 0.4
+    },
+    "vitamine": {
+      "vitamin_a_ug": 50,
+      "vitamin_c_mg": 18,
+      "vitamin_b1_mg": 0.06,
+      "vitamin_b2_mg": 0.08,
+      "vitamin_b6_mg": 0.06,
+      "folsaeure_ug": 64,
+      "vitamin_e_mg": 0.5,
+      "vitamin_k_ug": 207
+    }
+  },
+  {
+    "id": 73,
+    "name": "Holunderbeeren",
+    "kategorie": "Obst",
+    "unterkategorie": "Beerenobst",
+    "saison": {
+      "monate": [8, 9],
+      "typ": "Wildsammlung",
+      "haupternte": "August-September",
+      "herkunft": "Wald/Garten"
+    },
+    "naehrwerte": {
+      "energie_kcal": 54,
+      "energie_kj": 226,
+      "protein_g": 0.7,
+      "fett_g": 0.5,
+      "kohlenhydrate_g": 11.4,
+      "ballaststoffe_g": 7.0,
+      "wasser_g": 80.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 303,
+      "magnesium_mg": 5,
+      "calcium_mg": 38,
+      "phosphor_mg": 39,
+      "eisen_mg": 1.6,
+      "natrium_mg": 6,
+      "zink_mg": 0.1
+    },
+    "vitamine": {
+      "vitamin_a_ug": 30,
+      "vitamin_c_mg": 36,
+      "vitamin_b1_mg": 0.07,
+      "vitamin_b2_mg": 0.06,
+      "vitamin_b6_mg": 0.23,
+      "folsaeure_ug": 6,
+      "vitamin_e_mg": 1.0
+    }
+  },
+  {
+    "id": 74,
+    "name": "Sanddorn",
+    "kategorie": "Obst",
+    "unterkategorie": "Beerenobst",
+    "saison": {
+      "monate": [8, 9, 10],
+      "typ": "Wildsammlung/Anbau",
+      "haupternte": "August-Oktober",
+      "herkunft": "Küste/Garten"
+    },
+    "naehrwerte": {
+      "energie_kcal": 94,
+      "energie_kj": 393,
+      "protein_g": 1.5,
+      "fett_g": 7.1,
+      "kohlenhydrate_g": 5.6,
+      "ballaststoffe_g": 3.2,
+      "wasser_g": 83.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 157,
+      "magnesium_mg": 30,
+      "calcium_mg": 42,
+      "phosphor_mg": 9,
+      "eisen_mg": 0.4,
+      "natrium_mg": 4,
+      "zink_mg": 0.2
+    },
+    "vitamine": {
+      "vitamin_a_ug": 250,
+      "vitamin_c_mg": 450,
+      "vitamin_b1_mg": 0.03,
+      "vitamin_b2_mg": 0.03,
+      "vitamin_b6_mg": 0.04,
+      "folsaeure_ug": 7,
+      "vitamin_e_mg": 5.0
+    }
+  },
+  {
+    "id": 75,
+    "name": "Hagebutte",
+    "kategorie": "Obst",
+    "unterkategorie": "Wildfrüchte",
+    "saison": {
+      "monate": [9, 10, 11],
+      "typ": "Wildsammlung",
+      "haupternte": "September-November",
+      "herkunft": "Wald/Hecken"
+    },
+    "naehrwerte": {
+      "energie_kcal": 162,
+      "energie_kj": 678,
+      "protein_g": 3.6,
+      "fett_g": 0.3,
+      "kohlenhydrate_g": 23.3,
+      "ballaststoffe_g": 24.0,
+      "wasser_g": 38.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 358,
+      "magnesium_mg": 69,
+      "calcium_mg": 169,
+      "phosphor_mg": 73,
+      "eisen_mg": 2.6,
+      "natrium_mg": 14,
+      "zink_mg": 0.3
+    },
+    "vitamine": {
+      "vitamin_a_ug": 217,
+      "vitamin_c_mg": 1250,
+      "vitamin_b1_mg": 0.03,
+      "vitamin_b2_mg": 0.03,
+      "vitamin_b6_mg": 0.08,
+      "folsaeure_ug": 3,
+      "vitamin_e_mg": 5.8
+    }
+  },
+  {
+    "id": 76,
+    "name": "Schlehe",
+    "kategorie": "Obst",
+    "unterkategorie": "Wildfrüchte",
+    "saison": {
+      "monate": [10, 11, 12],
+      "typ": "Wildsammlung",
+      "haupternte": "Oktober-Dezember (nach Frost)",
+      "herkunft": "Wald/Hecken"
+    },
+    "naehrwerte": {
+      "energie_kcal": 54,
+      "energie_kj": 226,
+      "protein_g": 0.9,
+      "fett_g": 0.5,
+      "kohlenhydrate_g": 10.2,
+      "ballaststoffe_g": 5.0,
+      "wasser_g": 82.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 230,
+      "magnesium_mg": 12,
+      "calcium_mg": 32,
+      "phosphor_mg": 17,
+      "eisen_mg": 1.8,
+      "natrium_mg": 3,
+      "zink_mg": 0.2
+    },
+    "vitamine": {
+      "vitamin_c_mg": 38,
+      "vitamin_b1_mg": 0.02,
+      "vitamin_b2_mg": 0.02,
+      "vitamin_b6_mg": 0.03,
+      "folsaeure_ug": 4,
+      "vitamin_e_mg": 1.5
+    }
+  },
+  {
+    "id": 77,
+    "name": "Johannisbeere schwarz",
+    "kategorie": "Obst",
+    "unterkategorie": "Beerenobst",
+    "saison": {
+      "monate": [6, 7, 8, 9],
+      "typ": "Frischware",
+      "haupternte": "Juni-September",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 57,
+      "energie_kj": 239,
+      "protein_g": 1.3,
+      "fett_g": 0.2,
+      "kohlenhydrate_g": 10.3,
+      "ballaststoffe_g": 6.8,
+      "wasser_g": 81.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 322,
+      "magnesium_mg": 17,
+      "calcium_mg": 60,
+      "phosphor_mg": 43,
+      "eisen_mg": 1.5,
+      "natrium_mg": 2,
+      "zink_mg": 0.3
+    },
+    "vitamine": {
+      "vitamin_a_ug": 10,
+      "vitamin_c_mg": 189,
+      "vitamin_b1_mg": 0.05,
+      "vitamin_b2_mg": 0.05,
+      "vitamin_b6_mg": 0.07,
+      "folsaeure_ug": 5,
+      "vitamin_e_mg": 1.0
+    }
+  },
+  {
+    "id": 78,
+    "name": "Aprikose",
+    "kategorie": "Obst",
+    "unterkategorie": "Steinobst",
+    "saison": {
+      "monate": [7, 8],
+      "typ": "Frischware",
+      "haupternte": "Juli-August",
+      "herkunft": "Freiland (Weinbauregionen)"
+    },
+    "naehrwerte": {
+      "energie_kcal": 48,
+      "energie_kj": 201,
+      "protein_g": 0.9,
+      "fett_g": 0.1,
+      "kohlenhydrate_g": 10.1,
+      "ballaststoffe_g": 1.9,
+      "wasser_g": 86.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 259,
+      "magnesium_mg": 10,
+      "calcium_mg": 14,
+      "phosphor_mg": 23,
+      "eisen_mg": 0.4,
+      "natrium_mg": 1,
+      "zink_mg": 0.2
+    },
+    "vitamine": {
+      "vitamin_a_ug": 180,
+      "vitamin_c_mg": 10,
+      "vitamin_b1_mg": 0.04,
+      "vitamin_b2_mg": 0.04,
+      "vitamin_b6_mg": 0.05,
+      "folsaeure_ug": 3,
+      "vitamin_e_mg": 0.9
+    }
+  },
+  {
+    "id": 79,
+    "name": "Pfirsich",
+    "kategorie": "Obst",
+    "unterkategorie": "Steinobst",
+    "saison": {
+      "monate": [7, 8, 9],
+      "typ": "Frischware",
+      "haupternte": "Juli-September",
+      "herkunft": "Freiland (Weinbauregionen)"
+    },
+    "naehrwerte": {
+      "energie_kcal": 41,
+      "energie_kj": 172,
+      "protein_g": 0.8,
+      "fett_g": 0.1,
+      "kohlenhydrate_g": 8.9,
+      "ballaststoffe_g": 1.9,
+      "wasser_g": 87.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 190,
+      "magnesium_mg": 9,
+      "calcium_mg": 8,
+      "phosphor_mg": 20,
+      "eisen_mg": 0.4,
+      "natrium_mg": 3,
+      "zink_mg": 0.1
+    },
+    "vitamine": {
+      "vitamin_a_ug": 16,
+      "vitamin_c_mg": 10,
+      "vitamin_b1_mg": 0.02,
+      "vitamin_b2_mg": 0.04,
+      "vitamin_b6_mg": 0.02,
+      "folsaeure_ug": 3,
+      "vitamin_e_mg": 0.7
+    }
+  },
+  {
+    "id": 80,
+    "name": "Zander",
+    "kategorie": "Fisch",
+    "unterkategorie": "Süßwasserfisch",
+    "saison": {
+      "monate": [9, 10, 11, 12, 1, 2],
+      "typ": "Frischware",
+      "haupternte": "September-Februar",
+      "herkunft": "Seen/Flüsse"
+    },
+    "naehrwerte": {
+      "energie_kcal": 83,
+      "energie_kj": 347,
+      "protein_g": 19.0,
+      "fett_g": 0.7,
+      "kohlenhydrate_g": 0,
+      "ballaststoffe_g": 0,
+      "wasser_g": 79.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 370,
+      "magnesium_mg": 29,
+      "calcium_mg": 40,
+      "phosphor_mg": 220,
+      "eisen_mg": 0.7,
+      "natrium_mg": 81,
+      "jod_ug": 5,
+      "zink_mg": 0.6
+    },
+    "vitamine": {
+      "vitamin_a_ug": 10,
+      "vitamin_d_ug": 5,
+      "vitamin_b1_mg": 0.09,
+      "vitamin_b2_mg": 0.14,
+      "vitamin_b6_mg": 0.23,
+      "vitamin_b12_ug": 2.5,
+      "vitamin_e_mg": 0.4
+    }
+  },
+  {
+    "id": 81,
+    "name": "Hecht",
+    "kategorie": "Fisch",
+    "unterkategorie": "Süßwasserfisch",
+    "saison": {
+      "monate": [9, 10, 11, 12, 1, 2],
+      "typ": "Frischware",
+      "haupternte": "September-Februar",
+      "herkunft": "Seen/Flüsse"
+    },
+    "naehrwerte": {
+      "energie_kcal": 88,
+      "energie_kj": 368,
+      "protein_g": 19.2,
+      "fett_g": 1.2,
+      "kohlenhydrate_g": 0,
+      "ballaststoffe_g": 0,
+      "wasser_g": 78.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 340,
+      "magnesium_mg": 25,
+      "calcium_mg": 59,
+      "phosphor_mg": 220,
+      "eisen_mg": 0.5,
+      "natrium_mg": 51,
+      "zink_mg": 0.7
+    },
+    "vitamine": {
+      "vitamin_a_ug": 10,
+      "vitamin_d_ug": 2,
+      "vitamin_b1_mg": 0.05,
+      "vitamin_b2_mg": 0.07,
+      "vitamin_b6_mg": 0.20,
+      "vitamin_b12_ug": 2.0,
+      "vitamin_e_mg": 0.5
+    }
+  },
+  {
+    "id": 82,
+    "name": "Aal",
+    "kategorie": "Fisch",
+    "unterkategorie": "Süßwasserfisch",
+    "saison": {
+      "monate": [8, 9, 10],
+      "typ": "Frischware",
+      "haupternte": "August-Oktober",
+      "herkunft": "Flüsse/Küste"
+    },
+    "naehrwerte": {
+      "energie_kcal": 281,
+      "energie_kj": 1176,
+      "protein_g": 14.6,
+      "fett_g": 24.5,
+      "kohlenhydrate_g": 0,
+      "ballaststoffe_g": 0,
+      "wasser_g": 59.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 272,
+      "magnesium_mg": 20,
+      "calcium_mg": 20,
+      "phosphor_mg": 216,
+      "eisen_mg": 0.5,
+      "natrium_mg": 140,
+      "zink_mg": 1.5
+    },
+    "vitamine": {
+      "vitamin_a_ug": 1000,
+      "vitamin_d_ug": 20,
+      "vitamin_b1_mg": 0.12,
+      "vitamin_b2_mg": 0.27,
+      "vitamin_b6_mg": 0.15,
+      "vitamin_b12_ug": 3.0,
+      "vitamin_e_mg": 4.0
+    }
+  },
+  {
+    "id": 83,
+    "name": "Dorsch",
+    "kategorie": "Fisch",
+    "unterkategorie": "Meeresfisch",
+    "saison": {
+      "monate": [1, 2, 3, 4, 11, 12],
+      "typ": "Frischware",
+      "haupternte": "November-April",
+      "herkunft": "Nord- & Ostsee"
+    },
+    "naehrwerte": {
+      "energie_kcal": 69,
+      "energie_kj": 289,
+      "protein_g": 16.0,
+      "fett_g": 0.3,
+      "kohlenhydrate_g": 0,
+      "ballaststoffe_g": 0,
+      "wasser_g": 82.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 340,
+      "magnesium_mg": 25,
+      "calcium_mg": 16,
+      "phosphor_mg": 203,
+      "eisen_mg": 0.2,
+      "natrium_mg": 73,
+      "jod_ug": 170,
+      "zink_mg": 0.4
+    },
+    "vitamine": {
+      "vitamin_a_ug": 7,
+      "vitamin_d_ug": 1,
+      "vitamin_b1_mg": 0.08,
+      "vitamin_b2_mg": 0.06,
+      "vitamin_b6_mg": 0.23,
+      "vitamin_b12_ug": 2.0,
+      "vitamin_e_mg": 0.4
+    }
+  },
+  {
+    "id": 84,
+    "name": "Leinsamen",
+    "kategorie": "Nüsse",
+    "unterkategorie": "Samen",
+    "saison": {
+      "monate": [8, 9],
+      "typ": "Lagerware (ganzjährig)",
+      "haupternte": "August-September",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 372,
+      "energie_kj": 1557,
+      "protein_g": 24.4,
+      "fett_g": 30.9,
+      "kohlenhydrate_g": 0,
+      "ballaststoffe_g": 38.6,
+      "wasser_g": 6.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 813,
+      "magnesium_mg": 350,
+      "calcium_mg": 198,
+      "phosphor_mg": 622,
+      "eisen_mg": 8.2,
+      "natrium_mg": 30,
+      "zink_mg": 4.3
+    },
+    "vitamine": {
+      "vitamin_e_mg": 16.9,
+      "vitamin_b1_mg": 0.45,
+      "vitamin_b2_mg": 0.16,
+      "vitamin_b6_mg": 0.61,
+      "folsaeure_ug": 87
+    }
+  },
+  {
+    "id": 85,
+    "name": "Sonnenblumenkerne",
+    "kategorie": "Nüsse",
+    "unterkategorie": "Samen",
+    "saison": {
+      "monate": [9, 10],
+      "typ": "Lagerware (ganzjährig)",
+      "haupternte": "September-Oktober",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 584,
+      "energie_kj": 2444,
+      "protein_g": 22.5,
+      "fett_g": 49.0,
+      "kohlenhydrate_g": 12.3,
+      "ballaststoffe_g": 6.0,
+      "wasser_g": 5.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 725,
+      "magnesium_mg": 420,
+      "calcium_mg": 100,
+      "phosphor_mg": 599,
+      "eisen_mg": 6.3,
+      "natrium_mg": 2,
+      "zink_mg": 5.7
+    },
+    "vitamine": {
+      "vitamin_e_mg": 38.0,
+      "vitamin_b1_mg": 1.90,
+      "vitamin_b2_mg": 0.18,
+      "vitamin_b6_mg": 1.13,
+      "folsaeure_ug": 100
+    }
+  },
+  {
+    "id": 86,
+    "name": "Kürbiskerne",
+    "kategorie": "Nüsse",
+    "unterkategorie": "Samen",
+    "saison": {
+      "monate": [9, 10, 11],
+      "typ": "Lagerware (ganzjährig)",
+      "haupternte": "September-November",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 559,
+      "energie_kj": 2339,
+      "protein_g": 24.4,
+      "fett_g": 45.6,
+      "kohlenhydrate_g": 14.2,
+      "ballaststoffe_g": 8.8,
+      "wasser_g": 5.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 809,
+      "magnesium_mg": 535,
+      "calcium_mg": 55,
+      "phosphor_mg": 1174,
+      "eisen_mg": 12.5,
+      "natrium_mg": 18,
+      "zink_mg": 7.5
+    },
+    "vitamine": {
+      "vitamin_e_mg": 2.1,
+      "vitamin_b1_mg": 0.20,
+      "vitamin_b2_mg": 0.15,
+      "vitamin_b6_mg": 0.14,
+      "folsaeure_ug": 58
+    }
+  },
+  {
+    "id": 87,
+    "name": "Mohn",
+    "kategorie": "Nüsse",
+    "unterkategorie": "Samen",
+    "saison": {
+      "monate": [7, 8],
+      "typ": "Lagerware (ganzjährig)",
+      "haupternte": "Juli-August",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 477,
+      "energie_kj": 1996,
+      "protein_g": 20.0,
+      "fett_g": 41.6,
+      "kohlenhydrate_g": 4.2,
+      "ballaststoffe_g": 20.5,
+      "wasser_g": 5.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 719,
+      "magnesium_mg": 333,
+      "calcium_mg": 1438,
+      "phosphor_mg": 870,
+      "eisen_mg": 9.5,
+      "natrium_mg": 26,
+      "zink_mg": 8.1
+    },
+    "vitamine": {
+      "vitamin_e_mg": 1.8,
+      "vitamin_b1_mg": 0.85,
+      "vitamin_b2_mg": 0.10,
+      "vitamin_b6_mg": 0.25,
+      "folsaeure_ug": 82
+    }
+  },
+  {
+    "id": 88,
+    "name": "Weizen",
+    "kategorie": "Getreide",
+    "unterkategorie": "Körner",
+    "saison": {
+      "monate": [7, 8],
+      "typ": "Lagerware (ganzjährig)",
+      "haupternte": "Juli-August",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 305,
+      "energie_kj": 1277,
+      "protein_g": 11.5,
+      "fett_g": 2.0,
+      "kohlenhydrate_g": 59.7,
+      "ballaststoffe_g": 13.3,
+      "wasser_g": 13.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 502,
+      "magnesium_mg": 130,
+      "calcium_mg": 43,
+      "phosphor_mg": 408,
+      "eisen_mg": 3.2,
+      "natrium_mg": 8,
+      "zink_mg": 2.8
+    },
+    "vitamine": {
+      "vitamin_b1_mg": 0.47,
+      "vitamin_b2_mg": 0.17,
+      "vitamin_b6_mg": 0.30,
+      "folsaeure_ug": 87,
+      "vitamin_e_mg": 1.4
+    }
+  },
+  {
+    "id": 89,
+    "name": "Gerste",
+    "kategorie": "Getreide",
+    "unterkategorie": "Körner",
+    "saison": {
+      "monate": [7, 8],
+      "typ": "Lagerware (ganzjährig)",
+      "haupternte": "Juli-August",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 320,
+      "energie_kj": 1339,
+      "protein_g": 9.8,
+      "fett_g": 2.1,
+      "kohlenhydrate_g": 63.3,
+      "ballaststoffe_g": 9.8,
+      "wasser_g": 12.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 444,
+      "magnesium_mg": 119,
+      "calcium_mg": 38,
+      "phosphor_mg": 353,
+      "eisen_mg": 2.5,
+      "natrium_mg": 12,
+      "zink_mg": 2.8
+    },
+    "vitamine": {
+      "vitamin_b1_mg": 0.43,
+      "vitamin_b2_mg": 0.18,
+      "vitamin_b6_mg": 0.56,
+      "folsaeure_ug": 65,
+      "vitamin_e_mg": 0.7
+    }
+  },
+  {
+    "id": 90,
+    "name": "Buchweizen",
+    "kategorie": "Getreide",
+    "unterkategorie": "Pseudogetreide",
+    "saison": {
+      "monate": [9, 10],
+      "typ": "Lagerware (ganzjährig)",
+      "haupternte": "September-Oktober",
+      "herkunft": "Freiland"
+    },
+    "naehrwerte": {
+      "energie_kcal": 338,
+      "energie_kj": 1414,
+      "protein_g": 9.8,
+      "fett_g": 1.7,
+      "kohlenhydrate_g": 71.0,
+      "ballaststoffe_g": 3.7,
+      "wasser_g": 11.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 450,
+      "magnesium_mg": 142,
+      "calcium_mg": 20,
+      "phosphor_mg": 330,
+      "eisen_mg": 3.5,
+      "natrium_mg": 1,
+      "zink_mg": 2.5
+    },
+    "vitamine": {
+      "vitamin_b1_mg": 0.43,
+      "vitamin_b2_mg": 0.15,
+      "vitamin_b6_mg": 0.36,
+      "folsaeure_ug": 50,
+      "vitamin_e_mg": 0.5
+    }
+  },
+  {
+    "id": 91,
+    "name": "Sauerampfer",
+    "kategorie": "Wildkräuter",
+    "unterkategorie": "Blattgewächs",
+    "saison": {
+      "monate": [4, 5, 6, 7],
+      "typ": "Wildsammlung",
+      "haupternte": "April-Juli",
+      "herkunft": "Wiese"
+    },
+    "naehrwerte": {
+      "energie_kcal": 22,
+      "energie_kj": 92,
+      "protein_g": 2.0,
+      "fett_g": 0.7,
+      "kohlenhydrate_g": 2.9,
+      "ballaststoffe_g": 2.9,
+      "wasser_g": 93.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 390,
+      "magnesium_mg": 103,
+      "calcium_mg": 44,
+      "phosphor_mg": 63,
+      "eisen_mg": 2.4,
+      "natrium_mg": 4,
+      "zink_mg": 0.2
+    },
+    "vitamine": {
+      "vitamin_a_ug": 200,
+      "vitamin_c_mg": 117,
+      "vitamin_b1_mg": 0.04,
+      "vitamin_b2_mg": 0.10,
+      "vitamin_b6_mg": 0.12,
+      "folsaeure_ug": 13,
+      "vitamin_e_mg": 2.0
+    }
+  },
+  {
+    "id": 92,
+    "name": "Brunnenkresse",
+    "kategorie": "Wildkräuter",
+    "unterkategorie": "Blattgewächs",
+    "saison": {
+      "monate": [3, 4, 5, 6, 7, 8, 9],
+      "typ": "Wildsammlung/Anbau",
+      "haupternte": "März-September",
+      "herkunft": "Quellen/Bäche"
+    },
+    "naehrwerte": {
+      "energie_kcal": 19,
+      "energie_kj": 79,
+      "protein_g": 2.3,
+      "fett_g": 0.1,
+      "kohlenhydrate_g": 2.0,
+      "ballaststoffe_g": 0.7,
+      "wasser_g": 95.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 230,
+      "magnesium_mg": 21,
+      "calcium_mg": 180,
+      "phosphor_mg": 60,
+      "eisen_mg": 2.2,
+      "natrium_mg": 41,
+      "zink_mg": 0.2
+    },
+    "vitamine": {
+      "vitamin_a_ug": 346,
+      "vitamin_c_mg": 62,
+      "vitamin_b1_mg": 0.08,
+      "vitamin_b2_mg": 0.12,
+      "vitamin_b6_mg": 0.13,
+      "folsaeure_ug": 9,
+      "vitamin_e_mg": 1.0,
+      "vitamin_k_ug": 250
+    }
+  },
+  {
+    "id": 93,
+    "name": "Schafgarbe",
+    "kategorie": "Wildkräuter",
+    "unterkategorie": "Blattgewächs",
+    "saison": {
+      "monate": [5, 6, 7, 8, 9],
+      "typ": "Wildsammlung",
+      "haupternte": "Mai-September",
+      "herkunft": "Wiese"
+    },
+    "naehrwerte": {
+      "energie_kcal": 23,
+      "energie_kj": 96,
+      "protein_g": 1.7,
+      "fett_g": 0.3,
+      "kohlenhydrate_g": 4.0,
+      "ballaststoffe_g": 2.0,
+      "wasser_g": 85.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 280,
+      "magnesium_mg": 32,
+      "calcium_mg": 110,
+      "phosphor_mg": 38,
+      "eisen_mg": 1.8,
+      "natrium_mg": 5,
+      "zink_mg": 0.4
+    },
+    "vitamine": {
+      "vitamin_c_mg": 58,
+      "vitamin_b1_mg": 0.05,
+      "vitamin_b2_mg": 0.07,
+      "vitamin_b6_mg": 0.08,
+      "folsaeure_ug": 12,
+      "vitamin_e_mg": 1.2
+    }
+  },
+  {
+    "id": 94,
+    "name": "Austernpilz",
+    "kategorie": "Pilze",
+    "unterkategorie": "Kulturpilze",
+    "saison": {
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "typ": "Zucht",
+      "haupternte": "Ganzjährig",
+      "herkunft": "Regional (Zucht)"
+    },
+    "naehrwerte": {
+      "energie_kcal": 11,
+      "energie_kj": 46,
+      "protein_g": 1.6,
+      "fett_g": 0.2,
+      "kohlenhydrate_g": 0.6,
+      "ballaststoffe_g": 2.3,
+      "wasser_g": 93.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 420,
+      "magnesium_mg": 18,
+      "calcium_mg": 3,
+      "phosphor_mg": 120,
+      "eisen_mg": 1.3,
+      "natrium_mg": 18,
+      "zink_mg": 0.8
+    },
+    "vitamine": {
+      "vitamin_d_ug": 0.7,
+      "vitamin_b1_mg": 0.13,
+      "vitamin_b2_mg": 0.35,
+      "vitamin_b6_mg": 0.11,
+      "folsaeure_ug": 38,
+      "vitamin_e_mg": 0.1
+    }
+  },
+  {
+    "id": 95,
+    "name": "Shiitake",
+    "kategorie": "Pilze",
+    "unterkategorie": "Kulturpilze",
+    "saison": {
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "typ": "Zucht",
+      "haupternte": "Ganzjährig",
+      "herkunft": "Regional (Zucht)"
+    },
+    "naehrwerte": {
+      "energie_kcal": 34,
+      "energie_kj": 142,
+      "protein_g": 2.2,
+      "fett_g": 0.5,
+      "kohlenhydrate_g": 6.8,
+      "ballaststoffe_g": 2.5,
+      "wasser_g": 90.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 304,
+      "magnesium_mg": 20,
+      "calcium_mg": 2,
+      "phosphor_mg": 112,
+      "eisen_mg": 0.4,
+      "natrium_mg": 9,
+      "zink_mg": 1.0
+    },
+    "vitamine": {
+      "vitamin_d_ug": 0.4,
+      "vitamin_b1_mg": 0.01,
+      "vitamin_b2_mg": 0.22,
+      "vitamin_b6_mg": 0.29,
+      "folsaeure_ug": 13,
+      "vitamin_e_mg": 0.0
+    }
+  },
+  {
+    "id": 96,
+    "name": "Maronen",
+    "kategorie": "Pilze",
+    "unterkategorie": "Wildpilze",
+    "saison": {
+      "monate": [8, 9, 10, 11],
+      "typ": "Wildsammlung",
+      "haupternte": "August-November",
+      "herkunft": "Wald"
+    },
+    "naehrwerte": {
+      "energie_kcal": 26,
+      "energie_kj": 109,
+      "protein_g": 5.4,
+      "fett_g": 0.5,
+      "kohlenhydrate_g": 0.5,
+      "ballaststoffe_g": 5.1,
+      "wasser_g": 89.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 484,
+      "magnesium_mg": 17,
+      "calcium_mg": 4,
+      "phosphor_mg": 108,
+      "eisen_mg": 1.0,
+      "natrium_mg": 4,
+      "zink_mg": 1.0
+    },
+    "vitamine": {
+      "vitamin_d_ug": 3.1,
+      "vitamin_b1_mg": 0.10,
+      "vitamin_b2_mg": 0.45,
+      "vitamin_b6_mg": 0.11,
+      "folsaeure_ug": 25,
+      "vitamin_e_mg": 0.1
+    }
+  },
+  {
+    "id": 97,
+    "name": "Quark mager",
+    "kategorie": "Milchprodukte",
+    "unterkategorie": "Frischkäse",
+    "saison": {
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "typ": "Frischware",
+      "haupternte": "Ganzjährig",
+      "herkunft": "Regional"
+    },
+    "naehrwerte": {
+      "energie_kcal": 67,
+      "energie_kj": 280,
+      "protein_g": 13.5,
+      "fett_g": 0.3,
+      "kohlenhydrate_g": 3.8,
+      "ballaststoffe_g": 0,
+      "wasser_g": 81.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 95,
+      "magnesium_mg": 11,
+      "calcium_mg": 92,
+      "phosphor_mg": 157,
+      "eisen_mg": 0.1,
+      "natrium_mg": 35,
+      "zink_mg": 0.5
+    },
+    "vitamine": {
+      "vitamin_a_ug": 3,
+      "vitamin_d_ug": 0.1,
+      "vitamin_b1_mg": 0.04,
+      "vitamin_b2_mg": 0.27,
+      "vitamin_b6_mg": 0.08,
+      "vitamin_b12_ug": 0.9,
+      "vitamin_e_mg": 0.1
+    }
+  },
+  {
+    "id": 98,
+    "name": "Buttermilch",
+    "kategorie": "Milchprodukte",
+    "unterkategorie": "Milch",
+    "saison": {
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "typ": "Frischware",
+      "haupternte": "Ganzjährig",
+      "herkunft": "Regional"
+    },
+    "naehrwerte": {
+      "energie_kcal": 37,
+      "energie_kj": 155,
+      "protein_g": 3.5,
+      "fett_g": 0.5,
+      "kohlenhydrate_g": 4.0,
+      "ballaststoffe_g": 0,
+      "wasser_g": 91.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 157,
+      "magnesium_mg": 13,
+      "calcium_mg": 109,
+      "phosphor_mg": 92,
+      "eisen_mg": 0.1,
+      "natrium_mg": 51,
+      "zink_mg": 0.4
+    },
+    "vitamine": {
+      "vitamin_a_ug": 5,
+      "vitamin_d_ug": 0.1,
+      "vitamin_b1_mg": 0.04,
+      "vitamin_b2_mg": 0.18,
+      "vitamin_b6_mg": 0.05,
+      "vitamin_b12_ug": 0.5,
+      "vitamin_e_mg": 0.1
+    }
+  },
+  {
+    "id": 99,
+    "name": "Wachtelei",
+    "kategorie": "Eier",
+    "unterkategorie": "Geflügel",
+    "saison": {
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "typ": "Frischware",
+      "haupternte": "Ganzjährig",
+      "herkunft": "Regional (Zucht)"
+    },
+    "naehrwerte": {
+      "energie_kcal": 158,
+      "energie_kj": 661,
+      "protein_g": 13.1,
+      "fett_g": 11.1,
+      "kohlenhydrate_g": 0.4,
+      "ballaststoffe_g": 0,
+      "wasser_g": 74.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 132,
+      "magnesium_mg": 13,
+      "calcium_mg": 64,
+      "phosphor_mg": 226,
+      "eisen_mg": 3.7,
+      "natrium_mg": 141,
+      "zink_mg": 1.5
+    },
+    "vitamine": {
+      "vitamin_a_ug": 156,
+      "vitamin_d_ug": 1.4,
+      "vitamin_b1_mg": 0.13,
+      "vitamin_b2_mg": 0.79,
+      "vitamin_b6_mg": 0.15,
+      "vitamin_b12_ug": 1.6,
+      "vitamin_e_mg": 1.1,
+      "folsaeure_ug": 66
+    }
+  },
+  {
+    "id": 100,
+    "name": "Gänseei",
+    "kategorie": "Eier",
+    "unterkategorie": "Geflügel",
+    "saison": {
+      "monate": [3, 4, 5, 6],
+      "typ": "Frischware",
+      "haupternte": "März-Juni",
+      "herkunft": "Regional"
+    },
+    "naehrwerte": {
+      "energie_kcal": 185,
+      "energie_kj": 774,
+      "protein_g": 13.9,
+      "fett_g": 13.3,
+      "kohlenhydrate_g": 1.5,
+      "ballaststoffe_g": 0,
+      "wasser_g": 70.0
+    },
+    "mineralstoffe": {
+      "kalium_mg": 210,
+      "magnesium_mg": 16,
+      "calcium_mg": 60,
+      "phosphor_mg": 208,
+      "eisen_mg": 3.6,
+      "natrium_mg": 138,
+      "zink_mg": 1.3
+    },
+    "vitamine": {
+      "vitamin_a_ug": 190,
+      "vitamin_d_ug": 2.0,
+      "vitamin_b1_mg": 0.15,
+      "vitamin_b2_mg": 0.38,
+      "vitamin_b6_mg": 0.28,
+      "vitamin_b12_ug": 7.3,
+      "vitamin_e_mg": 1.3,
+      "folsaeure_ug": 76
+    }
   }
 ]
