@@ -207,7 +207,7 @@
 
   .month-navigation {
     background: white;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 2rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -222,8 +222,8 @@
 
   .months-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 0.5rem;
   }
 
   .month-card {
@@ -387,9 +387,14 @@
     }
     
     .months-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0,1fr));
     }
     
+    .month-card {
+      padding: 0.75rem 0.25rem;
+      font-size: 0.85rem;
+    }
+
     .filter-grid {
       grid-template-columns: 1fr;
     }
