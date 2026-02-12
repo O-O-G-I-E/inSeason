@@ -248,6 +248,8 @@
     font-weight: 500;
     transition: all 0.2s;
     white-space: nowrap;
+	min-width: 180px;
+	text-align: center;
   }
 
   .nav-btn:hover {
@@ -401,6 +403,7 @@
     .nav-btn {
       width: 100%;
       text-align: center;
+	  min-width: auto;
     }
     
     .filter-grid {
