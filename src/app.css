@@ -1,0 +1,151 @@
+/* Globale Dark Mode Styles */
+
+/* Cards */
+.hero,
+.month-navigation,
+.month-header,
+.product-header,
+.info-card {
+  background: var(--bg-secondary) !important;
+  box-shadow: 0 2px 8px var(--shadow) !important;
+  transition: all 0.3s ease;
+}
+
+.hero:hover,
+.info-card:hover {
+  box-shadow: 0 4px 12px var(--shadow-hover) !important;
+}
+
+/* Text */
+h1, h2, h3 {
+  color: var(--text-primary) !important;
+}
+
+p, span, label {
+  color: var(--text-secondary);
+}
+
+/* Inputs */
+.search-input,
+.select-input {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus,
+.select-input:focus {
+  border-color: var(--accent) !important;
+}
+
+/* Buttons */
+.filter-btn {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent) !important;
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: var(--accent) !important;
+  color: white !important;
+  border-color: var(--accent) !important;
+}
+
+/* Month Cards */
+.month-card {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  transition: all 0.3s ease;
+}
+
+.month-card:hover {
+  background: var(--accent) !important;
+  color: white !important;
+  transform: translateY(-3px);
+}
+
+.month-card.current {
+  background: var(--accent-hover) !important;
+  color: white !important;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: var(--accent) !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+/* Result Info */
+.result-info {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Tables */
+.nutrition-table tr {
+  border-color: var(--border-color) !important;
+}
+
+.nutrition-table td:first-child {
+  color: var(--text-secondary) !important;
+}
+
+.nutrition-table td:last-child {
+  color: var(--text-primary) !important;
+}
+
+/* Info Rows */
+.info-row {
+  border-color: var(--border-color) !important;
+}
+
+.label {
+  color: var(--text-secondary) !important;
+}
+
+.value {
+  color: var(--text-primary) !important;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Card hover animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.products-grid > * {
+  animation: slideUp 0.4s ease-out;
+  animation-fill-mode: both;
+}
+
+.products-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.products-grid > *:nth-child(2) { animation-delay: 0.1s; }
+.products-grid > *:nth-child(3) { animation-delay: 0.15s; }
+.products-grid > *:nth-child(4) { animation-delay: 0.2s; }
+.products-grid > *:nth-child(5) { animation-delay: 0.25s; }
+.products-grid > *:nth-child(6) { animation-delay: 0.3s; }
