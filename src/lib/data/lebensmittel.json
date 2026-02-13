@@ -5,7 +5,20 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Knollen",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware",
       "haupternte": "August-Oktober",
       "herkunft": "Freiland"
@@ -35,6 +48,14 @@
       "vitamin_b6_mg": 0.3,
       "folsaeure_ug": 15,
       "vitamin_e_mg": 0.06
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -43,7 +64,20 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware",
       "haupternte": "Juli-November",
       "herkunft": "Freiland"
@@ -74,6 +108,14 @@
       "vitamin_b6_mg": 0.27,
       "folsaeure_ug": 30,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -82,7 +124,20 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Zwiebelgewächse",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware",
       "haupternte": "August-Oktober",
       "herkunft": "Freiland"
@@ -112,6 +167,14 @@
       "vitamin_b6_mg": 0.15,
       "folsaeure_ug": 10,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -120,7 +183,12 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [11, 12, 1, 2],
+      "monate": [
+        11,
+        12,
+        1,
+        2
+      ],
       "typ": "Frischware",
       "haupternte": "November-Februar",
       "herkunft": "Freiland"
@@ -152,6 +220,14 @@
       "folsaeure_ug": 187,
       "vitamin_e_mg": 1.7,
       "vitamin_k_ug": 817
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -160,7 +236,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [10, 11, 12, 1, 2, 3],
+      "monate": [
+        10,
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
       "typ": "Frischware",
       "haupternte": "Oktober-März",
       "herkunft": "Freiland"
@@ -192,6 +275,14 @@
       "folsaeure_ug": 182,
       "vitamin_e_mg": 1,
       "vitamin_k_ug": 236
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -200,7 +291,20 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -231,6 +335,14 @@
       "folsaeure_ug": 57,
       "vitamin_e_mg": 1.7,
       "vitamin_k_ug": 76
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -239,7 +351,20 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -270,6 +395,14 @@
       "folsaeure_ug": 31,
       "vitamin_e_mg": 1.5,
       "vitamin_k_ug": 38
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -278,7 +411,20 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Frischware/Lagerware",
       "haupternte": "Mai-November",
       "herkunft": "Freiland"
@@ -309,6 +455,14 @@
       "folsaeure_ug": 80,
       "vitamin_e_mg": 2.5,
       "vitamin_k_ug": 250
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -317,7 +471,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [10, 11, 12, 1, 2, 3],
+      "monate": [
+        10,
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
       "typ": "Frischware",
       "haupternte": "Oktober-März",
       "herkunft": "Freiland/Gewächshaus"
@@ -348,6 +509,14 @@
       "vitamin_b6_mg": 0.25,
       "folsaeure_ug": 145,
       "vitamin_e_mg": 0.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -356,7 +525,17 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattgemüse",
     "saison": {
-      "monate": [3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
       "typ": "Frischware",
       "haupternte": "März-November",
       "herkunft": "Freiland"
@@ -388,6 +567,14 @@
       "folsaeure_ug": 145,
       "vitamin_e_mg": 2.5,
       "vitamin_k_ug": 305
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -396,7 +583,20 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -426,6 +626,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 83,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -434,7 +642,20 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -464,6 +685,14 @@
       "vitamin_b6_mg": 0.16,
       "folsaeure_ug": 7,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -472,7 +701,16 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [9, 10, 11, 12, 1, 2, 3, 4],
+      "monate": [
+        9,
+        10,
+        11,
+        12,
+        1,
+        2,
+        3,
+        4
+      ],
       "typ": "Frischware/Lagerware",
       "haupternte": "September-April",
       "herkunft": "Freiland"
@@ -502,6 +740,14 @@
       "vitamin_b6_mg": 0.09,
       "folsaeure_ug": 67,
       "vitamin_e_mg": 1.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -510,7 +756,11 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Stängelgemüse",
     "saison": {
-      "monate": [4, 5, 6],
+      "monate": [
+        4,
+        5,
+        6
+      ],
       "typ": "Frischware",
       "haupternte": "April-Juni",
       "herkunft": "Freiland"
@@ -542,6 +792,14 @@
       "folsaeure_ug": 108,
       "vitamin_e_mg": 2,
       "vitamin_k_ug": 41
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -550,7 +808,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Fruchtgemüse",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland/Gewächshaus"
@@ -581,6 +846,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 15,
       "vitamin_e_mg": 1
+    },
+    "regional_data": {
+      "origin_country": "NL",
+      "origin_region": "Niederlande",
+      "is_import": true,
+      "transport_method": "truck",
+      "distance_km": 600,
+      "co2_per_kg": 0.9
     }
   },
   {
@@ -589,7 +862,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Fruchtgemüse",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland/Gewächshaus"
@@ -620,6 +900,14 @@
       "folsaeure_ug": 13,
       "vitamin_e_mg": 0.1,
       "vitamin_k_ug": 16
+    },
+    "regional_data": {
+      "origin_country": "NL",
+      "origin_region": "Niederlande",
+      "is_import": true,
+      "transport_method": "truck",
+      "distance_km": 600,
+      "co2_per_kg": 0.9
     }
   },
   {
@@ -628,7 +916,13 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Fruchtgemüse",
     "saison": {
-      "monate": [6, 7, 8, 9, 10],
+      "monate": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Juni-Oktober",
       "herkunft": "Freiland"
@@ -659,6 +953,14 @@
       "vitamin_b6_mg": 0.16,
       "folsaeure_ug": 27,
       "vitamin_e_mg": 0.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.2
     }
   },
   {
@@ -667,7 +969,12 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Fruchtgemüse",
     "saison": {
-      "monate": [9, 10, 11, 12],
+      "monate": [
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Frischware/Lagerware",
       "haupternte": "September-Dezember",
       "herkunft": "Freiland"
@@ -698,6 +1005,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 14,
       "vitamin_e_mg": 1.3
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -706,7 +1021,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -736,6 +1058,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 70,
       "vitamin_e_mg": 1.7
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -744,7 +1074,15 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [4, 5, 6, 7, 8, 9, 10],
+      "monate": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "April-Oktober",
       "herkunft": "Freiland"
@@ -774,6 +1112,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 39,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -782,7 +1128,16 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [4, 5, 6, 7, 8, 9, 10, 11],
+      "monate": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
       "typ": "Frischware",
       "haupternte": "April-November",
       "herkunft": "Freiland"
@@ -813,6 +1168,14 @@
       "folsaeure_ug": 125,
       "vitamin_e_mg": 0.1,
       "vitamin_k_ug": 16
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -821,7 +1184,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -853,6 +1223,14 @@
       "folsaeure_ug": 114,
       "vitamin_e_mg": 1.3,
       "vitamin_k_ug": 155
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -898,6 +1276,14 @@
       "vitamin_b6_mg": 0.3,
       "folsaeure_ug": 25,
       "vitamin_e_mg": 2.5
+    },
+    "regional_data": {
+      "origin_country": "NL",
+      "origin_region": "Niederlande",
+      "is_import": true,
+      "transport_method": "truck",
+      "distance_km": 600,
+      "co2_per_kg": 0.9
     }
   },
   {
@@ -943,6 +1329,14 @@
       "folsaeure_ug": 69,
       "vitamin_e_mg": 0.1,
       "vitamin_k_ug": 43
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -989,6 +1383,14 @@
       "folsaeure_ug": 65,
       "vitamin_e_mg": 0.2,
       "vitamin_k_ug": 25
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1037,6 +1439,14 @@
       "folsaeure_ug": 103,
       "vitamin_e_mg": 0.3,
       "vitamin_k_ug": 47
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1045,7 +1455,20 @@
     "kategorie": "Pilze",
     "unterkategorie": "Kulturpilze",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Zucht",
       "haupternte": "Ganzjährig",
       "herkunft": "Regional (Zucht)"
@@ -1075,6 +1498,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 50,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1119,6 +1550,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 30,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -1163,6 +1602,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 40,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -1171,7 +1618,20 @@
     "kategorie": "Obst",
     "unterkategorie": "Kernobst",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -1201,6 +1661,14 @@
       "vitamin_b6_mg": 0.07,
       "folsaeure_ug": 8,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -1209,7 +1677,12 @@
     "kategorie": "Obst",
     "unterkategorie": "Kernobst",
     "saison": {
-      "monate": [8, 9, 10, 11],
+      "monate": [
+        8,
+        9,
+        10,
+        11
+      ],
       "typ": "Frischware",
       "haupternte": "August-Oktober",
       "herkunft": "Freiland"
@@ -1239,6 +1712,14 @@
       "vitamin_b6_mg": 0.03,
       "folsaeure_ug": 10,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1281,6 +1762,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 43,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.2
     }
   },
   {
@@ -1324,6 +1813,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 35,
       "vitamin_e_mg": 0.9
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.2
     }
   },
   {
@@ -1367,6 +1864,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 6,
       "vitamin_e_mg": 2.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1410,6 +1915,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 7,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.2
     }
   },
   {
@@ -1452,6 +1965,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 34,
       "vitamin_e_mg": 3.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.2
     }
   },
   {
@@ -1495,6 +2016,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 4,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.2
     }
   },
   {
@@ -1537,6 +2066,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 52,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1580,6 +2117,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 2,
       "vitamin_e_mg": 0.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1623,6 +2168,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 3,
       "vitamin_e_mg": 0.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1664,6 +2217,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 3,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1707,6 +2268,14 @@
       "folsaeure_ug": 7,
       "vitamin_e_mg": 0.2,
       "vitamin_k_ug": 29
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -1715,7 +2284,16 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Schalenfrüchte",
     "saison": {
-      "monate": [9, 10, 11, 12, 1, 2, 3, 4],
+      "monate": [
+        9,
+        10,
+        11,
+        12,
+        1,
+        2,
+        3,
+        4
+      ],
       "typ": "Lagerware",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -1744,6 +2322,14 @@
       "vitamin_b2_mg": 0.12,
       "vitamin_b6_mg": 0.58,
       "folsaeure_ug": 77
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -1752,7 +2338,14 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Schalenfrüchte",
     "saison": {
-      "monate": [9, 10, 11, 12, 1, 2],
+      "monate": [
+        9,
+        10,
+        11,
+        12,
+        1,
+        2
+      ],
       "typ": "Lagerware",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -1781,6 +2374,14 @@
       "vitamin_b2_mg": 0.15,
       "vitamin_b6_mg": 0.58,
       "folsaeure_ug": 71
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -1823,6 +2424,14 @@
       "vitamin_b6_mg": 0.2,
       "folsaeure_ug": 40,
       "vitamin_e_mg": 2.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -1867,6 +2476,14 @@
       "vitamin_b6_mg": 0.25,
       "folsaeure_ug": 27,
       "vitamin_e_mg": 3.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -1911,6 +2528,14 @@
       "folsaeure_ug": 14,
       "vitamin_e_mg": 0.8,
       "vitamin_k_ug": 499
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -1956,6 +2581,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 35,
       "vitamin_e_mg": 1.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -1964,7 +2597,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -1993,6 +2639,14 @@
       "vitamin_b6_mg": 0.23,
       "folsaeure_ug": 45,
       "vitamin_e_mg": 0.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2001,7 +2655,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -2030,6 +2697,14 @@
       "vitamin_b6_mg": 0.16,
       "folsaeure_ug": 87,
       "vitamin_e_mg": 1.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2038,7 +2713,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -2067,6 +2755,14 @@
       "vitamin_b6_mg": 0.29,
       "folsaeure_ug": 65,
       "vitamin_e_mg": 1.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2112,6 +2808,14 @@
       "vitamin_b6_mg": 0.23,
       "folsaeure_ug": 33,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2158,6 +2862,14 @@
       "vitamin_b6_mg": 0.1,
       "folsaeure_ug": 8,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -2205,6 +2917,14 @@
       "folsaeure_ug": 14,
       "vitamin_e_mg": 1.9,
       "vitamin_k_ug": 830
+    },
+    "regional_data": {
+      "origin_country": "IN",
+      "origin_region": "Indien",
+      "is_import": true,
+      "transport_method": "ship",
+      "distance_km": 7000,
+      "co2_per_kg": 0.8
     }
   },
   {
@@ -2250,6 +2970,14 @@
       "vitamin_b6_mg": 0.31,
       "folsaeure_ug": 57,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2295,6 +3023,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 39,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2338,6 +3074,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 14,
       "vitamin_e_mg": 0.2
+    },
+    "regional_data": {
+      "origin_country": "NL",
+      "origin_region": "Niederlande",
+      "is_import": true,
+      "transport_method": "truck",
+      "distance_km": 600,
+      "co2_per_kg": 0.9
     }
   },
   {
@@ -2386,6 +3130,14 @@
       "folsaeure_ug": 64,
       "vitamin_e_mg": 0.5,
       "vitamin_k_ug": 207
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2428,6 +3180,14 @@
       "vitamin_b6_mg": 0.23,
       "folsaeure_ug": 6,
       "vitamin_e_mg": 1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -2471,6 +3231,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 7,
       "vitamin_e_mg": 5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2479,7 +3247,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Wildfrüchte",
     "saison": {
-      "monate": [9, 10, 11],
+      "monate": [
+        9,
+        10,
+        11
+      ],
       "typ": "Wildsammlung",
       "haupternte": "September-November",
       "herkunft": "Wald/Hecken"
@@ -2510,6 +3282,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 3,
       "vitamin_e_mg": 5.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -2518,7 +3298,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Wildfrüchte",
     "saison": {
-      "monate": [10, 11, 12],
+      "monate": [
+        10,
+        11,
+        12
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Oktober-Dezember (nach Frost)",
       "herkunft": "Wald/Hecken"
@@ -2548,6 +3332,14 @@
       "vitamin_b6_mg": 0.03,
       "folsaeure_ug": 4,
       "vitamin_e_mg": 1.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -2556,7 +3348,12 @@
     "kategorie": "Obst",
     "unterkategorie": "Beerenobst",
     "saison": {
-      "monate": [6, 7, 8, 9],
+      "monate": [
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Juni-September",
       "herkunft": "Freiland"
@@ -2587,6 +3384,14 @@
       "vitamin_b6_mg": 0.07,
       "folsaeure_ug": 5,
       "vitamin_e_mg": 1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.2
     }
   },
   {
@@ -2595,7 +3400,10 @@
     "kategorie": "Obst",
     "unterkategorie": "Steinobst",
     "saison": {
-      "monate": [7, 8],
+      "monate": [
+        7,
+        8
+      ],
       "typ": "Frischware",
       "haupternte": "Juli-August",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -2626,6 +3434,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 3,
       "vitamin_e_mg": 0.9
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2634,7 +3450,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Steinobst",
     "saison": {
-      "monate": [7, 8, 9],
+      "monate": [
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Juli-September",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -2665,6 +3485,14 @@
       "vitamin_b6_mg": 0.02,
       "folsaeure_ug": 3,
       "vitamin_e_mg": 0.7
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2673,7 +3501,20 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Samen",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "August-September",
       "herkunft": "Freiland"
@@ -2702,6 +3543,14 @@
       "vitamin_b2_mg": 0.16,
       "vitamin_b6_mg": 0.61,
       "folsaeure_ug": 87
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2710,7 +3559,20 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Samen",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -2739,6 +3601,14 @@
       "vitamin_b2_mg": 0.18,
       "vitamin_b6_mg": 1.13,
       "folsaeure_ug": 100
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2747,7 +3617,20 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Samen",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -2776,6 +3659,14 @@
       "vitamin_b2_mg": 0.15,
       "vitamin_b6_mg": 0.14,
       "folsaeure_ug": 58
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2784,7 +3675,20 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Samen",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -2813,6 +3717,14 @@
       "vitamin_b2_mg": 0.1,
       "vitamin_b6_mg": 0.25,
       "folsaeure_ug": 82
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2821,7 +3733,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -2850,6 +3775,14 @@
       "vitamin_b6_mg": 0.3,
       "folsaeure_ug": 87,
       "vitamin_e_mg": 1.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2858,7 +3791,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -2887,6 +3833,14 @@
       "vitamin_b6_mg": 0.56,
       "folsaeure_ug": 65,
       "vitamin_e_mg": 0.7
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2895,7 +3849,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Pseudogetreide",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -2924,6 +3891,14 @@
       "vitamin_b6_mg": 0.36,
       "folsaeure_ug": 50,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -2932,7 +3907,12 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [4, 5, 6, 7],
+      "monate": [
+        4,
+        5,
+        6,
+        7
+      ],
       "typ": "Wildsammlung",
       "haupternte": "April-Juli",
       "herkunft": "Wiese"
@@ -2963,6 +3943,14 @@
       "vitamin_b6_mg": 0.12,
       "folsaeure_ug": 13,
       "vitamin_e_mg": 2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -2971,7 +3959,15 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [3, 4, 5, 6, 7, 8, 9],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Wildsammlung/Anbau",
       "haupternte": "März-September",
       "herkunft": "Quellen/Bäche"
@@ -3003,6 +3999,14 @@
       "folsaeure_ug": 9,
       "vitamin_e_mg": 1,
       "vitamin_k_ug": 250
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 30,
+      "co2_per_kg": 0.1
     }
   },
   {
@@ -3011,7 +4015,13 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Mai-September",
       "herkunft": "Wiese"
@@ -3041,6 +4051,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 12,
       "vitamin_e_mg": 1.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -3049,7 +4067,20 @@
     "kategorie": "Pilze",
     "unterkategorie": "Kulturpilze",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Zucht",
       "haupternte": "Ganzjährig",
       "herkunft": "Regional (Zucht)"
@@ -3079,6 +4110,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 38,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3087,7 +4126,20 @@
     "kategorie": "Pilze",
     "unterkategorie": "Kulturpilze",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Zucht",
       "haupternte": "Ganzjährig",
       "herkunft": "Regional (Zucht)"
@@ -3117,6 +4169,14 @@
       "vitamin_b6_mg": 0.29,
       "folsaeure_ug": 13,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3160,6 +4220,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 25,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -3168,7 +4236,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Knollen",
     "saison": {
-      "monate": [10, 11, 12, 1, 2, 3],
+      "monate": [
+        10,
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
       "typ": "Frischware",
       "haupternte": "Oktober-März",
       "herkunft": "Freiland"
@@ -3198,6 +4273,14 @@
       "vitamin_b6_mg": 0.077,
       "folsaeure_ug": 13,
       "vitamin_e_mg": 0.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3206,7 +4289,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -3238,6 +4328,14 @@
       "folsaeure_ug": 66,
       "vitamin_e_mg": 0.1,
       "vitamin_k_ug": 46
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3246,7 +4344,11 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [4, 5, 6],
+      "monate": [
+        4,
+        5,
+        6
+      ],
       "typ": "Frischware",
       "haupternte": "April-Juni",
       "herkunft": "Freiland"
@@ -3276,6 +4378,14 @@
       "vitamin_b6_mg": 0.09,
       "folsaeure_ug": 15,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3284,7 +4394,10 @@
     "kategorie": "Obst",
     "unterkategorie": "Steinobst",
     "saison": {
-      "monate": [8, 9],
+      "monate": [
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "August-September",
       "herkunft": "Freiland"
@@ -3314,6 +4427,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 2,
       "vitamin_e_mg": 0.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3322,7 +4443,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Hülsenfrüchte",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -3351,6 +4485,14 @@
       "vitamin_b6_mg": 0.54,
       "folsaeure_ug": 169,
       "vitamin_e_mg": 1.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3359,7 +4501,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Hülsenfrüchte",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "August-September",
       "herkunft": "Freiland"
@@ -3388,6 +4543,14 @@
       "vitamin_b6_mg": 0.54,
       "folsaeure_ug": 340,
       "vitamin_e_mg": 2.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3396,7 +4559,12 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [6, 7, 8, 9],
+      "monate": [
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Wildsammlung/Anbau",
       "haupternte": "Juni-September",
       "herkunft": "Garten/Wiese"
@@ -3427,6 +4595,14 @@
       "vitamin_b6_mg": 0.07,
       "folsaeure_ug": 12,
       "vitamin_e_mg": 12.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 30,
+      "co2_per_kg": 0.1
     }
   },
   {
@@ -3435,7 +4611,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Steinobst",
     "saison": {
-      "monate": [7, 8, 9],
+      "monate": [
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Juli-September",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -3466,6 +4646,14 @@
       "vitamin_b6_mg": 0.02,
       "folsaeure_ug": 5,
       "vitamin_e_mg": 0.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3474,7 +4662,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Beerenobst",
     "saison": {
-      "monate": [7, 8, 9],
+      "monate": [
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Juli-September",
       "herkunft": "Freiland"
@@ -3504,6 +4696,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 6,
       "vitamin_e_mg": 2.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.2
     }
   },
   {
@@ -3512,7 +4712,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Beerenobst",
     "saison": {
-      "monate": [8, 9, 10],
+      "monate": [
+        8,
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "August-Oktober",
       "herkunft": "Wald/Heide"
@@ -3542,6 +4746,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 2,
       "vitamin_e_mg": 1.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -3550,7 +4762,10 @@
     "kategorie": "Obst",
     "unterkategorie": "Steinobst",
     "saison": {
-      "monate": [8, 9],
+      "monate": [
+        8,
+        9
+      ],
       "typ": "Wildsammlung",
       "haupternte": "August-September",
       "herkunft": "Wald/Hecken"
@@ -3580,6 +4795,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 3,
       "vitamin_e_mg": 0.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -3588,7 +4811,13 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Anbau/Wildsammlung",
       "haupternte": "Mai-September",
       "herkunft": "Garten/Feld"
@@ -3619,6 +4848,14 @@
       "vitamin_b6_mg": 0.55,
       "folsaeure_ug": 30,
       "vitamin_e_mg": 3.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 30,
+      "co2_per_kg": 0.1
     }
   },
   {
@@ -3627,7 +4864,16 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [3, 4, 5, 6, 7, 8, 9, 10],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "März-Oktober",
       "herkunft": "Garten/Wiese"
@@ -3657,6 +4903,14 @@
       "vitamin_b6_mg": 0.1,
       "folsaeure_ug": 12,
       "vitamin_e_mg": 2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -3665,7 +4919,14 @@
     "kategorie": "Pilze",
     "unterkategorie": "Wildpilze",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Mai-Oktober",
       "herkunft": "Wiese"
@@ -3695,6 +4956,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 50,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -3703,7 +4972,13 @@
     "kategorie": "Pilze",
     "unterkategorie": "Wildpilze",
     "saison": {
-      "monate": [6, 7, 8, 9, 10],
+      "monate": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Juni-Oktober",
       "herkunft": "Wald"
@@ -3733,6 +5008,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 35,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -3741,7 +5024,13 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Knollengemüse",
     "saison": {
-      "monate": [6, 7, 8, 9, 10],
+      "monate": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Juni-Oktober",
       "herkunft": "Freiland"
@@ -3771,6 +5060,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 27,
       "vitamin_e_mg": 0.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3779,7 +5076,15 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [10, 11, 12, 1, 2, 3, 4],
+      "monate": [
+        10,
+        11,
+        12,
+        1,
+        2,
+        3,
+        4
+      ],
       "typ": "Treiberei",
       "haupternte": "Oktober-April",
       "herkunft": "Regional (Treiberei)"
@@ -3809,6 +5114,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 37,
       "vitamin_e_mg": 0.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3817,7 +5130,13 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [9, 10, 11, 12, 1],
+      "monate": [
+        9,
+        10,
+        11,
+        12,
+        1
+      ],
       "typ": "Frischware",
       "haupternte": "September-Januar",
       "herkunft": "Freiland"
@@ -3847,6 +5166,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 60,
       "vitamin_e_mg": 2.3
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3855,7 +5182,11 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [9, 10, 11],
+      "monate": [
+        9,
+        10,
+        11
+      ],
       "typ": "Frischware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -3886,6 +5217,14 @@
       "folsaeure_ug": 110,
       "vitamin_e_mg": 0.1,
       "vitamin_k_ug": 150
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3894,7 +5233,15 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [4, 5, 6, 7, 8, 9, 10],
+      "monate": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "April-Oktober",
       "herkunft": "Freiland"
@@ -3926,6 +5273,14 @@
       "folsaeure_ug": 97,
       "vitamin_e_mg": 0.4,
       "vitamin_k_ug": 109
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3934,7 +5289,13 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [11, 12, 1, 2, 3],
+      "monate": [
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
       "typ": "Frischware",
       "haupternte": "November-März",
       "herkunft": "Freiland/Gewächshaus"
@@ -3965,6 +5326,14 @@
       "vitamin_b6_mg": 0.12,
       "folsaeure_ug": 38,
       "vitamin_e_mg": 0.9
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -3973,7 +5342,15 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [4, 5, 6, 7, 8, 9, 10],
+      "monate": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "April-Oktober",
       "herkunft": "Freiland"
@@ -4004,6 +5381,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 55,
       "vitamin_e_mg": 0.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4012,7 +5397,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -4043,6 +5435,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 40,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4051,7 +5451,12 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [8, 9, 10, 11],
+      "monate": [
+        8,
+        9,
+        10,
+        11
+      ],
       "typ": "Frischware",
       "haupternte": "August-November",
       "herkunft": "Freiland"
@@ -4082,6 +5487,14 @@
       "vitamin_b6_mg": 0.02,
       "folsaeure_ug": 109,
       "vitamin_e_mg": 0.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4090,7 +5503,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Tafeltrauben",
     "saison": {
-      "monate": [8, 9, 10],
+      "monate": [
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "August-Oktober",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -4120,6 +5537,14 @@
       "vitamin_b6_mg": 0.07,
       "folsaeure_ug": 4,
       "vitamin_e_mg": 0.7
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4128,7 +5553,10 @@
     "kategorie": "Obst",
     "unterkategorie": "Steinobst",
     "saison": {
-      "monate": [8, 9],
+      "monate": [
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "August-September",
       "herkunft": "Freiland"
@@ -4158,6 +5586,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 3,
       "vitamin_e_mg": 0.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4166,7 +5602,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Kernobst",
     "saison": {
-      "monate": [10, 11, 12],
+      "monate": [
+        10,
+        11,
+        12
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Oktober-Dezember (nach Frost)",
       "herkunft": "Garten/Wald"
@@ -4196,6 +5636,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 2,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -4204,7 +5652,10 @@
     "kategorie": "Obst",
     "unterkategorie": "Wildfrüchte",
     "saison": {
-      "monate": [8, 9],
+      "monate": [
+        8,
+        9
+      ],
       "typ": "Wildsammlung",
       "haupternte": "August-September",
       "herkunft": "Wald/Garten"
@@ -4234,6 +5685,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 4,
       "vitamin_e_mg": 1.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -4242,7 +5701,14 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [4, 5, 6, 7, 8, 9],
+      "monate": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Wildsammlung",
       "haupternte": "April-September",
       "herkunft": "Wiese/Wegrand"
@@ -4272,6 +5738,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 15,
       "vitamin_e_mg": 1.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -4280,7 +5754,12 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [3, 4, 5, 6],
+      "monate": [
+        3,
+        4,
+        5,
+        6
+      ],
       "typ": "Wildsammlung",
       "haupternte": "März-Juni",
       "herkunft": "Wald/Wegrand"
@@ -4310,6 +5789,14 @@
       "vitamin_b6_mg": 0.1,
       "folsaeure_ug": 18,
       "vitamin_e_mg": 1.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -4318,7 +5805,16 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [3, 4, 5, 6, 7, 8, 9, 10],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "März-Oktober",
       "herkunft": "Freiland/Gewächshaus"
@@ -4350,6 +5846,14 @@
       "folsaeure_ug": 152,
       "vitamin_e_mg": 3.7,
       "vitamin_k_ug": 421
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4358,7 +5862,16 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [3, 4, 5, 6, 7, 8, 9, 10],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "März-Oktober",
       "herkunft": "Freiland/Topf"
@@ -4390,6 +5903,14 @@
       "folsaeure_ug": 105,
       "vitamin_e_mg": 2.4,
       "vitamin_k_ug": 212
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4398,7 +5919,13 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-September",
       "herkunft": "Freiland"
@@ -4429,6 +5956,14 @@
       "vitamin_b6_mg": 0.19,
       "folsaeure_ug": 150,
       "vitamin_e_mg": 1.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4437,7 +5972,13 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-September",
       "herkunft": "Freiland"
@@ -4468,6 +6009,14 @@
       "vitamin_b6_mg": 0.35,
       "folsaeure_ug": 45,
       "vitamin_e_mg": 1.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4476,7 +6025,12 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [6, 7, 8, 9],
+      "monate": [
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Juni-September",
       "herkunft": "Freiland"
@@ -4508,6 +6062,14 @@
       "folsaeure_ug": 237,
       "vitamin_e_mg": 18.3,
       "vitamin_k_ug": 622
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4516,7 +6078,14 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -4548,6 +6117,14 @@
       "folsaeure_ug": 274,
       "vitamin_e_mg": 7.5,
       "vitamin_k_ug": 1715
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4556,7 +6133,12 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [6, 7, 8, 9],
+      "monate": [
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Juni-September",
       "herkunft": "Freiland"
@@ -4588,6 +6170,14 @@
       "folsaeure_ug": 274,
       "vitamin_e_mg": 1.7,
       "vitamin_k_ug": 622
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4596,7 +6186,20 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Zucht (ganzjährig)",
       "haupternte": "Ganzjährig",
       "herkunft": "Gewächshaus/Indoor"
@@ -4628,6 +6231,14 @@
       "folsaeure_ug": 80,
       "vitamin_e_mg": 0.7,
       "vitamin_k_ug": 542
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.7
     }
   },
   {
@@ -4636,7 +6247,20 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Immergrün",
       "haupternte": "Ganzjährig",
       "herkunft": "Freiland/Topf"
@@ -4667,6 +6291,14 @@
       "vitamin_b6_mg": 0.34,
       "folsaeure_ug": 109,
       "vitamin_e_mg": 0.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 30,
+      "co2_per_kg": 0.1
     }
   },
   {
@@ -4675,7 +6307,15 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [4, 5, 6, 7, 8, 9, 10],
+      "monate": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "April-Oktober",
       "herkunft": "Freiland"
@@ -4705,6 +6345,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 26,
       "vitamin_e_mg": 1.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4713,7 +6361,13 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-September",
       "herkunft": "Freiland"
@@ -4743,6 +6397,14 @@
       "vitamin_b6_mg": 0.16,
       "folsaeure_ug": 105,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "ES",
+      "origin_region": "Spanien",
+      "is_import": true,
+      "transport_method": "truck",
+      "distance_km": 2000,
+      "co2_per_kg": 0.4
     }
   },
   {
@@ -4751,7 +6413,14 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Schalenfrüchte",
     "saison": {
-      "monate": [9, 10, 11, 12, 1, 2],
+      "monate": [
+        9,
+        10,
+        11,
+        12,
+        1,
+        2
+      ],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -4781,6 +6450,14 @@
       "vitamin_b6_mg": 0.5,
       "folsaeure_ug": 70,
       "vitamin_e_mg": 1.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -4789,7 +6466,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "August-September",
       "herkunft": "Freiland"
@@ -4818,6 +6508,14 @@
       "vitamin_b6_mg": 0.75,
       "folsaeure_ug": 85,
       "vitamin_e_mg": 0.3
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4826,7 +6524,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Pseudogetreide",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland (experimenteller Anbau)"
@@ -4855,6 +6566,14 @@
       "vitamin_b6_mg": 0.49,
       "folsaeure_ug": 184,
       "vitamin_e_mg": 6.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4863,7 +6582,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Pseudogetreide",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -4892,6 +6624,14 @@
       "vitamin_b6_mg": 0.59,
       "folsaeure_ug": 82,
       "vitamin_e_mg": 1.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4900,7 +6640,12 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blütengemüse",
     "saison": {
-      "monate": [7, 8, 9, 10],
+      "monate": [
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Juli-Oktober",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -4931,6 +6676,14 @@
       "folsaeure_ug": 68,
       "vitamin_e_mg": 0.2,
       "vitamin_k_ug": 14.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4939,7 +6692,20 @@
     "kategorie": "Pilze",
     "unterkategorie": "Kulturpilze",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Zucht",
       "haupternte": "Ganzjährig",
       "herkunft": "Regional (Zucht)"
@@ -4969,6 +6735,14 @@
       "vitamin_b6_mg": 0.1,
       "folsaeure_ug": 28,
       "vitamin_e_mg": 0.01
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -4977,7 +6751,20 @@
     "kategorie": "Pilze",
     "unterkategorie": "Kulturpilze",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Zucht",
       "haupternte": "Ganzjährig",
       "herkunft": "Regional (Zucht)"
@@ -5007,6 +6794,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 38,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5015,7 +6810,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -5046,6 +6848,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 73,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5054,7 +6864,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -5085,6 +6902,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 83,
       "vitamin_e_mg": 0.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5093,7 +6918,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [5, 6, 7, 8, 9, 10],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -5124,6 +6956,14 @@
       "folsaeure_ug": 80,
       "vitamin_e_mg": 1.7,
       "vitamin_k_ug": 109
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5132,7 +6972,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [10, 11, 12, 1, 2, 3],
+      "monate": [
+        10,
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
       "typ": "Frischware",
       "haupternte": "Oktober-März",
       "herkunft": "Freiland"
@@ -5164,6 +7011,14 @@
       "folsaeure_ug": 62,
       "vitamin_e_mg": 0.9,
       "vitamin_k_ug": 817
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5172,7 +7027,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [10, 11, 12, 1, 2, 3],
+      "monate": [
+        10,
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
       "typ": "Frischware",
       "haupternte": "Oktober-März",
       "herkunft": "Freiland"
@@ -5202,6 +7064,14 @@
       "vitamin_b6_mg": 0.28,
       "folsaeure_ug": 13,
       "vitamin_e_mg": 0.3
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5210,7 +7080,13 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [10, 11, 12, 1, 2],
+      "monate": [
+        10,
+        11,
+        12,
+        1,
+        2
+      ],
       "typ": "Frischware",
       "haupternte": "Oktober-Februar",
       "herkunft": "Freiland"
@@ -5240,6 +7116,14 @@
       "vitamin_b6_mg": 0.12,
       "folsaeure_ug": 20,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5248,7 +7132,15 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [9, 10, 11, 12, 1, 2, 3],
+      "monate": [
+        9,
+        10,
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
       "typ": "Lagerware",
       "haupternte": "September-März",
       "herkunft": "Freiland"
@@ -5278,6 +7170,14 @@
       "vitamin_b6_mg": 0.09,
       "folsaeure_ug": 11,
       "vitamin_e_mg": 0.7
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -5286,7 +7186,14 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [10, 11, 12, 1, 2, 3],
+      "monate": [
+        10,
+        11,
+        12,
+        1,
+        2,
+        3
+      ],
       "typ": "Lagerware",
       "haupternte": "Oktober-März",
       "herkunft": "Freiland"
@@ -5316,6 +7223,14 @@
       "vitamin_b6_mg": 0.06,
       "folsaeure_ug": 25,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 80,
+      "co2_per_kg": 0.25
     }
   },
   {
@@ -5324,7 +7239,12 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [9, 10, 11, 12],
+      "monate": [
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Frischware",
       "haupternte": "September-Dezember",
       "herkunft": "Freiland"
@@ -5354,6 +7274,14 @@
       "vitamin_b6_mg": 0.09,
       "folsaeure_ug": 15,
       "vitamin_e_mg": 0.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5362,7 +7290,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Hülsenfrüchte",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juni-August",
       "herkunft": "Freiland"
@@ -5391,6 +7332,14 @@
       "vitamin_b6_mg": 0.16,
       "folsaeure_ug": 106,
       "vitamin_e_mg": 0.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5399,7 +7348,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Hülsenfrüchte",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juni-August",
       "herkunft": "Freiland"
@@ -5428,15 +7390,36 @@
       "vitamin_b6_mg": 0.37,
       "folsaeure_ug": 423,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
-    {
+  {
     "id": 156,
     "name": "Emmer",
     "kategorie": "Getreide",
     "unterkategorie": "Urgetreide",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -5465,6 +7448,14 @@
       "vitamin_b6_mg": 0.25,
       "folsaeure_ug": 50,
       "vitamin_e_mg": 1.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5473,7 +7464,20 @@
     "kategorie": "Getreide",
     "unterkategorie": "Urgetreide",
     "saison": {
-      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "monate": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -5503,6 +7507,14 @@
       "vitamin_b6_mg": 0.31,
       "folsaeure_ug": 54,
       "vitamin_e_mg": 1.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -5511,7 +7523,15 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [3, 4, 5, 6, 7, 8, 9],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Wildsammlung",
       "haupternte": "März-September",
       "herkunft": "Wiese/Wegrand"
@@ -5541,6 +7561,14 @@
       "vitamin_b6_mg": 0.12,
       "folsaeure_ug": 22,
       "vitamin_e_mg": 2.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5549,7 +7577,14 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [3, 4, 5, 6, 7, 8],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
       "typ": "Wildsammlung",
       "haupternte": "März-August",
       "herkunft": "Wiese/Garten"
@@ -5579,6 +7614,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 18,
       "vitamin_e_mg": 1.3
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5587,7 +7630,13 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [4, 5, 6, 7, 8],
+      "monate": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
       "typ": "Wildsammlung",
       "haupternte": "April-August",
       "herkunft": "Wiese"
@@ -5617,6 +7666,14 @@
       "vitamin_b6_mg": 0.07,
       "folsaeure_ug": 14,
       "vitamin_e_mg": 0.9
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5625,7 +7682,13 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [6, 7, 8, 9, 10],
+      "monate": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Juni-Oktober",
       "herkunft": "Garten/Acker"
@@ -5656,6 +7719,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 28,
       "vitamin_e_mg": 3.2
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5664,7 +7735,10 @@
     "kategorie": "Obst",
     "unterkategorie": "Wildfrüchte",
     "saison": {
-      "monate": [9, 10],
+      "monate": [
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "September-Oktober",
       "herkunft": "Hecken/Garten"
@@ -5694,6 +7768,14 @@
       "vitamin_b6_mg": 0.09,
       "folsaeure_ug": 12,
       "vitamin_e_mg": 0.6
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5702,7 +7784,11 @@
     "kategorie": "Obst",
     "unterkategorie": "Wildfrüchte",
     "saison": {
-      "monate": [8, 9, 10],
+      "monate": [
+        8,
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "August-Oktober",
       "herkunft": "Wald/Park"
@@ -5733,6 +7819,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 7,
       "vitamin_e_mg": 1.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5741,7 +7835,10 @@
     "kategorie": "Obst",
     "unterkategorie": "Kernobst",
     "saison": {
-      "monate": [9, 10],
+      "monate": [
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "September-Oktober",
       "herkunft": "Wald/Hecken"
@@ -5771,6 +7868,14 @@
       "vitamin_b6_mg": 0.02,
       "folsaeure_ug": 8,
       "vitamin_e_mg": 0.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5779,7 +7884,10 @@
     "kategorie": "Obst",
     "unterkategorie": "Kernobst",
     "saison": {
-      "monate": [9, 10],
+      "monate": [
+        9,
+        10
+      ],
       "typ": "Wildsammlung",
       "haupternte": "September-Oktober",
       "herkunft": "Wald"
@@ -5809,6 +7917,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 5,
       "vitamin_e_mg": 0.3
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5817,7 +7933,12 @@
     "kategorie": "Obst",
     "unterkategorie": "Wildfrüchte",
     "saison": {
-      "monate": [10, 11, 12, 1],
+      "monate": [
+        10,
+        11,
+        12,
+        1
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Oktober-Januar (nach Frost)",
       "herkunft": "Hecken"
@@ -5847,6 +7968,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 5,
       "vitamin_e_mg": 1.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5855,7 +7984,11 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blüten",
     "saison": {
-      "monate": [5, 6, 7],
+      "monate": [
+        5,
+        6,
+        7
+      ],
       "typ": "Wildsammlung/Anbau",
       "haupternte": "Mai-Juli",
       "herkunft": "Wiese/Feld"
@@ -5885,6 +8018,14 @@
       "vitamin_b6_mg": 0.03,
       "folsaeure_ug": 8,
       "vitamin_e_mg": 0.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 30,
+      "co2_per_kg": 0.1
     }
   },
   {
@@ -5893,7 +8034,10 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blüten",
     "saison": {
-      "monate": [6, 7],
+      "monate": [
+        6,
+        7
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Juni-Juli",
       "herkunft": "Park/Wald"
@@ -5923,6 +8067,14 @@
       "vitamin_b6_mg": 0.04,
       "folsaeure_ug": 10,
       "vitamin_e_mg": 0.4
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5931,7 +8083,15 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [3, 4, 5, 6, 7, 8, 9],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Wildsammlung",
       "haupternte": "März-September",
       "herkunft": "Garten/Wald"
@@ -5961,6 +8121,14 @@
       "vitamin_b6_mg": 0.08,
       "folsaeure_ug": 35,
       "vitamin_e_mg": 1.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -5969,7 +8137,13 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Blüten/Blätter",
     "saison": {
-      "monate": [6, 7, 8, 9, 10],
+      "monate": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
       "typ": "Anbau",
       "haupternte": "Juni-Oktober",
       "herkunft": "Garten"
@@ -5999,6 +8173,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 24,
       "vitamin_e_mg": 2.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 30,
+      "co2_per_kg": 0.1
     }
   },
   {
@@ -6007,7 +8189,13 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Blätter/Blüten",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Anbau",
       "haupternte": "Mai-September",
       "herkunft": "Garten"
@@ -6038,6 +8226,14 @@
       "vitamin_b6_mg": 0.11,
       "folsaeure_ug": 13,
       "vitamin_e_mg": 3.8
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 30,
+      "co2_per_kg": 0.1
     }
   },
   {
@@ -6046,7 +8242,13 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [3, 4, 5, 6, 7],
+      "monate": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
       "typ": "Frischware",
       "haupternte": "März-Juli",
       "herkunft": "Freiland/Gewächshaus"
@@ -6077,6 +8279,14 @@
       "vitamin_b6_mg": 0.93,
       "folsaeure_ug": 274,
       "vitamin_e_mg": 1.7
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -6085,7 +8295,13 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Mai-September",
       "herkunft": "Freiland"
@@ -6116,6 +8332,14 @@
       "vitamin_b6_mg": 2.41,
       "folsaeure_ug": 274,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -6124,7 +8348,12 @@
     "kategorie": "Kräuter",
     "unterkategorie": "Küchenkräuter",
     "saison": {
-      "monate": [6, 7, 8, 9],
+      "monate": [
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Frischware",
       "haupternte": "Juni-September",
       "herkunft": "Freiland"
@@ -6155,6 +8384,14 @@
       "vitamin_b6_mg": 1.81,
       "folsaeure_ug": 274,
       "vitamin_e_mg": 0
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 50,
+      "co2_per_kg": 0.15
     }
   },
   {
@@ -6163,7 +8400,13 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Mai-September",
       "herkunft": "Küste"
@@ -6193,6 +8436,14 @@
       "vitamin_b6_mg": 0.09,
       "folsaeure_ug": 32,
       "vitamin_e_mg": 2.5
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   },
   {
@@ -6201,7 +8452,13 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Salzpflanze",
     "saison": {
-      "monate": [5, 6, 7, 8, 9],
+      "monate": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
       "typ": "Wildsammlung",
       "haupternte": "Mai-September",
       "herkunft": "Küste/Wattenmeer"
@@ -6232,6 +8489,14 @@
       "vitamin_b6_mg": 0.05,
       "folsaeure_ug": 18,
       "vitamin_e_mg": 1.1
+    },
+    "regional_data": {
+      "origin_country": "DE",
+      "origin_region": "Deutschland (Wild)",
+      "is_import": false,
+      "transport_method": "local",
+      "distance_km": 10,
+      "co2_per_kg": 0.05
     }
   }
 ]

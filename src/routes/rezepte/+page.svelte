@@ -1,6 +1,6 @@
 <script>
   import rezepteData from '$lib/data/rezepte.json';
-  import RezeptCard from '$lib/components/Rezeptcard.svelte';
+  import RezeptCard from '$lib/components/RezeptCard.svelte';
   import { getAllRezeptCategories } from '$lib/utils/seasonHelper.js';
   
   let selectedMonth = new Date().getMonth() + 1;

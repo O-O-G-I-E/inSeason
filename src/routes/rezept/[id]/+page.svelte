@@ -1,4 +1,13 @@
 <script>
+  import ImportBadge from '$lib/components/ImportBadge.svelte';
+  import lebensmittelData from '$lib/data/lebensmittel.json';
+
+  // Produkte zu Zutaten mappen
+  $: zutatenMitProdukten = alleZutaten.map(zutat => ({
+    ...zutat,
+    produkt: zutat.produktId ? lebensmittelData.find(p => p.id === zutat.produktId) : null
+  }));
+
   import { page } from '$app/stores';
   import rezepteData from '$lib/data/rezepte.json';
   
@@ -42,13 +51,17 @@
       <section class="zutaten-section">
         <h2>🛒 Zutaten</h2>
         <ul class="zutaten-liste">
-          {#each alleZutaten as zutat}
+          {#each zutatenMitProdukten as zutat}
             <li>
               <span class="menge">{zutat.menge}</span>
               {#if zutat.produktId}
                 <a href={`/produkt/${zutat.produktId}`} class="zutat-link">
-                  {zutat.name}
+                   {zutat.name}
                 </a>
+                <!-- NEU: Import Badge direkt bei Zutat -->
+                {#if zutat.produkt?.regional_data}
+                  <ImportBadge produkt={zutat.produkt} compact={true} />
+                {/if}
               {:else}
                 <span class="zutat-name">{zutat.name}</span>
               {/if}

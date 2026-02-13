@@ -1,7 +1,16 @@
 <script>
+  import { calculateRegionalScore, getScoreColor } from '$lib/utils/regionalHelper';
+  import { getCurrentMonth } from '$lib/utils/seasonHelper';
+
   export let produkt;
   
-  const { id, name, kategorie, unterkategorie, saison, naehrwerte } = produkt;
+  const currentMonth = getCurrentMonth();
+  $: regionalScore = produkt.regional_data 
+    ? calculateRegionalScore(produkt, currentMonth) 
+    : null;
+  $: scoreColor = regionalScore ? getScoreColor(regionalScore) : '#666';
+  
+  $: ({ id, name, kategorie, unterkategorie, saison, naehrwerte } = produkt);
   
   function getCategoryColor(kat) {
     const colors = {
@@ -43,6 +52,19 @@
   </div>
   
   <div class="card-body">
+    <!-- NEU: Regional Score Anzeige -->
+    {#if regionalScore !== null}
+      <div class="regional-info">
+        {#if produkt.regional_data.is_import}
+          <span class="import-tag">🌍 Import</span>
+        {:else}
+          <span class="regional-tag">🌱 Regional</span>
+        {/if}
+        <span class="score-display" style="color: {scoreColor}">
+          {regionalScore}/100
+        </span>
+      </div>
+    {/if}
     <p class="subcat">{unterkategorie}</p>
     <p class="season">📅 {getSeasonDisplay(saison)}</p>
     <p class="type">🏷️ {getTypeDisplay(saison.typ)}</p>
@@ -116,5 +138,30 @@
     border-top: 1px solid var(--border-color);
     font-size: 0.85rem;
     color: var(--text-tertiary);
+  }
+  .regional-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border-color);
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .import-tag, .regional-tag {
+    font-weight: 600;
+  }
+
+  .import-tag {
+    color: #FF9800;
+  }
+
+  .regional-tag {
+    color: #4CAF50;
+  }
+
+  .score-display {
+    font-weight: 700;
   }
 </style>
