@@ -4,43 +4,24 @@
   
   $: rezeptId = parseInt($page.params.id);
   $: rezept = rezepteData.find(r => r.id === rezeptId);
-  
-  let activeVariante = 'vegetarisch';
-  
-  $: if (rezept) {
-    if (!rezept.varianten.includes(activeVariante)) {
-      activeVariante = rezept.varianten[0];
-    }
-  }
+  $: isVegan = rezept && rezept.varianten && rezept.varianten.includes('vegan');
   
   $: alleZutaten = rezept ? [
     ...rezept.basis_zutaten,
-    ...(rezept.varianten_zutaten[activeVariante] || [])
+    ...(rezept.varianten_zutaten?.vegan || [])
   ] : [];
   
   $: alleSchritte = rezept ? [
     ...rezept.basis_zubereitung,
-    ...(rezept.varianten_zubereitung[activeVariante] || [])
+    ...(rezept.varianten_zubereitung?.vegan || [])
   ] : [];
-  
-  const variantenEmoji = {
-    'omnivor': '🍖',
-    'vegetarisch': '🥚',
-    'vegan': '🌱'
-  };
-  
-  const variantenColor = {
-    'omnivor': '#FF5722',
-    'vegetarisch': '#4CAF50',
-    'vegan': '#8BC34A'
-  };
 </script>
 
 <svelte:head>
   <title>{rezept ? `${rezept.name} - inSeason Rezepte` : 'Rezept nicht gefunden - inSeason'}</title>
 </svelte:head>
 
-{#if rezept}
+{#if rezept && isVegan}
   <div class="container">
     <div class="back-link">
       <a href="/rezepte">← Zurück zu Rezepten</a>
@@ -55,26 +36,6 @@
         <span>📊 {rezept.schwierigkeit}</span>
       </div>
     </header>
-    
-    <!-- Varianten Switcher -->
-    {#if rezept.varianten.length > 1}
-      <div class="varianten-switcher">
-        <h3>Wähle deine Version:</h3>
-        <div class="varianten-buttons">
-          {#each rezept.varianten as variante}
-            <button
-              class="varianten-btn"
-              class:active={activeVariante === variante}
-              style="--variante-color: {variantenColor[variante]}"
-              on:click={() => activeVariante = variante}
-            >
-              <span class="emoji">{variantenEmoji[variante]}</span>
-              <span class="label">{variante}</span>
-            </button>
-          {/each}
-        </div>
-      </div>
-    {/if}
     
     <div class="rezept-content">
       <!-- Zutaten -->
@@ -174,62 +135,6 @@
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
-  }
-  
-  /* Varianten Switcher */
-  .varianten-switcher {
-    background: var(--bg-secondary);
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px var(--shadow);
-    border: 1px solid var(--border-color);
-  }
-  
-  .varianten-switcher h3 {
-    margin: 0 0 1rem 0;
-    font-size: 1.2rem;
-    color: var(--text-primary);
-  }
-  
-  .varianten-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .varianten-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid var(--variante-color);
-    background: transparent;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-    color: var(--text-primary);
-  }
-  
-  .varianten-btn .emoji {
-    font-size: 1.5rem;
-  }
-  
-  .varianten-btn .label {
-    font-weight: 500;
-    text-transform: capitalize;
-  }
-  
-  .varianten-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-hover);
-  }
-  
-  .varianten-btn.active {
-    background: var(--variante-color);
-    color: white;
-    transform: scale(1.05);
   }
   
   /* Content Grid */
@@ -367,12 +272,6 @@
       font-size: 2rem;
     }
     
-    .varianten-buttons {
-      flex-direction: column;
-    }
     
-    .varianten-btn {
-      justify-content: center;
-    }
   }
 </style>

@@ -2,7 +2,7 @@
   import lebensmittelData from '$lib/data/lebensmittel.json';
   import ProductCard from '$lib/components/ProductCard.svelte';
   import { getCurrentMonth, filterByMonth, getMonthName, getAllCategories, searchProducts } from '$lib/utils/seasonHelper.js';
-  
+
   let currentMonth = getCurrentMonth();
   let searchQuery = '';
   let selectedCategory = 'Alle';

@@ -84,16 +84,6 @@ export function getSeasonDisplay(monate) {
     }
   }).join(', ');
 }
-// Prüfe ob Rezept eine bestimmte Variante hat
-export function hasVariante(rezept, variante) {
-  return rezept.varianten.includes(variante);
-}
-
-// Filtere Rezepte nach Ernährungsform
-export function filterRezepteByDiet(rezepte, diet) {
-  if (diet === 'alle') return rezepte;
-  return rezepte.filter(r => r.varianten.includes(diet));
-}
 // Alias für Rezept-Cards (nutzt die bestehende getSeasonDisplay Funktion)
 export function getMonthRangeDisplay(monate) {
   return getSeasonDisplay(monate);

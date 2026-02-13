@@ -8,26 +8,12 @@
     'schwer': '⭐'
   };
   
-  const variantenEmoji = {
-    'omnivor': '🍖',
-    'vegetarisch': '🥚',
-    'vegan': '🌱'
-  };
 </script>
 
-<a href="/rezept/{rezept.id}" class="rezept-card">
+<a href={`/rezept/${rezept.id}`} class="rezept-card">
   <div class="card-header">
     <h3>{rezept.name}</h3>
     <span class="kategorie">{rezept.kategorie}</span>
-  </div>
-  
-  <!-- Varianten Badges -->
-  <div class="varianten-badges">
-    {#each rezept.varianten as variante}
-      <span class="variante-badge {variante}">
-        {variantenEmoji[variante]} {variante}
-      </span>
-    {/each}
   </div>
   
   <div class="card-info">
@@ -89,50 +75,6 @@
     border-radius: 20px;
     font-size: 0.85rem;
     white-space: nowrap;
-  }
-  
-  .varianten-badges {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  
-  .variante-badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: capitalize;
-  }
-  
-  .variante-badge.omnivor {
-    background: #FFEBEE;
-    color: #C62828;
-  }
-  
-  .variante-badge.vegetarisch {
-    background: #E8F5E9;
-    color: #2E7D32;
-  }
-  
-  .variante-badge.vegan {
-    background: #F1F8E9;
-    color: #558B2F;
-  }
-  
-  :global([data-theme="dark"]) .variante-badge.omnivor {
-    background: #B71C1C;
-    color: #FFCDD2;
-  }
-  
-  :global([data-theme="dark"]) .variante-badge.vegetarisch {
-    background: #1B5E20;
-    color: #A5D6A7;
-  }
-  
-  :global([data-theme="dark"]) .variante-badge.vegan {
-    background: #33691E;
-    color: #C5E1A5;
   }
   
   .card-info {

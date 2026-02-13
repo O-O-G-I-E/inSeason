@@ -8,13 +8,8 @@
       'Gemüse': '#4CAF50',
       'Obst': '#FF9800',
       'Nüsse': '#795548',
-      'Fisch': '#2196F3',
       'Pilze': '#A1887F',
       'Getreide': '#FFC107',
-      'Milchprodukte': '#00BCD4',
-      'Eier': '#FFEB3B',
-	  'Fleisch': '#D32F2F',
-	  'Geflügel': '#FF5252',
 	  'Wildkräuter': '#8BC34A'
     };
     return colors[kat] || '#666';
@@ -29,7 +24,7 @@
   }
 </script>
 
-<a href="/produkt/{id}" class="card">
+<a href={`/produkt/${id}`} class="card">
   <div class="card-header">
     <h3>{name}</h3>
     <span class="badge" style="background: {getCategoryColor(kategorie)}">

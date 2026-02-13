@@ -1,18 +1,16 @@
 <script>
   import rezepteData from '$lib/data/rezepte.json';
-  import RezeptCard from '$lib/components/RezeptCard.svelte';
-  import { filterRezepteByMonth, filterRezepteByCategory, getAllRezeptCategories, filterRezepteByDiet } from '$lib/utils/seasonHelper.js';
+  import RezeptCard from '$lib/components/Rezeptcard.svelte';
+  import { getAllRezeptCategories } from '$lib/utils/seasonHelper.js';
   
   let selectedMonth = new Date().getMonth() + 1;
   let selectedCategory = 'Alle';
-  let selectedDiet = 'alle';
-  
   $: kategorien = getAllRezeptCategories(rezepteData);
   
   $: filteredRezepte = rezepteData
+    .filter(r => r.varianten.includes('vegan'))
     .filter(r => selectedMonth === 0 || r.saison.monate.includes(selectedMonth))
-    .filter(r => selectedCategory === 'Alle' || r.kategorie === selectedCategory)
-    .filter(r => selectedDiet === 'alle' || r.varianten.includes(selectedDiet));
+    .filter(r => selectedCategory === 'Alle' || r.kategorie === selectedCategory);
   
   const monate = [
     { value: 0, name: 'Alle' },
@@ -42,41 +40,6 @@
   </header>
   
   <div class="filters">
-    <!-- Ernährungsform Filter -->
-    <div class="filter-section">
-      <h3>Ernährungsform</h3>
-      <div class="filter-buttons">
-        <button
-          class="diet-btn"
-          class:active={selectedDiet === 'alle'}
-          on:click={() => selectedDiet = 'alle'}
-        >
-          Alle
-        </button>
-        <button
-          class="diet-btn omnivor"
-          class:active={selectedDiet === 'omnivor'}
-          on:click={() => selectedDiet = 'omnivor'}
-        >
-          🍖 Omnivor
-        </button>
-        <button
-          class="diet-btn vegetarisch"
-          class:active={selectedDiet === 'vegetarisch'}
-          on:click={() => selectedDiet = 'vegetarisch'}
-        >
-          🥚 Vegetarisch
-        </button>
-        <button
-          class="diet-btn vegan"
-          class:active={selectedDiet === 'vegan'}
-          on:click={() => selectedDiet = 'vegan'}
-        >
-          🌱 Vegan
-        </button>
-      </div>
-    </div>
-    
     <!-- Monat Filter -->
     <div class="filter-section">
       <h3>Monat</h3>
@@ -125,7 +88,7 @@
   {:else}
     <div class="no-results">
       <p>Keine Rezepte für diese Filter gefunden.</p>
-      <button on:click={() => { selectedMonth = 0; selectedCategory = 'Alle'; selectedDiet = 'alle'; }}>
+      <button on:click={() => { selectedMonth = 0; selectedCategory = 'Alle'; }}>
         Filter zurücksetzen
       </button>
     </div>
@@ -190,7 +153,7 @@
     gap: 0.5rem;
   }
   
-  .filter-btn, .diet-btn {
+  .filter-btn {
     padding: 0.5rem 1rem;
     background: var(--bg-tertiary);
     border: 2px solid var(--border-color);
@@ -202,7 +165,7 @@
     text-align: center;
   }
   
-  .filter-btn:hover, .diet-btn:hover {
+  .filter-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 2px 8px var(--shadow-hover);
   }
@@ -211,26 +174,6 @@
     background: var(--accent);
     color: white;
     border-color: var(--accent);
-  }
-  
-  /* Ernährungsform-spezifische Farben */
-  .diet-btn.active {
-    color: white;
-  }
-  
-  .diet-btn.omnivor.active {
-    background: #FF5722;
-    border-color: #FF5722;
-  }
-  
-  .diet-btn.vegetarisch.active {
-    background: #4CAF50;
-    border-color: #4CAF50;
-  }
-  
-  .diet-btn.vegan.active {
-    background: #8BC34A;
-    border-color: #8BC34A;
   }
   
   .results-info {

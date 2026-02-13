@@ -3,7 +3,7 @@
   import lebensmittelData from '$lib/data/lebensmittel.json';
   import ProductCard from '$lib/components/ProductCard.svelte';
   import { filterByMonth, getMonthName, getAllCategories, searchProducts } from '$lib/utils/seasonHelper.js';
-  
+
   $: month = parseInt($page.params.month);
   $: monthName = getMonthName(month);
   $: produkte = filterByMonth(lebensmittelData, month);

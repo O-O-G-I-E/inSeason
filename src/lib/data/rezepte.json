@@ -9,7 +9,7 @@
     "saison": {
       "monate": [11, 12, 1, 2]
     },
-    "varianten": ["omnivor", "vegetarisch", "vegan"],
+    "varianten": ["vegan"],
     "basis_zutaten": [
       { "produktId": 8, "menge": "500g", "name": "Grünkohl" },
       { "produktId": 1, "menge": "400g", "name": "Kartoffeln" },
@@ -18,15 +18,6 @@
       { "name": "Gemüsebrühe", "menge": "1L" }
     ],
     "varianten_zutaten": {
-      "omnivor": [
-        { "name": "Kasseler", "menge": "200g" },
-        { "name": "Mettwurst", "menge": "1 Stück" },
-        { "name": "Sahne", "menge": "150ml" }
-      ],
-      "vegetarisch": [
-        { "name": "Sahne", "menge": "150ml" },
-        { "name": "Räuchertofu", "menge": "150g", "optional": true }
-      ],
       "vegan": [
         { "name": "Hafersahne", "menge": "150ml" },
         { "name": "Räuchertofu", "menge": "150g" }
@@ -38,19 +29,6 @@
       "Grünkohl waschen, grobe Stiele entfernen und grob schneiden"
     ],
     "varianten_zubereitung": {
-      "omnivor": [
-        "Kasseler und Mettwurst hinzugeben",
-        "Gemüsebrühe aufgießen und 35 Min köcheln",
-        "Grünkohl hinzugeben und 10 Min mitkochen",
-        "Wurst herausnehmen, in Scheiben schneiden",
-        "Mit Sahne verfeinern"
-      ],
-      "vegetarisch": [
-        "Optional: Räuchertofu würfeln und anbraten",
-        "Gemüsebrühe aufgießen und 25 Min köcheln",
-        "Grünkohl hinzugeben und 10 Min mitkochen",
-        "Mit Sahne verfeinern"
-      ],
       "vegan": [
         "Räuchertofu würfeln und separat anbraten",
         "Gemüsebrühe aufgießen und 25 Min köcheln",
@@ -70,7 +48,7 @@
     "saison": {
       "monate": [10, 11, 12, 1, 2, 3]
     },
-    "varianten": ["vegetarisch", "vegan"],
+    "varianten": ["vegan"],
     "basis_zutaten": [
       { "produktId": 6, "menge": "3", "name": "Rote Bete" },
       { "produktId": 18, "menge": "50g", "name": "Walnüsse" },
@@ -79,9 +57,6 @@
       { "name": "Olivenöl", "menge": "4 EL" }
     ],
     "varianten_zutaten": {
-      "vegetarisch": [
-        { "name": "Ziegenkäse", "menge": "100g" }
-      ],
       "vegan": [
         { "name": "veganer Frischkäse", "menge": "100g" },
         { "name": "Kürbiskerne geröstet", "menge": "30g" }
@@ -95,9 +70,6 @@
       "Dressing aus Balsamico, Öl, Salz, Pfeffer mischen"
     ],
     "varianten_zubereitung": {
-      "vegetarisch": [
-        "Alles anrichten, Ziegenkäse darüber bröseln"
-      ],
       "vegan": [
         "Alles anrichten, veganen Frischkäse und Kürbiskerne darüber geben"
       ]
@@ -114,22 +86,13 @@
     "saison": {
       "monate": [10, 11, 12, 1, 2]
     },
-    "varianten": ["omnivor", "vegetarisch", "vegan"],
+    "varianten": ["vegan"],
     "basis_zutaten": [
       { "produktId": 1, "menge": "1kg", "name": "Kartoffeln" },
       { "produktId": 10, "menge": "2 Stangen", "name": "Lauch" },
       { "produktId": 13, "menge": "2", "name": "Äpfel" }
     ],
     "varianten_zutaten": {
-      "omnivor": [
-        { "name": "Sahne", "menge": "400ml" },
-        { "name": "Schinken", "menge": "150g" },
-        { "name": "Käse gerieben", "menge": "150g" }
-      ],
-      "vegetarisch": [
-        { "name": "Sahne", "menge": "400ml" },
-        { "name": "Käse gerieben", "menge": "150g" }
-      ],
       "vegan": [
         { "name": "Hafersahne", "menge": "400ml" },
         { "name": "Veganer Käse", "menge": "150g" },
@@ -144,16 +107,6 @@
       "Auflaufform fetten"
     ],
     "varianten_zubereitung": {
-      "omnivor": [
-        "Kartoffeln, Lauch, Äpfel und Schinken abwechselnd schichten",
-        "Sahne mit Salz, Pfeffer würzen und darüber gießen",
-        "Käse drüber streuen, 45 Min backen"
-      ],
-      "vegetarisch": [
-        "Kartoffeln, Lauch und Äpfel abwechselnd schichten",
-        "Sahne mit Salz, Pfeffer würzen und darüber gießen",
-        "Käse drüber streuen, 45 Min backen"
-      ],
       "vegan": [
         "Kartoffeln, Lauch und Äpfel abwechselnd schichten",
         "Hafersahne mit Salz, Pfeffer, Muskat und Hefeflocken würzen",
@@ -212,16 +165,13 @@
     "saison": {
       "monate": [3, 4]
     },
-    "varianten": ["vegetarisch", "vegan"],
+    "varianten": ["vegan"],
     "basis_zutaten": [
       { "produktId": 33, "menge": "200g", "name": "Bärlauch" },
       { "produktId": 18, "menge": "50g", "name": "Walnüsse" },
       { "name": "Olivenöl", "menge": "100ml" }
     ],
     "varianten_zutaten": {
-      "vegetarisch": [
-        { "name": "Parmesan", "menge": "50g" }
-      ],
       "vegan": [
         { "name": "Hefeflocken", "menge": "3 EL" },
         { "name": "Zitronensaft", "menge": "1 EL" }
@@ -232,11 +182,6 @@
       "Walnüsse in Pfanne ohne Fett rösten"
     ],
     "varianten_zubereitung": {
-      "vegetarisch": [
-        "Bärlauch, Walnüsse, Parmesan, Öl und Salz mixen",
-        "Zu cremiger Paste verarbeiten",
-        "In saubere Gläser füllen, mit Öl bedecken"
-      ],
       "vegan": [
         "Bärlauch, Walnüsse, Hefeflocken, Öl, Zitronensaft und Salz mixen",
         "Zu cremiger Paste verarbeiten",
