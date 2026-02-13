@@ -298,9 +298,8 @@
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
-    padding: 0.5rem;
-    background: var(--bg-tertiary);
-    border-radius: 12px;
+    padding: 0;
+    background: transparent;
   }
 
   .filter-btn {
@@ -309,17 +308,17 @@
     background: var(--bg-secondary);
     border-radius: 24px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     font-size: 0.9rem;
     font-weight: 500;
     white-space: nowrap;
+    color: var(--text-primary);
   }
 
   .filter-btn:hover {
     border-color: var(--accent);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px var(--shadow);
-    background-color: var(--accent);
   }
 
   .filter-btn.active {

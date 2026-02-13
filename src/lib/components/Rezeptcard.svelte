@@ -8,12 +8,25 @@
     'schwer': '⭐'
   };
   
+  // Kategorie-spezifische Farben
+  function getCategoryColor(kategorie) {
+    const colors = {
+      'Hauptgericht': '#4CAF50',    // Grün
+      'Suppe': '#FF9800',           // Orange
+      'Salat': '#8BC34A',           // Hellgrün
+      'Aufstrich': '#9C27B0',       // Lila
+      'Dessert': '#E91E63'          // Pink
+    };
+    return colors[kategorie] || '#757575';
+  }
 </script>
 
 <a href={`/rezept/${rezept.id}`} class="rezept-card">
   <div class="card-header">
     <h3>{rezept.name}</h3>
-    <span class="kategorie">{rezept.kategorie}</span>
+    <span class="kategorie" style="background: {getCategoryColor(rezept.kategorie)}">
+      {rezept.kategorie}
+    </span>
   </div>
   
   <div class="card-info">
@@ -69,12 +82,12 @@
   }
   
   .kategorie {
-    background: #FF9800;
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.85rem;
     white-space: nowrap;
+    font-weight: 600;
   }
   
   .card-info {
