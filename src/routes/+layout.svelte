@@ -48,6 +48,10 @@
         <span class="logo-text">inSeason</span>
       </a>
       <nav>
+        <div class="nav-links">
+          <a href="/">Produkte</a>
+          <a href="/rezepte">Rezepte</a>
+        </div>
         <button class="theme-toggle" on:click={toggleTheme} title="Theme wechseln">
           {#if $theme === 'light'}
             🌙
@@ -166,7 +170,41 @@
   nav {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
   }
 
   .theme-toggle {
@@ -216,6 +254,14 @@
   @media (max-width: 768px) {
     .logo-text {
       display: none;
+    }
+
+    .nav-links {
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
     }
 
     main {

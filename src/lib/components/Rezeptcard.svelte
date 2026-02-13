@@ -49,21 +49,23 @@
 
 <style>
   .rezept-card {
-    background: var(--card-bg);
+    background: var(--bg-secondary);
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 2px 4px var(--shadow);
     transition: all 0.3s ease;
     text-decoration: none;
-    color: var(--text);
+    color: var(--text-primary);
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    border: 1px solid var(--border-color);
   }
   
   .rezept-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 12px var(--shadow-hover);
+    border-color: var(--accent);
   }
   
   .card-header {
@@ -118,17 +120,17 @@
     color: #558B2F;
   }
   
-  :global(.dark-mode) .variante-badge.omnivor {
+  :global([data-theme="dark"]) .variante-badge.omnivor {
     background: #B71C1C;
     color: #FFCDD2;
   }
   
-  :global(.dark-mode) .variante-badge.vegetarisch {
+  :global([data-theme="dark"]) .variante-badge.vegetarisch {
     background: #1B5E20;
     color: #A5D6A7;
   }
   
-  :global(.dark-mode) .variante-badge.vegan {
+  :global([data-theme="dark"]) .variante-badge.vegan {
     background: #33691E;
     color: #C5E1A5;
   }
@@ -138,17 +140,17 @@
     gap: 1rem;
     flex-wrap: wrap;
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
   }
   
   .card-footer {
     padding-top: 0.5rem;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-color);
   }
   
   .saison {
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
   }
   
   .tags {
@@ -158,15 +160,11 @@
   }
   
   .tag {
-    background: #E8F5E9;
-    color: #2E7D32;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
     font-size: 0.8rem;
-  }
-  
-  :global(.dark-mode) .tag {
-    background: #1B5E20;
-    color: #A5D6A7;
+    border: 1px solid var(--border-color);
   }
 </style>

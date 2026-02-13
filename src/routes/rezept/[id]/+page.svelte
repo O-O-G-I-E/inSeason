@@ -1,34 +1,27 @@
 <script>
   import { page } from '$app/stores';
   import rezepteData from '$lib/data/rezepte.json';
-  import lebensmittelData from '$lib/data/lebensmittel.json';
-  import { enrichRezeptZutaten } from '$lib/utils/seasonHelper.js';
   
   $: rezeptId = parseInt($page.params.id);
   $: rezept = rezepteData.find(r => r.id === rezeptId);
   
   let activeVariante = 'vegetarisch';
   
-  // Setze Default-Variante beim Laden
   $: if (rezept) {
     if (!rezept.varianten.includes(activeVariante)) {
       activeVariante = rezept.varianten[0];
     }
   }
   
-  // Kombiniere Basis + Varianten Zutaten
   $: alleZutaten = rezept ? [
     ...rezept.basis_zutaten,
     ...(rezept.varianten_zutaten[activeVariante] || [])
   ] : [];
   
-  // Kombiniere Basis + Varianten Zubereitung
   $: alleSchritte = rezept ? [
     ...rezept.basis_zubereitung,
     ...(rezept.varianten_zubereitung[activeVariante] || [])
   ] : [];
-  
-  $: enrichedZutaten = rezept ? enrichRezeptZutaten({ zutaten: alleZutaten }, lebensmittelData) : [];
   
   const variantenEmoji = {
     'omnivor': '🍖',
@@ -44,7 +37,7 @@
 </script>
 
 <svelte:head>
-  <title>{rezept ? `${rezept.name} - inSeason Rezepte` : 'inSeason Rezepte'}</title>
+  <title>{rezept ? `${rezept.name} - inSeason Rezepte` : 'Rezept nicht gefunden - inSeason'}</title>
 </svelte:head>
 
 {#if rezept}
@@ -92,7 +85,7 @@
             <li>
               <span class="menge">{zutat.menge}</span>
               {#if zutat.produktId}
-                <a href="/produkt/{zutat.produktId}" class="zutat-link">
+                <a href={`/produkt/${zutat.produktId}`} class="zutat-link">
                   {zutat.name}
                 </a>
               {:else}
@@ -121,7 +114,7 @@
     </div>
     
     <!-- Tags -->
-    {#if rezept.tags.length > 0}
+    {#if rezept.tags && rezept.tags.length > 0}
       <div class="tags-section">
         {#each rezept.tags as tag}
           <span class="tag">{tag}</span>
@@ -140,7 +133,7 @@
   .container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0;
   }
   
   .back-link {
@@ -151,6 +144,7 @@
     color: var(--accent);
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.2s;
   }
   
   .back-link a:hover {
@@ -172,7 +166,7 @@
     gap: 1.5rem;
     flex-wrap: wrap;
     font-size: 1rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
   }
   
   .kategorie {
@@ -184,17 +178,18 @@
   
   /* Varianten Switcher */
   .varianten-switcher {
-    background: var(--card-bg);
+    background: var(--bg-secondary);
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 2rem;
     box-shadow: 0 2px 8px var(--shadow);
+    border: 1px solid var(--border-color);
   }
   
   .varianten-switcher h3 {
     margin: 0 0 1rem 0;
     font-size: 1.2rem;
-    color: var(--text);
+    color: var(--text-primary);
   }
   
   .varianten-buttons {
@@ -214,7 +209,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1rem;
-    color: var(--text);
+    color: var(--text-primary);
   }
   
   .varianten-btn .emoji {
@@ -252,10 +247,11 @@
   }
   
   section {
-    background: var(--card-bg);
+    background: var(--bg-secondary);
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 2px 4px var(--shadow);
+    border: 1px solid var(--border-color);
   }
   
   section h2 {
@@ -273,7 +269,7 @@
   
   .zutaten-liste li {
     padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     gap: 0.75rem;
     align-items: baseline;
@@ -290,9 +286,10 @@
   }
   
   .zutat-link {
-    color: var(--text);
+    color: var(--text-primary);
     text-decoration: none;
     border-bottom: 1px dashed var(--accent);
+    transition: all 0.2s;
   }
   
   .zutat-link:hover {
@@ -301,11 +298,11 @@
   }
   
   .zutat-name {
-    color: var(--text);
+    color: var(--text-primary);
   }
   
   .optional {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-size: 0.9rem;
     font-style: italic;
   }
@@ -346,6 +343,7 @@
   .schritte-liste p {
     margin: 0;
     line-height: 1.6;
+    color: var(--text-primary);
   }
   
   /* Tags */
@@ -356,15 +354,25 @@
   }
   
   .tag {
-    background: #E8F5E9;
-    color: #2E7D32;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.9rem;
+    border: 1px solid var(--border-color);
   }
   
-  :global(.dark-mode) .tag {
-    background: #1B5E20;
-    color: #A5D6A7;
+  @media (max-width: 768px) {
+    .rezept-header h1 {
+      font-size: 2rem;
+    }
+    
+    .varianten-buttons {
+      flex-direction: column;
+    }
+    
+    .varianten-btn {
+      justify-content: center;
+    }
   }
 </style>
