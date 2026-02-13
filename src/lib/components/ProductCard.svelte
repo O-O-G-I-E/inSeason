@@ -16,12 +16,21 @@
     return colors[kat] || '#666';
   }
   
-  // Zeige "Ganzjährig" wenn alle 12 Monate verfügbar
+  // Smart Display: Ganzjährig = "Ganzjährig verfügbar", sonst Haupternte
   function getSeasonDisplay(saison) {
     if (saison.monate.length === 12) {
-      return '📅 Ganzjährig verfügbar';
+      return 'Ganzjährig verfügbar';
     }
-    return `📅 ${saison.haupternte}`;
+    return saison.haupternte;
+  }
+  
+  // Typ-Display: Entferne "(ganzjährig)" da es redundant ist
+  function getTypeDisplay(typ) {
+    // Entferne " (ganzjährig)" und " ganzjährig"
+    return typ
+      .replace(' (ganzjährig)', '')
+      .replace(' ganzjährig', '')
+      .trim();
   }
 </script>
 
@@ -35,8 +44,8 @@
   
   <div class="card-body">
     <p class="subcat">{unterkategorie}</p>
-    <p class="season">{getSeasonDisplay(saison)}</p>
-    <p class="type">🏷️ {saison.typ}</p>
+    <p class="season">📅 {getSeasonDisplay(saison)}</p>
+    <p class="type">🏷️ {getTypeDisplay(saison.typ)}</p>
   </div>
   
   <div class="card-footer">
