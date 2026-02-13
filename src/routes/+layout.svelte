@@ -1,4 +1,8 @@
 <script>
+  import { injectAnalytics } from '@vercel/analytics/sveltekit';
+
+  injectAnalytics();
+  
   import { onMount } from 'svelte';
   import { theme } from '$lib/stores/theme.js';
   import '../app.css';
