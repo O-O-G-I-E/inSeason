@@ -222,12 +222,12 @@
 
   .months-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 0.5rem;
   }
 
   .month-card {
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     background: #f5f5f5;
     border-radius: 8px;
     text-align: center;
@@ -236,6 +236,10 @@
     font-weight: 500;
     transition: all 0.2s;
     border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
   }
 
   .month-card:hover {
@@ -387,7 +391,7 @@
     }
     
     .months-grid {
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, 1fr);
     }
     
     .month-card {

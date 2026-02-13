@@ -1,0 +1,370 @@
+<script>
+  import { page } from '$app/stores';
+  import rezepteData from '$lib/data/rezepte.json';
+  import lebensmittelData from '$lib/data/lebensmittel.json';
+  import { enrichRezeptZutaten } from '$lib/utils/seasonHelper.js';
+  
+  $: rezeptId = parseInt($page.params.id);
+  $: rezept = rezepteData.find(r => r.id === rezeptId);
+  
+  let activeVariante = 'vegetarisch';
+  
+  // Setze Default-Variante beim Laden
+  $: if (rezept) {
+    if (!rezept.varianten.includes(activeVariante)) {
+      activeVariante = rezept.varianten[0];
+    }
+  }
+  
+  // Kombiniere Basis + Varianten Zutaten
+  $: alleZutaten = rezept ? [
+    ...rezept.basis_zutaten,
+    ...(rezept.varianten_zutaten[activeVariante] || [])
+  ] : [];
+  
+  // Kombiniere Basis + Varianten Zubereitung
+  $: alleSchritte = rezept ? [
+    ...rezept.basis_zubereitung,
+    ...(rezept.varianten_zubereitung[activeVariante] || [])
+  ] : [];
+  
+  $: enrichedZutaten = rezept ? enrichRezeptZutaten({ zutaten: alleZutaten }, lebensmittelData) : [];
+  
+  const variantenEmoji = {
+    'omnivor': '🍖',
+    'vegetarisch': '🥚',
+    'vegan': '🌱'
+  };
+  
+  const variantenColor = {
+    'omnivor': '#FF5722',
+    'vegetarisch': '#4CAF50',
+    'vegan': '#8BC34A'
+  };
+</script>
+
+<svelte:head>
+  <title>{rezept ? `${rezept.name} - inSeason Rezepte` : 'inSeason Rezepte'}</title>
+</svelte:head>
+
+{#if rezept}
+  <div class="container">
+    <div class="back-link">
+      <a href="/rezepte">← Zurück zu Rezepten</a>
+    </div>
+    
+    <header class="rezept-header">
+      <h1>{rezept.name}</h1>
+      <div class="meta">
+        <span class="kategorie">{rezept.kategorie}</span>
+        <span>⏱️ {rezept.zeit} Min</span>
+        <span>👥 {rezept.portionen} Personen</span>
+        <span>📊 {rezept.schwierigkeit}</span>
+      </div>
+    </header>
+    
+    <!-- Varianten Switcher -->
+    {#if rezept.varianten.length > 1}
+      <div class="varianten-switcher">
+        <h3>Wähle deine Version:</h3>
+        <div class="varianten-buttons">
+          {#each rezept.varianten as variante}
+            <button
+              class="varianten-btn"
+              class:active={activeVariante === variante}
+              style="--variante-color: {variantenColor[variante]}"
+              on:click={() => activeVariante = variante}
+            >
+              <span class="emoji">{variantenEmoji[variante]}</span>
+              <span class="label">{variante}</span>
+            </button>
+          {/each}
+        </div>
+      </div>
+    {/if}
+    
+    <div class="rezept-content">
+      <!-- Zutaten -->
+      <section class="zutaten-section">
+        <h2>🛒 Zutaten</h2>
+        <ul class="zutaten-liste">
+          {#each alleZutaten as zutat}
+            <li>
+              <span class="menge">{zutat.menge}</span>
+              {#if zutat.produktId}
+                <a href="/produkt/{zutat.produktId}" class="zutat-link">
+                  {zutat.name}
+                </a>
+              {:else}
+                <span class="zutat-name">{zutat.name}</span>
+              {/if}
+              {#if zutat.optional}
+                <span class="optional">(optional)</span>
+              {/if}
+            </li>
+          {/each}
+        </ul>
+      </section>
+      
+      <!-- Zubereitung -->
+      <section class="zubereitung-section">
+        <h2>👨‍🍳 Zubereitung</h2>
+        <ol class="schritte-liste">
+          {#each alleSchritte as schritt, index}
+            <li>
+              <span class="schritt-nummer">{index + 1}</span>
+              <p>{schritt}</p>
+            </li>
+          {/each}
+        </ol>
+      </section>
+    </div>
+    
+    <!-- Tags -->
+    {#if rezept.tags.length > 0}
+      <div class="tags-section">
+        {#each rezept.tags as tag}
+          <span class="tag">{tag}</span>
+        {/each}
+      </div>
+    {/if}
+  </div>
+{:else}
+  <div class="container">
+    <p>Rezept nicht gefunden</p>
+    <a href="/rezepte">← Zurück zu Rezepten</a>
+  </div>
+{/if}
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .back-link {
+    margin-bottom: 1.5rem;
+  }
+  
+  .back-link a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .rezept-header {
+    margin-bottom: 2rem;
+  }
+  
+  .rezept-header h1 {
+    margin: 0 0 1rem 0;
+    color: var(--accent);
+    font-size: 2.5rem;
+  }
+  
+  .meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+  
+  .kategorie {
+    background: #FF9800;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+  }
+  
+  /* Varianten Switcher */
+  .varianten-switcher {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  
+  .varianten-switcher h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+  
+  .varianten-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .varianten-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--variante-color);
+    background: transparent;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: var(--text);
+  }
+  
+  .varianten-btn .emoji {
+    font-size: 1.5rem;
+  }
+  
+  .varianten-btn .label {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  .varianten-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-hover);
+  }
+  
+  .varianten-btn.active {
+    background: var(--variante-color);
+    color: white;
+    transform: scale(1.05);
+  }
+  
+  /* Content Grid */
+  .rezept-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .rezept-content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  section {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px var(--shadow);
+  }
+  
+  section h2 {
+    margin: 0 0 1rem 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+  }
+  
+  /* Zutaten */
+  .zutaten-liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .zutaten-liste li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+  
+  .zutaten-liste li:last-child {
+    border-bottom: none;
+  }
+  
+  .menge {
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 80px;
+  }
+  
+  .zutat-link {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent);
+  }
+  
+  .zutat-link:hover {
+    color: var(--accent);
+    border-bottom-style: solid;
+  }
+  
+  .zutat-name {
+    color: var(--text);
+  }
+  
+  .optional {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  
+  /* Zubereitung */
+  .schritte-liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step-counter;
+  }
+  
+  .schritte-liste li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    counter-increment: step-counter;
+  }
+  
+  .schritte-liste li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .schritt-nummer {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .schritte-liste p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  /* Tags */
+  .tags-section {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  :global(.dark-mode) .tag {
+    background: #1B5E20;
+    color: #A5D6A7;
+  }
+</style>

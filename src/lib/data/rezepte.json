@@ -1,0 +1,281 @@
+[
+  {
+    "id": 1,
+    "name": "Grünkohlsuppe mit Kartoffeln",
+    "kategorie": "Suppe",
+    "schwierigkeit": "leicht",
+    "zeit": 45,
+    "portionen": 4,
+    "saison": {
+      "monate": [11, 12, 1, 2]
+    },
+    "varianten": ["omnivor", "vegetarisch", "vegan"],
+    "basis_zutaten": [
+      { "produktId": 8, "menge": "500g", "name": "Grünkohl" },
+      { "produktId": 1, "menge": "400g", "name": "Kartoffeln" },
+      { "produktId": 2, "menge": "1", "name": "Zwiebel" },
+      { "produktId": 3, "menge": "2", "name": "Möhren" },
+      { "name": "Gemüsebrühe", "menge": "1L" }
+    ],
+    "varianten_zutaten": {
+      "omnivor": [
+        { "name": "Kasseler", "menge": "200g" },
+        { "name": "Mettwurst", "menge": "1 Stück" },
+        { "name": "Sahne", "menge": "150ml" }
+      ],
+      "vegetarisch": [
+        { "name": "Sahne", "menge": "150ml" },
+        { "name": "Räuchertofu", "menge": "150g", "optional": true }
+      ],
+      "vegan": [
+        { "name": "Hafersahne", "menge": "150ml" },
+        { "name": "Räuchertofu", "menge": "150g" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Zwiebel würfeln und in Öl anbraten",
+      "Kartoffeln und Möhren schälen, würfeln und hinzugeben",
+      "Grünkohl waschen, grobe Stiele entfernen und grob schneiden"
+    ],
+    "varianten_zubereitung": {
+      "omnivor": [
+        "Kasseler und Mettwurst hinzugeben",
+        "Gemüsebrühe aufgießen und 35 Min köcheln",
+        "Grünkohl hinzugeben und 10 Min mitkochen",
+        "Wurst herausnehmen, in Scheiben schneiden",
+        "Mit Sahne verfeinern"
+      ],
+      "vegetarisch": [
+        "Optional: Räuchertofu würfeln und anbraten",
+        "Gemüsebrühe aufgießen und 25 Min köcheln",
+        "Grünkohl hinzugeben und 10 Min mitkochen",
+        "Mit Sahne verfeinern"
+      ],
+      "vegan": [
+        "Räuchertofu würfeln und separat anbraten",
+        "Gemüsebrühe aufgießen und 25 Min köcheln",
+        "Grünkohl hinzugeben und 10 Min mitkochen",
+        "Mit Hafersahne verfeinern, Tofu unterheben"
+      ]
+    },
+    "tags": ["regional", "wintergericht"]
+  },
+  {
+    "id": 2,
+    "name": "Rote Bete Salat mit Walnüssen",
+    "kategorie": "Salat",
+    "schwierigkeit": "leicht",
+    "zeit": 20,
+    "portionen": 2,
+    "saison": {
+      "monate": [10, 11, 12, 1, 2, 3]
+    },
+    "varianten": ["vegetarisch", "vegan"],
+    "basis_zutaten": [
+      { "produktId": 6, "menge": "3", "name": "Rote Bete" },
+      { "produktId": 18, "menge": "50g", "name": "Walnüsse" },
+      { "produktId": 24, "menge": "100g", "name": "Feldsalat" },
+      { "name": "Balsamico", "menge": "3 EL" },
+      { "name": "Olivenöl", "menge": "4 EL" }
+    ],
+    "varianten_zutaten": {
+      "vegetarisch": [
+        { "name": "Ziegenkäse", "menge": "100g" }
+      ],
+      "vegan": [
+        { "name": "veganer Frischkäse", "menge": "100g" },
+        { "name": "Kürbiskerne geröstet", "menge": "30g" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Rote Bete kochen (40 Min) oder gekocht kaufen",
+      "Rote Bete schälen und in Würfel schneiden",
+      "Feldsalat waschen und trocken schleudern",
+      "Walnüsse grob hacken",
+      "Dressing aus Balsamico, Öl, Salz, Pfeffer mischen"
+    ],
+    "varianten_zubereitung": {
+      "vegetarisch": [
+        "Alles anrichten, Ziegenkäse darüber bröseln"
+      ],
+      "vegan": [
+        "Alles anrichten, veganen Frischkäse und Kürbiskerne darüber geben"
+      ]
+    },
+    "tags": ["regional", "salat"]
+  },
+  {
+    "id": 3,
+    "name": "Kartoffel-Lauch-Gratin",
+    "kategorie": "Hauptgericht",
+    "schwierigkeit": "mittel",
+    "zeit": 60,
+    "portionen": 4,
+    "saison": {
+      "monate": [10, 11, 12, 1, 2]
+    },
+    "varianten": ["omnivor", "vegetarisch", "vegan"],
+    "basis_zutaten": [
+      { "produktId": 1, "menge": "1kg", "name": "Kartoffeln" },
+      { "produktId": 10, "menge": "2 Stangen", "name": "Lauch" },
+      { "produktId": 13, "menge": "2", "name": "Äpfel" }
+    ],
+    "varianten_zutaten": {
+      "omnivor": [
+        { "name": "Sahne", "menge": "400ml" },
+        { "name": "Schinken", "menge": "150g" },
+        { "name": "Käse gerieben", "menge": "150g" }
+      ],
+      "vegetarisch": [
+        { "name": "Sahne", "menge": "400ml" },
+        { "name": "Käse gerieben", "menge": "150g" }
+      ],
+      "vegan": [
+        { "name": "Hafersahne", "menge": "400ml" },
+        { "name": "Veganer Käse", "menge": "150g" },
+        { "name": "Hefeflocken", "menge": "2 EL" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Ofen auf 180°C vorheizen",
+      "Kartoffeln schälen und in dünne Scheiben schneiden",
+      "Lauch waschen und in Ringe schneiden",
+      "Äpfel schälen und in dünne Scheiben schneiden",
+      "Auflaufform fetten"
+    ],
+    "varianten_zubereitung": {
+      "omnivor": [
+        "Kartoffeln, Lauch, Äpfel und Schinken abwechselnd schichten",
+        "Sahne mit Salz, Pfeffer würzen und darüber gießen",
+        "Käse drüber streuen, 45 Min backen"
+      ],
+      "vegetarisch": [
+        "Kartoffeln, Lauch und Äpfel abwechselnd schichten",
+        "Sahne mit Salz, Pfeffer würzen und darüber gießen",
+        "Käse drüber streuen, 45 Min backen"
+      ],
+      "vegan": [
+        "Kartoffeln, Lauch und Äpfel abwechselnd schichten",
+        "Hafersahne mit Salz, Pfeffer, Muskat und Hefeflocken würzen",
+        "Über das Gratin gießen",
+        "Veganen Käse drüber streuen, 45 Min backen"
+      ]
+    },
+    "tags": ["regional", "ofengericht"]
+  },
+  {
+    "id": 4,
+    "name": "Kürbissuppe mit Ingwer",
+    "kategorie": "Suppe",
+    "schwierigkeit": "leicht",
+    "zeit": 35,
+    "portionen": 4,
+    "saison": {
+      "monate": [9, 10, 11]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "produktId": 12, "menge": "1kg", "name": "Hokkaido Kürbis" },
+      { "produktId": 1, "menge": "2", "name": "Kartoffeln" },
+      { "produktId": 2, "menge": "1", "name": "Zwiebel" },
+      { "name": "Ingwer", "menge": "20g" },
+      { "name": "Kokosmilch", "menge": "200ml" },
+      { "name": "Gemüsebrühe", "menge": "800ml" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Kürbiskerne geröstet", "menge": "30g" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Kürbis waschen, halbieren, entkernen",
+      "Kürbis und Kartoffeln würfeln",
+      "Zwiebel und Ingwer würfeln, in Öl anbraten",
+      "Kürbis und Kartoffeln hinzugeben, kurz mitbraten",
+      "Brühe aufgießen, 20 Min köcheln",
+      "Kokosmilch hinzugeben, alles pürieren"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Mit gerösteten Kürbiskernen servieren"
+      ]
+    },
+    "tags": ["regional", "herbstgericht"]
+  },
+  {
+    "id": 5,
+    "name": "Bärlauch-Pesto",
+    "kategorie": "Aufstrich",
+    "schwierigkeit": "leicht",
+    "zeit": 15,
+    "portionen": 4,
+    "saison": {
+      "monate": [3, 4]
+    },
+    "varianten": ["vegetarisch", "vegan"],
+    "basis_zutaten": [
+      { "produktId": 33, "menge": "200g", "name": "Bärlauch" },
+      { "produktId": 18, "menge": "50g", "name": "Walnüsse" },
+      { "name": "Olivenöl", "menge": "100ml" }
+    ],
+    "varianten_zutaten": {
+      "vegetarisch": [
+        { "name": "Parmesan", "menge": "50g" }
+      ],
+      "vegan": [
+        { "name": "Hefeflocken", "menge": "3 EL" },
+        { "name": "Zitronensaft", "menge": "1 EL" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Bärlauch waschen und trocken tupfen",
+      "Walnüsse in Pfanne ohne Fett rösten"
+    ],
+    "varianten_zubereitung": {
+      "vegetarisch": [
+        "Bärlauch, Walnüsse, Parmesan, Öl und Salz mixen",
+        "Zu cremiger Paste verarbeiten",
+        "In saubere Gläser füllen, mit Öl bedecken"
+      ],
+      "vegan": [
+        "Bärlauch, Walnüsse, Hefeflocken, Öl, Zitronensaft und Salz mixen",
+        "Zu cremiger Paste verarbeiten",
+        "In saubere Gläser füllen, mit Öl bedecken"
+      ]
+    },
+    "tags": ["regional", "frühling", "wildkräuter"]
+  },
+  {
+    "id": 6,
+    "name": "Erdbeer-Rhabarber-Kompott",
+    "kategorie": "Dessert",
+    "schwierigkeit": "leicht",
+    "zeit": 25,
+    "portionen": 4,
+    "saison": {
+      "monate": [5, 6]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "produktId": 14, "menge": "500g", "name": "Erdbeeren" },
+      { "produktId": 11, "menge": "500g", "name": "Rhabarber" },
+      { "name": "Zucker", "menge": "100g" },
+      { "name": "Vanille", "menge": "1 Schote" }
+    ],
+    "varianten_zutaten": {
+      "vegan": []
+    },
+    "basis_zubereitung": [
+      "Rhabarber waschen, schälen und in Stücke schneiden",
+      "Erdbeeren waschen und halbieren",
+      "Rhabarber mit Zucker und 50ml Wasser aufkochen",
+      "15 Min köcheln lassen",
+      "Erdbeeren hinzugeben, 5 Min ziehen lassen",
+      "Mit Vanille verfeinern, warm oder kalt servieren"
+    ],
+    "varianten_zubereitung": {
+      "vegan": []
+    },
+    "tags": ["regional", "frühling", "dessert"]
+  }
+]
