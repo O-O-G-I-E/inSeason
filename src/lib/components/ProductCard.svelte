@@ -10,7 +10,8 @@
       'Nüsse': '#795548',
       'Pilze': '#A1887F',
       'Getreide': '#FFC107',
-      'Wildkräuter': '#8BC34A'
+      'Wildkräuter': '#8BC34A',
+      'Kräuter': '#66BB6A'
     };
     return colors[kat] || '#666';
   }
