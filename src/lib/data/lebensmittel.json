@@ -5,20 +5,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Knollen",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware",
       "haupternte": "August-Oktober",
       "herkunft": "Freiland"
@@ -56,20 +43,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware",
       "haupternte": "Juli-November",
       "herkunft": "Freiland"
@@ -108,20 +82,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Zwiebelgewächse",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware",
       "haupternte": "August-Oktober",
       "herkunft": "Freiland"
@@ -159,12 +120,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [
-        11,
-        12,
-        1,
-        2
-      ],
+      "monate": [11, 12, 1, 2],
       "typ": "Frischware",
       "haupternte": "November-Februar",
       "herkunft": "Freiland"
@@ -204,14 +160,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [
-        10,
-        11,
-        12,
-        1,
-        2,
-        3
-      ],
+      "monate": [10, 11, 12, 1, 2, 3],
       "typ": "Frischware",
       "haupternte": "Oktober-März",
       "herkunft": "Freiland"
@@ -251,20 +200,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -303,20 +239,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -355,20 +278,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Frischware/Lagerware",
       "haupternte": "Mai-November",
       "herkunft": "Freiland"
@@ -407,14 +317,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattsalat",
     "saison": {
-      "monate": [
-        10,
-        11,
-        12,
-        1,
-        2,
-        3
-      ],
+      "monate": [10, 11, 12, 1, 2, 3],
       "typ": "Frischware",
       "haupternte": "Oktober-März",
       "herkunft": "Freiland/Gewächshaus"
@@ -453,17 +356,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Blattgemüse",
     "saison": {
-      "monate": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
+      "monate": [3, 4, 5, 6, 7, 8, 9, 10, 11],
       "typ": "Frischware",
       "haupternte": "März-November",
       "herkunft": "Freiland"
@@ -503,20 +396,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -554,20 +434,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -605,16 +472,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [
-        9,
-        10,
-        11,
-        12,
-        1,
-        2,
-        3,
-        4
-      ],
+      "monate": [9, 10, 11, 12, 1, 2, 3, 4],
       "typ": "Frischware/Lagerware",
       "haupternte": "September-April",
       "herkunft": "Freiland"
@@ -652,11 +510,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Stängelgemüse",
     "saison": {
-      "monate": [
-        4,
-        5,
-        6
-      ],
+      "monate": [4, 5, 6],
       "typ": "Frischware",
       "haupternte": "April-Juni",
       "herkunft": "Freiland"
@@ -696,14 +550,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Fruchtgemüse",
     "saison": {
-      "monate": [
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
+      "monate": [5, 6, 7, 8, 9, 10],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland/Gewächshaus"
@@ -742,14 +589,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Fruchtgemüse",
     "saison": {
-      "monate": [
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
+      "monate": [5, 6, 7, 8, 9, 10],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland/Gewächshaus"
@@ -788,13 +628,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Fruchtgemüse",
     "saison": {
-      "monate": [
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
+      "monate": [6, 7, 8, 9, 10],
       "typ": "Frischware",
       "haupternte": "Juni-Oktober",
       "herkunft": "Freiland"
@@ -833,12 +667,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Fruchtgemüse",
     "saison": {
-      "monate": [
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [9, 10, 11, 12],
       "typ": "Frischware/Lagerware",
       "haupternte": "September-Dezember",
       "herkunft": "Freiland"
@@ -877,14 +706,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
+      "monate": [5, 6, 7, 8, 9, 10],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -922,15 +744,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Wurzelgemüse",
     "saison": {
-      "monate": [
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
+      "monate": [4, 5, 6, 7, 8, 9, 10],
       "typ": "Frischware",
       "haupternte": "April-Oktober",
       "herkunft": "Freiland"
@@ -968,16 +782,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
+      "monate": [4, 5, 6, 7, 8, 9, 10, 11],
       "typ": "Frischware",
       "haupternte": "April-November",
       "herkunft": "Freiland"
@@ -1016,14 +821,7 @@
     "kategorie": "Gemüse",
     "unterkategorie": "Kohlgemüse",
     "saison": {
-      "monate": [
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
+      "monate": [5, 6, 7, 8, 9, 10],
       "typ": "Frischware",
       "haupternte": "Mai-Oktober",
       "herkunft": "Freiland"
@@ -1247,20 +1045,7 @@
     "kategorie": "Pilze",
     "unterkategorie": "Kulturpilze",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Zucht",
       "haupternte": "Ganzjährig",
       "herkunft": "Regional (Zucht)"
@@ -1386,20 +1171,7 @@
     "kategorie": "Obst",
     "unterkategorie": "Kernobst",
     "saison": {
-      "monate": [
-        8,
-        9,
-        10,
-        11,
-        12,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -1437,11 +1209,7 @@
     "kategorie": "Obst",
     "unterkategorie": "Kernobst",
     "saison": {
-      "monate": [
-        8,
-        9,
-        10
-      ],
+      "monate": [8, 9, 10, 11],
       "typ": "Frischware",
       "haupternte": "August-Oktober",
       "herkunft": "Freiland"
@@ -1997,7 +1765,9 @@
         9,
         10,
         11,
-        12
+        12,
+        1,
+        2
       ],
       "typ": "Frischware/Lagerware",
       "haupternte": "September-Oktober",
@@ -2210,10 +1980,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [
-        7,
-        8
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -2250,10 +2017,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [
-        7,
-        8
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -2290,10 +2054,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [
-        7,
-        8
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -2734,11 +2495,7 @@
     "kategorie": "Obst",
     "unterkategorie": "Wildfrüchte",
     "saison": {
-      "monate": [
-        9,
-        10,
-        11
-      ],
+      "monate": [9, 10, 11],
       "typ": "Wildsammlung",
       "haupternte": "September-November",
       "herkunft": "Wald/Hecken"
@@ -2777,11 +2534,7 @@
     "kategorie": "Obst",
     "unterkategorie": "Wildfrüchte",
     "saison": {
-      "monate": [
-        10,
-        11,
-        12
-      ],
+      "monate": [10, 11, 12],
       "typ": "Wildsammlung",
       "haupternte": "Oktober-Dezember (nach Frost)",
       "herkunft": "Wald/Hecken"
@@ -2819,12 +2572,7 @@
     "kategorie": "Obst",
     "unterkategorie": "Beerenobst",
     "saison": {
-      "monate": [
-        6,
-        7,
-        8,
-        9
-      ],
+      "monate": [6, 7, 8, 9],
       "typ": "Frischware",
       "haupternte": "Juni-September",
       "herkunft": "Freiland"
@@ -2863,10 +2611,7 @@
     "kategorie": "Obst",
     "unterkategorie": "Steinobst",
     "saison": {
-      "monate": [
-        7,
-        8
-      ],
+      "monate": [7, 8],
       "typ": "Frischware",
       "haupternte": "Juli-August",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -2905,11 +2650,7 @@
     "kategorie": "Obst",
     "unterkategorie": "Steinobst",
     "saison": {
-      "monate": [
-        7,
-        8,
-        9
-      ],
+      "monate": [7, 8, 9],
       "typ": "Frischware",
       "haupternte": "Juli-September",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -2948,10 +2689,7 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Samen",
     "saison": {
-      "monate": [
-        8,
-        9
-      ],
+      "monate": [8, 9],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "August-September",
       "herkunft": "Freiland"
@@ -2988,10 +2726,7 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Samen",
     "saison": {
-      "monate": [
-        9,
-        10
-      ],
+      "monate": [9, 10],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -3028,11 +2763,7 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Samen",
     "saison": {
-      "monate": [
-        9,
-        10,
-        11
-      ],
+      "monate": [9, 10, 11],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-November",
       "herkunft": "Freiland"
@@ -3069,10 +2800,7 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Samen",
     "saison": {
-      "monate": [
-        7,
-        8
-      ],
+      "monate": [7, 8],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -3109,10 +2837,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [
-        7,
-        8
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -3149,10 +2874,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [
-        7,
-        8
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "Juli-August",
       "herkunft": "Freiland"
@@ -3189,10 +2911,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Pseudogetreide",
     "saison": {
-      "monate": [
-        9,
-        10
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
@@ -3229,12 +2948,7 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [
-        4,
-        5,
-        6,
-        7
-      ],
+      "monate": [4, 5, 6, 7],
       "typ": "Wildsammlung",
       "haupternte": "April-Juli",
       "herkunft": "Wiese"
@@ -3273,15 +2987,7 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
-      ],
+      "monate": [3, 4, 5, 6, 7, 8, 9],
       "typ": "Wildsammlung/Anbau",
       "haupternte": "März-September",
       "herkunft": "Quellen/Bäche"
@@ -3321,13 +3027,7 @@
     "kategorie": "Wildkräuter",
     "unterkategorie": "Blattgewächs",
     "saison": {
-      "monate": [
-        5,
-        6,
-        7,
-        8,
-        9
-      ],
+      "monate": [5, 6, 7, 8, 9],
       "typ": "Wildsammlung",
       "haupternte": "Mai-September",
       "herkunft": "Wiese"
@@ -3365,20 +3065,7 @@
     "kategorie": "Pilze",
     "unterkategorie": "Kulturpilze",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Zucht",
       "haupternte": "Ganzjährig",
       "herkunft": "Regional (Zucht)"
@@ -3416,20 +3103,7 @@
     "kategorie": "Pilze",
     "unterkategorie": "Kulturpilze",
     "saison": {
-      "monate": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Zucht",
       "haupternte": "Ganzjährig",
       "herkunft": "Regional (Zucht)"
@@ -5093,7 +4767,7 @@
     "kategorie": "Nüsse",
     "unterkategorie": "Schalenfrüchte",
     "saison": {
-      "monate": [9, 10, 11, 12],
+      "monate": [9, 10, 11, 12, 1, 2],
       "typ": "Frischware",
       "haupternte": "September-November",
       "herkunft": "Freiland (Weinbauregionen)"
@@ -5131,7 +4805,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Körner",
     "saison": {
-      "monate": [8, 9],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "August-September",
       "herkunft": "Freiland"
@@ -5168,7 +4842,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Pseudogetreide",
     "saison": {
-      "monate": [9, 10],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland (experimenteller Anbau)"
@@ -5205,7 +4879,7 @@
     "kategorie": "Getreide",
     "unterkategorie": "Pseudogetreide",
     "saison": {
-      "monate": [9, 10],
+      "monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       "typ": "Lagerware (ganzjährig)",
       "haupternte": "September-Oktober",
       "herkunft": "Freiland"
