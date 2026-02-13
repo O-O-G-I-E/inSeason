@@ -35,7 +35,7 @@
 
 <div class="container">
   <header>
-    <h1>🍳 Saisonale Rezepte</h1>
+    <h1>🥗 Saisonale Rezepte</h1>
     <p>Leckere Gerichte mit regionalen Zutaten der Saison</p>
   </header>
   

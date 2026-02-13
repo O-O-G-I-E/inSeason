@@ -222,5 +222,390 @@
       "vegan": []
     },
     "tags": ["regional", "frühling", "dessert"]
+  },
+  {
+    "id": 7,
+    "name": "Spargel-Risotto mit Zitrone",
+    "kategorie": "Hauptgericht",
+    "schwierigkeit": "mittel",
+    "zeit": 40,
+    "portionen": 4,
+    "saison": {
+      "monate": [4, 5, 6]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Grüner Spargel", "menge": "500g" },
+      { "name": "Risotto-Reis", "menge": "300g" },
+      { "produktId": 2, "menge": "1", "name": "Zwiebel" },
+      { "name": "Weißwein", "menge": "100ml" },
+      { "name": "Gemüsebrühe", "menge": "1L" },
+      { "name": "Zitrone", "menge": "1" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Vegane Butter", "menge": "50g" },
+        { "name": "Hefeflocken", "menge": "3 EL" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Spargel waschen, holzige Enden abschneiden, in 3cm Stücke schneiden",
+      "Zwiebel fein würfeln und in Öl glasig dünsten",
+      "Reis hinzugeben, kurz anrösten",
+      "Mit Weißwein ablöschen, einkochen lassen"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Brühe nach und nach zugeben, dabei ständig rühren (ca. 20 Min)",
+        "Spargel nach 15 Min mitkochen",
+        "Vegane Butter und Hefeflocken unterrühren",
+        "Mit Zitronensaft, Salz und Pfeffer abschmecken"
+      ]
+    },
+    "tags": ["regional", "frühlingsrezept", "italienisch"]
+  },
+  {
+    "id": 8,
+    "name": "Zucchini-Spaghetti mit Tomatensauce",
+    "kategorie": "Hauptgericht",
+    "schwierigkeit": "leicht",
+    "zeit": 25,
+    "portionen": 2,
+    "saison": {
+      "monate": [6, 7, 8]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Zucchini", "menge": "3 große" },
+      { "name": "Tomaten", "menge": "500g" },
+      { "produktId": 2, "menge": "1", "name": "Zwiebel" },
+      { "name": "Knoblauch", "menge": "3 Zehen" },
+      { "name": "Basilikum", "menge": "1 Bund" },
+      { "name": "Olivenöl", "menge": "3 EL" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Hefeflocken", "menge": "2 EL" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Zucchini mit Spiralschneider zu Spaghetti verarbeiten",
+      "Tomaten würfeln, Zwiebel und Knoblauch hacken",
+      "Zwiebel und Knoblauch in Olivenöl anbraten",
+      "Tomaten hinzugeben, 15 Min köcheln lassen"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Zucchini-Spaghetti in Pfanne kurz anschwenken (2 Min)",
+        "Mit Tomatensauce vermischen",
+        "Basilikum und Hefeflocken darüber streuen"
+      ]
+    },
+    "tags": ["regional", "sommerrezept", "low-carb"]
+  },
+  {
+    "id": 9,
+    "name": "Gefüllte Paprika mit Quinoa",
+    "kategorie": "Hauptgericht",
+    "schwierigkeit": "mittel",
+    "zeit": 50,
+    "portionen": 4,
+    "saison": {
+      "monate": [7, 8, 9]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Paprika (rot/gelb)", "menge": "4 Stück" },
+      { "name": "Quinoa", "menge": "200g" },
+      { "name": "Zucchini", "menge": "1" },
+      { "name": "Tomaten", "menge": "2" },
+      { "produktId": 2, "menge": "1", "name": "Zwiebel" },
+      { "name": "Mais", "menge": "150g" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Veganer Käse", "menge": "100g" },
+        { "name": "Hefeflocken", "menge": "2 EL" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Quinoa nach Packungsanleitung kochen",
+      "Paprika halbieren, Kerne entfernen",
+      "Zucchini und Tomaten würfeln, Zwiebel hacken",
+      "Gemüse in Pfanne anbraten"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Quinoa, Gemüse, Mais und Hefeflocken mischen",
+        "Paprikahälften mit Mischung füllen",
+        "Veganen Käse darüber geben",
+        "Bei 180°C 30 Min backen"
+      ]
+    },
+    "tags": ["regional", "sommerrezept", "ofengericht"]
+  },
+  {
+    "id": 10,
+    "name": "Sellerie-Schnitzel mit Kartoffelpüree",
+    "kategorie": "Hauptgericht",
+    "schwierigkeit": "mittel",
+    "zeit": 45,
+    "portionen": 4,
+    "saison": {
+      "monate": [9, 10, 11]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Knollensellerie", "menge": "1 große Knolle" },
+      { "produktId": 1, "menge": "800g", "name": "Kartoffeln" },
+      { "name": "Mehl", "menge": "100g" },
+      { "name": "Semmelbrösel", "menge": "150g" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Hafermilch", "menge": "200ml" },
+        { "name": "Vegane Butter", "menge": "50g" },
+        { "name": "Aquafaba (Kichererbsenwasser)", "menge": "100ml" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Sellerie schälen und in 1cm dicke Scheiben schneiden",
+      "In Salzwasser 10 Min vorkochen",
+      "Kartoffeln schälen, kochen und stampfen"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Sellerie-Scheiben in Mehl, dann Aquafaba, dann Semmelbrösel wenden",
+        "In Pfanne mit Öl goldbraun braten",
+        "Kartoffelpüree mit Hafermilch und veganer Butter cremig rühren",
+        "Sellerie-Schnitzel mit Püree servieren"
+      ]
+    },
+    "tags": ["regional", "herbstrezept", "comfort-food"]
+  },
+  {
+    "id": 11,
+    "name": "Kalte Gurken-Avocado-Suppe",
+    "kategorie": "Suppe",
+    "schwierigkeit": "leicht",
+    "zeit": 15,
+    "portionen": 4,
+    "saison": {
+      "monate": [6, 7, 8]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Salatgurke", "menge": "2 große" },
+      { "name": "Avocado", "menge": "2 reife" },
+      { "name": "Knoblauch", "menge": "1 Zehe" },
+      { "name": "Limette", "menge": "1" },
+      { "name": "Dill", "menge": "1 Bund" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Haferjogurt", "menge": "200ml" },
+        { "name": "Gemüsebrühe (kalt)", "menge": "200ml" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Gurken schälen und grob würfeln",
+      "Avocados halbieren, Kern entfernen, Fruchtfleisch herauslösen"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Alle Zutaten im Mixer pürieren",
+        "Mit Salz, Pfeffer und Limettensaft abschmecken",
+        "Mindestens 1 Std kalt stellen",
+        "Mit frischem Dill servieren"
+      ]
+    },
+    "tags": ["regional", "sommerrezept", "erfrischend", "roh"]
+  },
+  {
+    "id": 12,
+    "name": "Cremige Spinatsuppe",
+    "kategorie": "Suppe",
+    "schwierigkeit": "leicht",
+    "zeit": 30,
+    "portionen": 4,
+    "saison": {
+      "monate": [3, 4, 5]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Spinat (frisch)", "menge": "500g" },
+      { "produktId": 1, "menge": "300g", "name": "Kartoffeln" },
+      { "produktId": 2, "menge": "1", "name": "Zwiebel" },
+      { "name": "Knoblauch", "menge": "2 Zehen" },
+      { "name": "Gemüsebrühe", "menge": "800ml" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Hafersahne", "menge": "150ml" },
+        { "name": "Muskatnuss", "menge": "1 Prise" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Zwiebel und Knoblauch würfeln, in Öl anbraten",
+      "Kartoffeln schälen, würfeln und hinzugeben",
+      "Mit Gemüsebrühe aufgießen, 15 Min köcheln",
+      "Spinat waschen und hinzugeben, 3 Min mitkochen"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Alles fein pürieren",
+        "Hafersahne unterrühren",
+        "Mit Muskat, Salz und Pfeffer abschmecken"
+      ]
+    },
+    "tags": ["regional", "frühlingsrezept", "gesund"]
+  },
+  {
+    "id": 13,
+    "name": "Tomatensalat mit Basilikum",
+    "kategorie": "Salat",
+    "schwierigkeit": "leicht",
+    "zeit": 15,
+    "portionen": 4,
+    "saison": {
+      "monate": [7, 8, 9]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Tomaten (verschiedene Sorten)", "menge": "800g" },
+      { "produktId": 2, "menge": "1 rote", "name": "Zwiebel" },
+      { "name": "Basilikum", "menge": "1 Bund" },
+      { "name": "Olivenöl", "menge": "4 EL" },
+      { "name": "Balsamico", "menge": "2 EL" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Pinienkerne", "menge": "50g" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Tomaten waschen und in Scheiben/Stücke schneiden",
+      "Zwiebel in feine Ringe schneiden",
+      "Basilikum grob zupfen"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Pinienkerne in Pfanne ohne Fett rösten",
+        "Alles mischen, mit Öl und Balsamico beträufeln",
+        "Mit Salz und Pfeffer würzen, 10 Min ziehen lassen"
+      ]
+    },
+    "tags": ["regional", "sommerrezept", "schnell", "roh"]
+  },
+  {
+    "id": 14,
+    "name": "Radieschensalat mit Kräutern",
+    "kategorie": "Salat",
+    "schwierigkeit": "leicht",
+    "zeit": 10,
+    "portionen": 2,
+    "saison": {
+      "monate": [4, 5, 6]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Radieschen", "menge": "2 Bund" },
+      { "name": "Gurke", "menge": "1" },
+      { "name": "Schnittlauch", "menge": "1 Bund" },
+      { "name": "Dill", "menge": "0.5 Bund" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Sojajoghurt", "menge": "150ml" },
+        { "name": "Zitronensaft", "menge": "2 EL" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Radieschen waschen und in dünne Scheiben schneiden",
+      "Gurke würfeln",
+      "Kräuter fein hacken"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Sojajoghurt mit Zitronensaft, Salz und Pfeffer mischen",
+        "Mit Gemüse und Kräutern vermengen",
+        "15 Min durchziehen lassen"
+      ]
+    },
+    "tags": ["regional", "frühlingsrezept", "schnell", "leicht"]
+  },
+  {
+    "id": 15,
+    "name": "Zucchini-Aufstrich",
+    "kategorie": "Aufstrich",
+    "schwierigkeit": "leicht",
+    "zeit": 20,
+    "portionen": 6,
+    "saison": {
+      "monate": [7, 8, 9]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Zucchini", "menge": "2 mittelgroße" },
+      { "name": "Knoblauch", "menge": "2 Zehen" },
+      { "name": "Zitrone", "menge": "0.5" },
+      { "name": "Olivenöl", "menge": "3 EL" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Cashewkerne", "menge": "100g" },
+        { "name": "Hefeflocken", "menge": "2 EL" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Cashews 2 Std in Wasser einweichen",
+      "Zucchini raspeln, salzen und 10 Min ziehen lassen",
+      "Zucchini ausdrücken, Flüssigkeit entfernen"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Alle Zutaten im Mixer cremig pürieren",
+        "Mit Salz, Pfeffer und Zitronensaft abschmecken",
+        "In Gläser füllen, im Kühlschrank hält es 5 Tage"
+      ]
+    },
+    "tags": ["regional", "sommerrezept", "brotaufstrich"]
+  },
+  {
+    "id": 16,
+    "name": "Pflaumenkompott mit Zimt",
+    "kategorie": "Dessert",
+    "schwierigkeit": "leicht",
+    "zeit": 30,
+    "portionen": 4,
+    "saison": {
+      "monate": [8, 9, 10]
+    },
+    "varianten": ["vegan"],
+    "basis_zutaten": [
+      { "name": "Pflaumen", "menge": "800g" },
+      { "name": "Zucker", "menge": "80g" },
+      { "name": "Zimt", "menge": "1 TL" },
+      { "name": "Vanille", "menge": "1 Schote" }
+    ],
+    "varianten_zutaten": {
+      "vegan": [
+        { "name": "Mandelblättchen", "menge": "50g" }
+      ]
+    },
+    "basis_zubereitung": [
+      "Pflaumen waschen, halbieren und entsteinen",
+      "Mit Zucker, Zimt und Vanille in Topf geben",
+      "50ml Wasser hinzufügen",
+      "Bei mittlerer Hitze 20 Min köcheln lassen"
+    ],
+    "varianten_zubereitung": {
+      "vegan": [
+        "Mandelblättchen in Pfanne ohne Fett rösten",
+        "Kompott warm oder kalt servieren",
+        "Mit gerösteten Mandeln bestreuen"
+      ]
+    },
+    "tags": ["regional", "herbstrezept", "dessert", "einkochen"]
   }
 ]
