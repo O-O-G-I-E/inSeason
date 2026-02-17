@@ -332,23 +332,28 @@
 	/* Minimal Hero */
 	.hero {
 		text-align: center;
-		padding: 1rem;
-		background: var(--bg-secondary);
+		padding: 2rem 1rem;
+		background: linear-gradient(
+			135deg,
+			var(--bg-primary, #ffffff) 0%,
+			var(--bg-secondary, #f5f5f5) 100%
+		);
 		border-radius: 12px;
-		margin-bottom: 1rem;
-		box-shadow: 0 2px 6px var(--shadow);
+		margin: 1rem;
+		overflow: hidden;
+		border-bottom: 2px solid var(--border-color, rgba(0, 0, 0, 0.06));
 	}
 
 	.hero h1 {
 		margin: 0 0 0.25rem 0;
-		color: var(--accent);
-		font-size: 1.75rem;
-		font-weight: 700;
+		color: var(--text-primary, #212121);
+		font-size: 2rem;
+		font-weight: 800;
 	}
 
 	.count {
 		margin: 0;
-		font-size: 0.9rem;
+		font-size: 1rem;
 		color: var(--text-secondary);
 		font-weight: 500;
 	}

@@ -1,6 +1,6 @@
 <script>
 	import { resolve } from '$app/paths';
-	import { getSeasonDisplay } from '$lib/utils/seasonHelper';
+	import { getMonthRangeDisplay } from '$lib/utils/seasonHelper';
 
 	export let produkt;
 
@@ -20,37 +20,33 @@
 	}
 
 	// Formatiere Verfügbarkeit
-	$: verfugbarkeit =
-		saison.monate.length === 12 ? '📅 Ganzjährig' : `📅 ${getSeasonDisplay(saison.monate)}`;
+	$: verfugbarkeit = getMonthRangeDisplay(saison.monate);
 </script>
 
 <a href={resolve('/produkt/[id]', { id: `${id}` })} class="card">
-	<h3 class="name">{name}</h3>
-	<span class="badge" style="background: {getCategoryColor(kategorie)}">
-		{kategorie}
-	</span>
-	<p class="season">{verfugbarkeit}</p>
+	<div class="card-header">
+		<h3 class="name">{name}</h3>
+		<span class="badge" style="background: {getCategoryColor(kategorie)}">
+			{kategorie}
+		</span>
+	</div>
+
+	<p class="season">📅 {verfugbarkeit}</p>
 </a>
 
 <style>
 	.card {
-		background: var(--bg-secondary, #ffffff);
-		border-radius: 10px;
-		padding: 0.875rem;
-		box-shadow: 0 1px 4px var(--shadow, rgba(0, 0, 0, 0.08));
-		transition: all 0.25s ease;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 1rem;
+		border-radius: 12px;
+		background: var(--bg-secondary, #f9f9f9);
+		border: 1px solid var(--border-color, #e0e0e0);
+		transition: all 0.2s ease;
 		cursor: pointer;
 		text-decoration: none;
 		color: inherit;
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		border: 2px solid transparent;
-		position: relative;
-
-		/* Quadratisch: 1:1 Aspect Ratio */
-		aspect-ratio: 1 / 1;
-		width: 100%;
 	}
 
 	.card:active {
@@ -58,45 +54,44 @@
 	}
 
 	.card:hover {
-		transform: translateY(-3px);
-		box-shadow: 0 4px 12px var(--shadow-hover, rgba(0, 0, 0, 0.12));
+		background: var(--bg-tertiary, #f0f0f0);
 		border-color: var(--accent, #4caf50);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		transform: translateY(-2px);
+	}
+
+	.card-header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
 	}
 
 	.name {
 		margin: 0;
-		font-size: 1rem;
-		font-weight: 600;
+		font-size: 1.1rem;
+		font-weight: 700;
 		color: var(--text-primary, #212121);
 		line-height: 1.3;
-		flex: 1;
-		padding-right: 3.5rem;
-		overflow-wrap: break-word;
 		word-break: break-word;
 	}
 
 	.badge {
-		position: absolute;
-		top: 0.5rem;
-		right: 0.5rem;
-		padding: 0.25rem 0.5rem;
-		border-radius: 10px;
+		display: inline-block;
+		padding: 0.3rem 0.6rem;
+		border-radius: 8px;
 		color: white;
-		font-size: 0.6rem;
-		font-weight: 700;
+		font-size: 0.7rem;
+		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.3px;
-		line-height: 1;
+		width: fit-content;
 	}
 
 	.season {
 		margin: 0;
-		font-size: 0.8rem;
-		color: var(--text-secondary, #666666);
-		font-weight: 500;
+		font-size: 0.85rem;
+		color: var(--text-secondary, #999999);
 		margin-top: auto;
-		padding-top: 0.5rem;
-		border-top: 1px solid var(--border-color, rgba(0, 0, 0, 0.08));
 	}
 
 	/* Dark Mode */
@@ -118,21 +113,12 @@
 	}
 
 	@media (max-width: 768px) {
-		.card {
-			padding: 0.75rem;
-		}
-
 		.name {
-			font-size: 0.9rem;
-		}
-
-		.badge {
-			font-size: 0.55rem;
-			padding: 0.2rem 0.45rem;
+			font-size: 1rem;
 		}
 
 		.season {
-			font-size: 0.75rem;
+			font-size: 0.8rem;
 		}
 	}
 </style>

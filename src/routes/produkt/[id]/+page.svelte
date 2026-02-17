@@ -10,6 +10,7 @@
 
 	const currentMonth = getCurrentMonth();
 	$: regionalScore = produkt?.regional_data ? calculateRegionalScore(produkt, currentMonth) : null;
+	$: regionalScoreDisplay = regionalScore === null ? null : Math.round(regionalScore / 10);
 
 	function getCategoryColor(kat) {
 		const colors = {
@@ -35,176 +36,165 @@
 			<a href={resolve('/')}>← Zurück</a>
 		</div>
 
-		<!-- Header: Name + Kategorie + Saison + Nachhaltigkeit -->
-		<div class="product-header">
-			<div class="title-row">
-				<h1>{produkt.name}</h1>
-				<span class="badge" style="background: {getCategoryColor(produkt.kategorie)}">
-					{produkt.kategorie}
-				</span>
-			</div>
-			{#if produkt.unterkategorie}
-				<p class="subtitle">{produkt.unterkategorie}</p>
-			{/if}
-
-			<!-- Saison + Nachhaltigkeit Grid -->
-			<div class="hero-grid">
-				<!-- Saison -->
-				<div class="hero-section">
-					<div class="season-item">
-						<span class="s-icon">📅</span>
-						<span class="s-text">{produkt.saison.haupternte}</span>
-					</div>
-					<div class="season-item">
-						<span class="s-icon">🗓️</span>
-						<span class="s-text">{getSeasonDisplay(produkt.saison.monate)}</span>
-					</div>
-					<div class="season-item">
-						<span class="s-icon">🏷️</span>
-						<span class="s-text">{produkt.saison.typ}</span>
-					</div>
+		<section class="hero">
+			<div class="hero-content">
+				<div class="hero-header">
+					<span class="badge" style="background: {getCategoryColor(produkt.kategorie)}">
+						{produkt.kategorie}
+					</span>
+					<h1>{produkt.name}</h1>
+					{#if produkt.unterkategorie}
+						<p class="description">{produkt.unterkategorie}</p>
+					{/if}
 				</div>
 
-				<!-- Nachhaltigkeit -->
-				{#if produkt.regional_data}
-					<div class="hero-section sustainability">
-						<div class="sus-row">
-							<div
-								class="score-mini"
-								style="border-color: {getScoreColor(regionalScore)}; color: {getScoreColor(
-									regionalScore
-								)}"
-							>
-								{regionalScore}
+				<div class="hero-grid">
+					<div class="info-card-combined">
+						<div class="info-section">
+							<div class="info-grid">
+								<div class="info-item">
+									<span class="icon">📅</span>
+									<span class="value">{getSeasonDisplay(produkt.saison.monate)}</span>
+								</div>
+								<div class="info-item">
+									<span class="icon">🌱</span>
+									<span class="value">{produkt.saison.haupternte}</span>
+								</div>
+								<div class="info-item">
+									<span class="icon">🏷️</span>
+									<span class="value">{produkt.saison.typ}</span>
+								</div>
 							</div>
-							<span class="sus-icon">{getFlagEmoji(produkt.regional_data.origin_country)}</span>
 						</div>
-						<div class="sus-row">
-							<span class="co2-mini">
-								🌍 <strong>{produkt.regional_data.co2_per_kg.toFixed(2)}</strong> kg CO₂
-							</span>
-						</div>
-					</div>
-				{/if}
-			</div>
-		</div>
 
-		<!-- 2-Spalten Grid -->
-		<div class="details-grid">
-			<!-- Nährwerte Kompakt -->
-			<div class="info-card">
-				<h2>🥗 Nährwerte</h2>
-				<p class="card-subtitle">pro 100g</p>
-				<div class="nutrition-grid">
-					<div class="nutrition-item highlight">
-						<span class="n-value">{produkt.naehrwerte.energie_kcal}</span>
-						<span class="n-label">kcal</span>
-					</div>
-					<div class="nutrition-item highlight">
-						<span class="n-value">{produkt.naehrwerte.protein_g}g</span>
-						<span class="n-label">Protein</span>
-					</div>
-					<div class="nutrition-item">
-						<span class="n-value">{produkt.naehrwerte.kohlenhydrate_g}g</span>
-						<span class="n-label">Kohlenhydrate</span>
-					</div>
-					<div class="nutrition-item">
-						<span class="n-value">{produkt.naehrwerte.fett_g}g</span>
-						<span class="n-label">Fett</span>
-					</div>
-					<div class="nutrition-item">
-						<span class="n-value">{produkt.naehrwerte.ballaststoffe_g}g</span>
-						<span class="n-label">Ballaststoffe</span>
-					</div>
-					<div class="nutrition-item">
-						<span class="n-value">{produkt.naehrwerte.wasser_g}g</span>
-						<span class="n-label">Wasser</span>
+						<div class="info-section nutrient-section">
+							<p class="section-note">pro 100 g</p>
+							<div class="nutrient-columns">
+								<div class="nutrient-column">
+									<h4 class="nutrient-heading">Nährwerte</h4>
+									<div class="nutrition-grid">
+										<div class="nutrition-item">
+											<span class="label">Kalorien</span>
+											<span class="value">{produkt.naehrwerte.energie_kcal} kcal</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Protein</span>
+											<span class="value">{produkt.naehrwerte.protein_g}g</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Fett</span>
+											<span class="value">{produkt.naehrwerte.fett_g}g</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Kohlenhydrate</span>
+											<span class="value">{produkt.naehrwerte.kohlenhydrate_g}g</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Ballaststoffe</span>
+											<span class="value">{produkt.naehrwerte.ballaststoffe_g}g</span>
+										</div>
+									</div>
+								</div>
+								<div class="nutrient-column">
+									<h4 class="nutrient-heading">Mineralstoffe</h4>
+									<div class="nutrition-grid">
+										<div class="nutrition-item">
+											<span class="label">Kalium</span>
+											<span class="value">{produkt.mineralstoffe.kalium_mg} mg</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Magnesium</span>
+											<span class="value">{produkt.mineralstoffe.magnesium_mg} mg</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Calcium</span>
+											<span class="value">{produkt.mineralstoffe.calcium_mg} mg</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Phosphor</span>
+											<span class="value">{produkt.mineralstoffe.phosphor_mg} mg</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Eisen</span>
+											<span class="value">{produkt.mineralstoffe.eisen_mg} mg</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Zink</span>
+											<span class="value">{produkt.mineralstoffe.zink_mg} mg</span>
+										</div>
+									</div>
+								</div>
+								<div class="nutrient-column">
+									<h4 class="nutrient-heading">Vitamine</h4>
+									<div class="nutrition-grid">
+										{#if produkt.vitamine.vitamin_c_mg}
+											<div class="nutrition-item">
+												<span class="label">Vitamin C</span>
+												<span class="value">{produkt.vitamine.vitamin_c_mg} mg</span>
+											</div>
+										{/if}
+										{#if produkt.vitamine.vitamin_a_ug}
+											<div class="nutrition-item">
+												<span class="label">Vitamin A</span>
+												<span class="value">{produkt.vitamine.vitamin_a_ug} µg</span>
+											</div>
+										{/if}
+										{#if produkt.vitamine.vitamin_e_mg}
+											<div class="nutrition-item">
+												<span class="label">Vitamin E</span>
+												<span class="value">{produkt.vitamine.vitamin_e_mg} mg</span>
+											</div>
+										{/if}
+										{#if produkt.vitamine.vitamin_k_ug}
+											<div class="nutrition-item">
+												<span class="label">Vitamin K</span>
+												<span class="value">{produkt.vitamine.vitamin_k_ug} µg</span>
+											</div>
+										{/if}
+										<div class="nutrition-item">
+											<span class="label">Vitamin B1</span>
+											<span class="value">{produkt.vitamine.vitamin_b1_mg} mg</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Vitamin B2</span>
+											<span class="value">{produkt.vitamine.vitamin_b2_mg} mg</span>
+										</div>
+										<div class="nutrition-item">
+											<span class="label">Vitamin B6</span>
+											<span class="value">{produkt.vitamine.vitamin_b6_mg} mg</span>
+										</div>
+										{#if produkt.vitamine.folsaeure_ug}
+											<div class="nutrition-item">
+												<span class="label">Folsaeure</span>
+												<span class="value">{produkt.vitamine.folsaeure_ug} µg</span>
+											</div>
+										{/if}
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{#if produkt.regional_data}
+							<div class="info-section score-section">
+								<div class="score-display">
+									<div class="score-circle" style="border-color: {getScoreColor(regionalScore)}">
+										<span class="score-value">{regionalScoreDisplay}/10</span>
+									</div>
+									<div class="score-details">
+										<p class="score-label">
+											Regional-Score {getFlagEmoji(produkt.regional_data.origin_country)}
+										</p>
+										<p class="co2-value">
+											💨 {produkt.regional_data.co2_per_kg.toFixed(2)} kg CO₂/kg
+										</p>
+									</div>
+								</div>
+							</div>
+						{/if}
 					</div>
 				</div>
 			</div>
-
-			<!-- Mineralstoffe Kompakt -->
-			<div class="info-card">
-				<h2>⚡ Mineralstoffe</h2>
-				<p class="card-subtitle">pro 100g</p>
-				<div class="compact-table">
-					<div class="ct-row">
-						<span class="ct-label">Kalium</span>
-						<span class="ct-value">{produkt.mineralstoffe.kalium_mg} mg</span>
-					</div>
-					<div class="ct-row">
-						<span class="ct-label">Magnesium</span>
-						<span class="ct-value">{produkt.mineralstoffe.magnesium_mg} mg</span>
-					</div>
-					<div class="ct-row">
-						<span class="ct-label">Calcium</span>
-						<span class="ct-value">{produkt.mineralstoffe.calcium_mg} mg</span>
-					</div>
-					<div class="ct-row">
-						<span class="ct-label">Phosphor</span>
-						<span class="ct-value">{produkt.mineralstoffe.phosphor_mg} mg</span>
-					</div>
-					<div class="ct-row">
-						<span class="ct-label">Eisen</span>
-						<span class="ct-value">{produkt.mineralstoffe.eisen_mg} mg</span>
-					</div>
-					<div class="ct-row">
-						<span class="ct-label">Zink</span>
-						<span class="ct-value">{produkt.mineralstoffe.zink_mg} mg</span>
-					</div>
-				</div>
-			</div>
-
-			<!-- Vitamine Kompakt -->
-			<div class="info-card">
-				<h2>🍊 Vitamine</h2>
-				<p class="card-subtitle">pro 100g</p>
-				<div class="compact-table">
-					{#if produkt.vitamine.vitamin_c_mg}
-						<div class="ct-row highlight">
-							<span class="ct-label">Vitamin C</span>
-							<span class="ct-value">{produkt.vitamine.vitamin_c_mg} mg</span>
-						</div>
-					{/if}
-					{#if produkt.vitamine.vitamin_a_ug}
-						<div class="ct-row">
-							<span class="ct-label">Vitamin A</span>
-							<span class="ct-value">{produkt.vitamine.vitamin_a_ug} µg</span>
-						</div>
-					{/if}
-					{#if produkt.vitamine.vitamin_e_mg}
-						<div class="ct-row">
-							<span class="ct-label">Vitamin E</span>
-							<span class="ct-value">{produkt.vitamine.vitamin_e_mg} mg</span>
-						</div>
-					{/if}
-					{#if produkt.vitamine.vitamin_k_ug}
-						<div class="ct-row">
-							<span class="ct-label">Vitamin K</span>
-							<span class="ct-value">{produkt.vitamine.vitamin_k_ug} µg</span>
-						</div>
-					{/if}
-					<div class="ct-row">
-						<span class="ct-label">Vitamin B1</span>
-						<span class="ct-value">{produkt.vitamine.vitamin_b1_mg} mg</span>
-					</div>
-					<div class="ct-row">
-						<span class="ct-label">Vitamin B2</span>
-						<span class="ct-value">{produkt.vitamine.vitamin_b2_mg} mg</span>
-					</div>
-					<div class="ct-row">
-						<span class="ct-label">Vitamin B6</span>
-						<span class="ct-value">{produkt.vitamine.vitamin_b6_mg} mg</span>
-					</div>
-					{#if produkt.vitamine.folsaeure_ug}
-						<div class="ct-row">
-							<span class="ct-label">Folsäure</span>
-							<span class="ct-value">{produkt.vitamine.folsaeure_ug} µg</span>
-						</div>
-					{/if}
-				</div>
-			</div>
-		</div>
+		</section>
 	{:else}
 		<div class="not-found">
 			<h1>404</h1>
@@ -244,7 +234,7 @@
 	}
 
 	.page-container {
-		max-width: 1000px;
+		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0 0 2rem 0;
 	}
@@ -265,216 +255,238 @@
 		text-decoration: underline;
 	}
 
-	/* Header */
-	.product-header {
-		background: var(--bg-secondary);
-		padding: 1.25rem;
+	/* HERO */
+	.hero {
+		background: linear-gradient(
+			135deg,
+			var(--bg-primary, #ffffff) 0%,
+			var(--bg-secondary, #f5f5f5) 100%
+		);
 		border-radius: 12px;
-		margin-bottom: 1rem;
-		box-shadow: 0 2px 6px var(--shadow);
+		margin: 1rem;
+		overflow: hidden;
+		padding: 2rem 0;
+		border-bottom: 2px solid var(--border-color, rgba(0, 0, 0, 0.06));
 	}
 
-	.title-row {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		flex-wrap: wrap;
-		margin-bottom: 0.5rem;
+	.hero-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
 	}
 
-	h1 {
-		margin: 0;
-		font-size: 1.75rem;
-		color: var(--text-primary);
-		font-weight: 700;
+	.hero-header {
+		text-align: center;
+		margin-bottom: 2rem;
 	}
 
 	.badge {
 		display: inline-block;
 		padding: 0.4rem 0.8rem;
-		border-radius: 16px;
+		border-radius: 15px;
 		color: white;
 		font-size: 0.75rem;
-		font-weight: 600;
+		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
+		margin-bottom: 1rem;
 	}
 
-	.subtitle {
-		margin: 0 0 0.75rem 0;
-		color: var(--text-secondary);
-		font-size: 0.9rem;
+	h1 {
+		font-size: 2.5rem;
+		font-weight: 800;
+		color: var(--text-primary, #212121);
+		margin: 0.5rem 0;
+		line-height: 1.2;
 	}
 
-	/* Hero Grid - Saison + Nachhaltigkeit */
+	.description {
+		font-size: 1.1rem;
+		color: var(--text-secondary, #666666);
+		max-width: 700px;
+		margin: 1rem auto 0;
+		line-height: 1.6;
+	}
+
 	.hero-grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 1rem;
-		padding-top: 0.75rem;
-		border-top: 1px solid var(--border-color);
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin-top: 2rem;
 	}
 
-	.hero-section {
+	.info-card-combined {
+		background: var(--bg-secondary, #ffffff);
+		border-radius: 12px;
+		padding: 0;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		border: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.info-section {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.nutrient-section {
+		align-items: stretch;
+	}
+
+	.section-note {
+		margin: 0 0 0.75rem 0;
+		font-size: 0.7rem;
+		color: var(--text-secondary, #999999);
+		text-transform: uppercase;
+		letter-spacing: 0.3px;
+		font-weight: 600;
+		text-align: center;
+		align-self: center;
+	}
+
+	.nutrient-columns {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0;
+		width: 100%;
+	}
+
+	.nutrient-column {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+		text-align: left;
+		padding: 0 1.5rem;
+	}
+
+	.nutrient-column:not(:last-child) {
+		border-right: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+	}
+
+	.nutrient-heading {
+		margin: 0;
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--text-primary, #212121);
+		text-transform: uppercase;
+		letter-spacing: 0.3px;
+	}
+
+	.info-section:not(:last-child) {
+		border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+	}
+
+	.info-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.info-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		flex: 0 1 auto;
+	}
+
+	.info-item .icon {
+		font-size: 1.2rem;
+	}
+
+	.info-item .value {
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--text-primary, #212121);
+	}
+
+	.nutrition-grid {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-	}
-
-	.season-item {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		font-size: 0.85rem;
-	}
-
-	.s-icon {
-		font-size: 1rem;
-		width: 24px;
-		text-align: center;
-	}
-
-	.s-text {
-		color: var(--text-secondary);
-		font-weight: 500;
-	}
-
-	/* Sustainability Mini */
-	.hero-section.sustainability {
-		align-items: flex-end;
-		justify-content: center;
-	}
-
-	.sus-row {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		justify-content: flex-end;
-	}
-
-	.score-mini {
-		width: 44px;
-		height: 44px;
-		border-radius: 50%;
-		border: 3px solid;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 1.25rem;
-		font-weight: 700;
-		background: var(--bg-tertiary);
-	}
-
-	.sus-icon {
-		font-size: 1.75rem;
-	}
-
-	.co2-mini {
-		font-size: 0.85rem;
-		color: var(--text-secondary);
-		padding: 0.4rem 0.8rem;
-		background: var(--bg-tertiary);
-		border-radius: 8px;
-	}
-
-	.co2-mini strong {
-		font-size: 1rem;
-		color: var(--text-primary);
-		font-weight: 700;
-	}
-
-	/* 2-Spalten Grid IMMER */
-	.details-grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 0.5rem;
-	}
-
-	/* Info Cards */
-	.info-card {
-		background: var(--bg-secondary);
-		padding: 1rem;
-		border-radius: 12px;
-		box-shadow: 0 2px 6px var(--shadow);
-	}
-
-	.info-card h2 {
-		margin: 0 0 0.75rem 0;
-		font-size: 0.95rem;
-		color: var(--accent);
-		font-weight: 600;
-	}
-
-	.card-subtitle {
-		margin: -0.5rem 0 0.75rem 0;
-		font-size: 0.75rem;
-		color: var(--text-tertiary);
-	}
-
-	/* Nutrition Grid - 2×3 */
-	.nutrition-grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 0.75rem;
+		align-items: stretch;
+		width: 100%;
 	}
 
 	.nutrition-item {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 0.75rem;
-		background: var(--bg-tertiary);
-		border-radius: 8px;
-		border: 2px solid var(--border-color);
-	}
-
-	.nutrition-item.highlight {
-		border-color: var(--accent);
-		background: rgba(76, 175, 80, 0.05);
-	}
-
-	.n-value {
-		font-size: 1.25rem;
-		font-weight: 700;
-		color: var(--text-primary);
-		line-height: 1.2;
-	}
-
-	.n-label {
-		font-size: 0.75rem;
-		color: var(--text-secondary);
-		margin-top: 0.25rem;
-	}
-
-	/* Compact Table */
-	.compact-table {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	.ct-row {
-		display: flex;
+		align-items: baseline;
 		justify-content: space-between;
-		padding: 0.5rem;
-		background: var(--bg-tertiary);
-		border-radius: 6px;
-		font-size: 0.85rem;
+		gap: 0.35rem;
+		width: 100%;
 	}
 
-	.ct-row.highlight {
-		background: rgba(76, 175, 80, 0.1);
-		border: 1px solid rgba(76, 175, 80, 0.3);
-	}
-
-	.ct-label {
-		color: var(--text-secondary);
-		font-weight: 500;
-	}
-
-	.ct-value {
-		color: var(--text-primary);
+	.nutrition-item .label {
+		font-size: 0.75rem;
+		color: var(--text-secondary, #999999);
+		text-transform: uppercase;
+		letter-spacing: 0.3px;
 		font-weight: 600;
+	}
+
+	.nutrition-item .value {
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--accent, #4caf50);
+	}
+
+	.score-display {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.score-circle {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		border: 4px solid;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.score-value {
+		font-size: 1.2rem;
+		font-weight: 800;
+	}
+
+	.score-details {
+		flex: 1;
+	}
+
+	.score-label {
+		margin: 0 0 0.5rem 0;
+		font-size: 0.85rem;
+		color: var(--text-secondary, #666666);
+		font-weight: 600;
+	}
+
+	.co2-value {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary, #212121);
+	}
+
+	.score-section .score-display {
+		flex-direction: row;
+		gap: 1.5rem;
+		align-items: center;
+	}
+
+	.score-section .score-circle {
+		width: 70px;
+		height: 70px;
+		flex-shrink: 0;
 	}
 
 	/* Not Found */
@@ -509,61 +521,74 @@
 		opacity: 0.9;
 	}
 
-	/* Tablet & Desktop */
-	@media (min-width: 769px) {
-		h1 {
-			font-size: 2.25rem;
-		}
-
-		.hero-grid {
-			gap: 2rem;
-		}
-
-		.score-mini {
-			width: 54px;
-			height: 54px;
-			font-size: 1.5rem;
-		}
-
-		.details-grid {
-			grid-template-columns: repeat(2, 1fr);
+	/* RESPONSIVE */
+	@media (max-width: 768px) {
+		.nutrient-columns {
+			grid-template-columns: 1fr;
 			gap: 1rem;
 		}
 
-		.product-header {
-			padding: 1.75rem;
+		.nutrient-column {
+			padding: 0;
 		}
 
-		.info-card {
-			padding: 1.5rem;
+		.nutrient-column:not(:last-child) {
+			border-right: none;
+			border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+			padding-bottom: 1rem;
 		}
-	}
-
-	/* Sehr kleine Screens */
-	@media (max-width: 400px) {
 		h1 {
-			font-size: 1.5rem;
+			font-size: 1.8rem;
 		}
 
-		.hero-grid {
+		.description {
+			font-size: 1rem;
+		}
+
+		.info-section {
+			padding: 1rem;
+		}
+
+		.nutrient-columns {
 			grid-template-columns: 1fr;
-			gap: 0.75rem;
+			gap: 1rem;
 		}
 
-		.hero-section.sustainability {
-			align-items: flex-start;
+		.nutrient-heading {
+			font-size: 0.75rem;
 		}
 
-		.sus-row {
-			justify-content: flex-start;
+		.info-grid {
+			gap: 0.8rem;
 		}
 
-		.details-grid {
-			gap: 0.4rem;
+		.info-item .icon {
+			font-size: 1rem;
 		}
 
-		.info-card {
-			padding: 0.875rem;
+		.info-item .value {
+			font-size: 0.8rem;
+		}
+
+		.nutrition-grid {
+			gap: 0.8rem;
+		}
+
+		.nutrition-item .label {
+			font-size: 0.6rem;
+		}
+
+		.nutrition-item .value {
+			font-size: 0.8rem;
+		}
+
+		.score-circle {
+			width: 60px;
+			height: 60px;
+		}
+
+		.score-value {
+			font-size: 1.1rem;
 		}
 	}
 </style>
