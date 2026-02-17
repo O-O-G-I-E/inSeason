@@ -25,20 +25,12 @@
     return colors[kat] || '#666';
   }
   
-  // Smart Display: Ganzjährig = "Ganzjährig verfügbar", sonst Haupternte
+  // Smart Display: Ganzjährig = "Ganzjährig", sonst Haupternte
   function getSeasonDisplay(saison) {
     if (saison.monate.length === 12) {
-      return 'Ganzjährig verfügbar';
+      return 'Ganzjährig';
     }
     return saison.haupternte;
-  }
-  
-  // Typ-Display: Entferne "(ganzjährig)" da es redundant ist
-  function getTypeDisplay(typ) {
-    return typ
-      .replace(' (ganzjährig)', '')
-      .replace(' ganzjährig', '')
-      .trim();
   }
 </script>
 
@@ -53,215 +45,198 @@
   <div class="card-body">
     <p class="subcat">{unterkategorie}</p>
     <p class="season">📅 {getSeasonDisplay(saison)}</p>
-    <p class="type">🏷️ {getTypeDisplay(saison.typ)}</p>
   </div>
 
-  <!-- NEU: Erweiterte Regional & CO2 Infos -->
+  <!-- Kompakte Environmental Info -->
   {#if regional_data}
-    <div class="environmental-info">
-      <!-- Herkunft & Transport -->
-      <div class="origin-row">
-        <span class="origin-label">
-          {getFlagEmoji(regional_data.origin_country)} {regional_data.origin_region}
-        </span>
-        <span class="transport-badge">
-          {TRANSPORT_ICONS[regional_data.transport_method]}
-          {#if regional_data.transport_method === 'local'}
-            Lokal
-          {:else if regional_data.transport_method === 'truck'}
-            LKW
-          {:else if regional_data.transport_method === 'ship'}
-            Schiff
-          {:else if regional_data.transport_method === 'plane'}
-            Flugzeug
-          {/if}
-        </span>
+    <div class="env-compact">
+      <div class="origin-line">
+        {getFlagEmoji(regional_data.origin_country)} {regional_data.origin_region}
       </div>
-
-      <!-- CO2 & Score -->
-      <div class="metrics-row">
-        <div class="co2-display">
-          <span class="co2-icon">🌍</span>
-          <span class="co2-value" class:low={regional_data.co2_per_kg < 0.3} class:medium={regional_data.co2_per_kg >= 0.3 && regional_data.co2_per_kg < 0.7} class:high={regional_data.co2_per_kg >= 0.7}>
-            {regional_data.co2_per_kg} kg CO₂
-          </span>
-        </div>
-        
-        <div class="score-badge" style="background: {scoreColor}">
-          {#if regional_data.is_import}
-            🌍 Import
-          {:else}
-            🌱 Regional
-          {/if}
-          <span class="score-value">{regionalScore}</span>
-        </div>
+      <div class="metrics-line">
+        <span class="co2-compact" class:low={regional_data.co2_per_kg < 0.3} class:medium={regional_data.co2_per_kg >= 0.3 && regional_data.co2_per_kg < 0.7} class:high={regional_data.co2_per_kg >= 0.7}>
+          {regional_data.co2_per_kg} kg
+        </span>
+        <span class="score-compact" style="color: {scoreColor}">
+          {regional_data.is_import ? '🌍' : '🌱'} {regionalScore}
+        </span>
       </div>
     </div>
   {/if}
   
   <div class="card-footer">
     <span>{naehrwerte.energie_kcal} kcal</span>
-    <span>{naehrwerte.protein_g}g Protein</span>
+    <span>{naehrwerte.protein_g}g</span>
   </div>
 </a>
 
 <style>
   .card {
-    background: var(--bg-secondary);
+    background: var(--bg-secondary, #ffffff);
     border-radius: 12px;
-    padding: 1.25rem;
-    box-shadow: 0 2px 8px var(--shadow);
+    padding: 1rem;
+    box-shadow: 0 2px 8px var(--shadow, rgba(0,0,0,0.1));
     transition: all 0.3s ease;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
-    display: block;
+    display: flex;
+    flex-direction: column;
     border: 2px solid transparent;
+    min-height: 180px;
   }
 
   .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 20px var(--shadow-hover);
-    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px var(--shadow-hover, rgba(0,0,0,0.15));
+    border-color: var(--accent, #4CAF50);
   }
 
   .card-header {
     display: flex;
     justify-content: space-between;
     align-items: start;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
   }
 
   h3 {
     margin: 0;
-    font-size: 1.25rem;
-    color: var(--text-primary);
+    font-size: 1.1rem;
+    color: var(--text-primary, #212121);
+    line-height: 1.3;
+    flex: 1;
   }
 
   .badge {
-    padding: 0.35rem 0.75rem;
-    border-radius: 20px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .card-body {
+    flex: 1;
+    margin-bottom: 0.5rem;
   }
 
   .card-body p {
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    margin: 0.25rem 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary, #666666);
+    line-height: 1.4;
   }
 
   .subcat {
     font-weight: 500;
-    color: var(--text-secondary);
+    color: var(--text-secondary, #666666);
   }
 
-  /* NEU: Environmental Info Styling */
-  .environmental-info {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    background: var(--bg-tertiary, #f8f9fa);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+  .season {
+    font-size: 0.75rem !important;
   }
 
-  .origin-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  /* Kompakte Environmental Info */
+  .env-compact {
+    padding: 0.5rem;
+    background: var(--env-bg, rgba(76, 175, 80, 0.08));
+    border-radius: 6px;
     margin-bottom: 0.5rem;
-    font-size: 0.85rem;
+    border: 1px solid var(--border-color, rgba(0,0,0,0.08));
   }
 
-  .origin-label {
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  .transport-badge {
-    padding: 0.25rem 0.6rem;
-    background: var(--bg-secondary);
-    border-radius: 12px;
+  .origin-line {
     font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-primary, #212121);
+    margin-bottom: 0.25rem;
   }
 
-  .metrics-row {
+  .metrics-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.75rem;
-  }
-
-  .co2-display {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    flex: 1;
-  }
-
-  .co2-icon {
-    font-size: 1rem;
-  }
-
-  .co2-value {
-    font-weight: 700;
-    font-size: 0.85rem;
-  }
-
-  .co2-value.low {
-    color: #4CAF50; /* Grün: < 0.3 kg */
-  }
-
-  .co2-value.medium {
-    color: #FF9800; /* Orange: 0.3-0.7 kg */
-  }
-
-  .co2-value.high {
-    color: #f44336; /* Rot: > 0.7 kg */
-  }
-
-  .score-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.75rem;
-    border-radius: 16px;
-    color: white;
     font-size: 0.8rem;
-    font-weight: 600;
-    white-space: nowrap;
+    font-weight: 700;
   }
 
-  .score-value {
-    font-size: 0.9rem;
+  .co2-compact.low {
+    color: #4CAF50;
+  }
+
+  .co2-compact.medium {
+    color: #FF9800;
+  }
+
+  .co2-compact.high {
+    color: #f44336;
+  }
+
+  .score-compact {
     font-weight: 700;
   }
 
   .card-footer {
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.85rem;
-    color: var(--text-tertiary);
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color, rgba(0,0,0,0.08));
+    font-size: 0.75rem;
+    color: var(--text-tertiary, #999999);
+    font-weight: 500;
+  }
+
+  /* Dark Mode */
+  :global(.dark-mode) .card {
+    background: var(--bg-secondary, #2a2a2a);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  :global(.dark-mode) .card:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  }
+
+  :global(.dark-mode) h3 {
+    color: var(--text-primary, #f5f5f5);
+  }
+
+  :global(.dark-mode) .subcat,
+  :global(.dark-mode) .card-body p {
+    color: var(--text-secondary, #b0b0b0);
+  }
+
+  :global(.dark-mode) .env-compact {
+    background: rgba(76, 175, 80, 0.15);
+    border-color: rgba(76, 175, 80, 0.3);
+  }
+
+  :global(.dark-mode) .origin-line {
+    color: var(--text-primary, #f5f5f5);
+  }
+
+  :global(.dark-mode) .card-footer {
+    border-top-color: rgba(255,255,255,0.1);
+    color: var(--text-tertiary, #888888);
   }
 
   @media (max-width: 768px) {
-    .metrics-row {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
+    .card {
+      padding: 0.75rem;
+      min-height: 160px;
     }
 
-    .score-badge {
-      align-self: flex-start;
+    h3 {
+      font-size: 1rem;
+    }
+
+    .badge {
+      font-size: 0.6rem;
+      padding: 0.2rem 0.5rem;
     }
   }
 </style>

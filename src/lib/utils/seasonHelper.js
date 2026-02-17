@@ -118,3 +118,12 @@ export function enrichRezeptZutaten(rezept, produkte) {
     return zutat;
   });
 }
+
+// Kurze Monatsnamen für Mobile
+export function getShortMonthName(monat) {
+  const shortNames = [
+    'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+  ];
+  return shortNames[monat - 1] || '';
+}

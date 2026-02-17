@@ -1,7 +1,7 @@
 <script>
   import lebensmittelData from '$lib/data/lebensmittel.json';
   import ProductCard from '$lib/components/ProductCard.svelte';
-  import { getCurrentMonth, filterByMonth, getMonthName, getAllCategories, searchProducts } from '$lib/utils/seasonHelper.js';
+  import { getCurrentMonth, filterByMonth, getMonthName, getShortMonthName, getAllCategories, searchProducts } from '$lib/utils/seasonHelper.js';
 
   let currentMonth = getCurrentMonth();
   let searchQuery = '';
@@ -9,68 +9,63 @@
   let selectedNutritionFilter = 'Alle';
   let sortBy = 'name';
   
-  // NEU: Regional & Transport Filter
+  // Regional & Transport Filter
   let showOnlyRegional = false;
   let selectedTransport = 'Alle';
   
   $: inSaisonProdukte = filterByMonth(lebensmittelData, currentMonth);
-  $: categories = ['Alle', ...getAllCategories(lebensmittelData)];
+  
+  // Kategorien ALPHABETISCH sortiert
+  $: categories = ['Alle', ...getAllCategories(lebensmittelData).sort()];
   
   // Nährwert-Filter Optionen
   const nutritionFilters = [
     { value: 'Alle', label: 'Alle' },
-    { value: 'proteinreich', label: '💪 Proteinreich (>10g)' },
-    { value: 'kalorienarm', label: '🍃 Kalorienarm (<50 kcal)' },
-    { value: 'vitaminCreich', label: '🍊 Vitamin C-reich (>30mg)' },
-    { value: 'ballaststoffreich', label: '🌾 Ballaststoffreich (>3g)' },
-    { value: 'fettarm', label: '💧 Fettarm (<3g)' },
-    { value: 'eisenreich', label: '⚡ Eisenreich (>2mg)' }
+    { value: 'proteinreich', label: '💪 Proteinreich' },
+    { value: 'kalorienarm', label: '🍃 Kalorienarm' },
+    { value: 'vitaminCreich', label: '🍊 Vitamin C' },
+    { value: 'ballaststoffreich', label: '🌾 Ballaststoffe' },
+    { value: 'fettarm', label: '💧 Fettarm' },
+    { value: 'eisenreich', label: '⚡ Eisenreich' }
   ];
   
-  // NEU: Transport-Filter Optionen
+  // Transport-Filter Optionen
   const transportFilters = [
-    { value: 'Alle', label: 'Alle Transportarten' },
-    { value: 'local', label: '🌱 Lokal (<100km)' },
-    { value: 'truck', label: '🚛 LKW (EU)' },
-    { value: 'ship', label: '🚢 Schiff (Übersee)' },
-    { value: 'plane', label: '✈️ Flugzeug' }
+    { value: 'Alle', label: 'Alle' },
+    { value: 'local', label: '🌱 Lokal' },
+    { value: 'truck', label: '🚛 LKW' },
+    { value: 'ship', label: '🚢 Schiff' },
+    { value: 'plane', label: '✈️ Flug' }
   ];
   
-  // Sortier-Optionen (erweitert um CO2)
+  // Sortier-Optionen
   const sortOptions = [
     { value: 'name', label: 'Name (A-Z)' },
-    { value: 'co2_asc', label: '🌱 CO₂ (niedrig → hoch)' },
-    { value: 'co2_desc', label: '⚠️ CO₂ (hoch → niedrig)' },
-    { value: 'kalorien_asc', label: 'Kalorien (niedrig → hoch)' },
-    { value: 'kalorien_desc', label: 'Kalorien (hoch → niedrig)' },
-    { value: 'protein_desc', label: 'Protein (hoch → niedrig)' },
-    { value: 'vitamin_c_desc', label: 'Vitamin C (hoch → niedrig)' }
+    { value: 'co2_asc', label: '🌱 CO₂ ↑' },
+    { value: 'co2_desc', label: '⚠️ CO₂ ↓' },
+    { value: 'kalorien_asc', label: 'Kcal ↑' },
+    { value: 'protein_desc', label: 'Protein ↓' }
   ];
   
   $: filteredProdukte = (() => {
     let results = inSaisonProdukte;
     
-    // Suchfilter
     if (searchQuery) {
       results = searchProducts(results, searchQuery);
     }
     
-    // Kategorie-Filter
     if (selectedCategory !== 'Alle') {
       results = results.filter(p => p.kategorie === selectedCategory);
     }
     
-    // NEU: Regional-Filter
     if (showOnlyRegional) {
       results = results.filter(p => p.regional_data && !p.regional_data.is_import);
     }
     
-    // NEU: Transport-Filter
     if (selectedTransport !== 'Alle') {
       results = results.filter(p => p.regional_data && p.regional_data.transport_method === selectedTransport);
     }
     
-    // Nährwert-Filter
     if (selectedNutritionFilter !== 'Alle') {
       results = results.filter(p => {
         switch(selectedNutritionFilter) {
@@ -92,7 +87,6 @@
       });
     }
     
-    // Sortierung (erweitert um CO2)
     results = [...results].sort((a, b) => {
       switch(sortBy) {
         case 'name':
@@ -103,14 +97,8 @@
           return (b.regional_data?.co2_per_kg || 0) - (a.regional_data?.co2_per_kg || 0);
         case 'kalorien_asc':
           return a.naehrwerte.energie_kcal - b.naehrwerte.energie_kcal;
-        case 'kalorien_desc':
-          return b.naehrwerte.energie_kcal - a.naehrwerte.energie_kcal;
         case 'protein_desc':
           return b.naehrwerte.protein_g - a.naehrwerte.protein_g;
-        case 'vitamin_c_desc':
-          const vitCa = a.vitamine.vitamin_c_mg || 0;
-          const vitCb = b.vitamine.vitamin_c_mg || 0;
-          return vitCb - vitCa;
         default:
           return 0;
       }
@@ -119,12 +107,10 @@
     return results;
   })();
   
-  // NEU: Berechne durchschnittlichen CO2-Fußabdruck
   $: avgCO2 = filteredProdukte.length > 0
     ? (filteredProdukte.reduce((sum, p) => sum + (p.regional_data?.co2_per_kg || 0), 0) / filteredProdukte.length).toFixed(2)
     : 0;
   
-  // NEU: Zähle regionale vs. Import-Produkte
   $: regionalCount = filteredProdukte.filter(p => p.regional_data && !p.regional_data.is_import).length;
   $: importCount = filteredProdukte.filter(p => p.regional_data && p.regional_data.is_import).length;
   
@@ -141,120 +127,119 @@
   <title>inSeason - Saisonkalender für regionale Lebensmittel</title>
 </svelte:head>
 
+<!-- Kompakte Hero -->
 <div class="hero">
-  <h2>Jetzt in Saison: {getMonthName(currentMonth)} 2026</h2>
-  <p>{inSaisonProdukte.length} regionale Lebensmittel verfügbar</p>
+  <h1>{getMonthName(currentMonth)} 2026</h1>
+  <p class="stats-line">
+    <span class="stat">{inSaisonProdukte.length} 🌱</span>
+    <span class="divider">|</span>
+    <span class="stat">Ø {avgCO2} kg CO₂</span>
+  </p>
 </div>
 
-<!-- Monatsnavigation -->
-<div class="month-navigation">
-  <h3>Oder wähle einen anderen Monat:</h3>
-  <div class="months-grid">
+<!-- Suche direkt unter Hero -->
+<div class="search-container">
+  <input 
+    type="search" 
+    placeholder="🔍 Suchen..."
+    bind:value={searchQuery}
+    class="search-input"
+  />
+</div>
+
+<!-- Kompakte Monatsnavigation: 2×6 Grid -->
+<div class="month-section">
+  <h2 class="section-title">Andere Monate</h2>
+  <div class="months-grid-compact">
     {#each Array(12) as _, i}
       <a 
         href="/monat/{i + 1}" 
-        class="month-card"
+        class="month-btn"
         class:current={i + 1 === currentMonth}
       >
-        {getMonthName(i + 1)}
+        {getShortMonthName(i + 1)}
       </a>
     {/each}
   </div>
 </div>
 
-<div class="controls">
-  <!-- Suche -->
-  <input 
-    type="text" 
-    placeholder="🔍 Suche nach Lebensmittel..."
-    bind:value={searchQuery}
-    class="search-input"
-  />
+<!-- Horizontale Kategorie-Filter -->
+<div class="categories-section">
+  <h2 class="section-title">Kategorien</h2>
+  <div class="categories-scroll">
+    {#each categories as cat}
+      <button 
+        class="cat-pill"
+        class:active={selectedCategory === cat}
+        on:click={() => selectedCategory = cat}
+      >
+        {cat}
+      </button>
+    {/each}
+  </div>
+</div>
+
+<!-- Erweiterte Filter (kollapsierbar auf Mobile) -->
+<details class="advanced-filters">
+  <summary class="filter-toggle">⚙️ Filter & Sortierung</summary>
   
-  <!-- Filter-Grid -->
-  <div class="filter-grid">
-    <!-- Kategorie-Filter -->
-    <fieldset class="filter-section">
-      <legend>Kategorie:</legend>
-      <div class="category-filters">
-        {#each categories as cat}
-          <button 
-            class="filter-btn"
-            class:active={selectedCategory === cat}
-            on:click={() => selectedCategory = cat}
-          >
-            {cat}
-          </button>
-        {/each}
-      </div>
-    </fieldset>
+  <div class="filter-content">
+    <!-- Regional Toggle -->
+    <label class="toggle-label">
+      <input 
+        type="checkbox" 
+        bind:checked={showOnlyRegional}
+        class="toggle-check"
+      />
+      <span>🌱 Nur Regional</span>
+    </label>
     
-    <!-- NEU: Regional Toggle -->
-    <div class="filter-section">
-      <label class="toggle-label">
-        <input 
-          type="checkbox" 
-          bind:checked={showOnlyRegional}
-          class="toggle-checkbox"
-        />
-        <span class="toggle-text">🌱 Nur regionale Produkte</span>
-      </label>
-    </div>
-    
-    <!-- NEU: Transport-Filter -->
-    <div class="filter-section">
-      <label for="transport-filter">Transport:</label>
-      <select id="transport-filter" bind:value={selectedTransport} class="select-input">
-        {#each transportFilters as filter}
-          <option value={filter.value}>{filter.label}</option>
+    <!-- Transport -->
+    <div class="filter-group">
+      <label>Transport:</label>
+      <select bind:value={selectedTransport} class="select">
+        {#each transportFilters as f}
+          <option value={f.value}>{f.label}</option>
         {/each}
       </select>
     </div>
     
-    <!-- Nährwert-Filter -->
-    <div class="filter-section">
-      <label for="nutrition-filter">Nährwert-Filter:</label>
-      <select id="nutrition-filter" bind:value={selectedNutritionFilter} class="select-input">
-        {#each nutritionFilters as filter}
-          <option value={filter.value}>{filter.label}</option>
+    <!-- Nährwerte -->
+    <div class="filter-group">
+      <label>Nährwerte:</label>
+      <select bind:value={selectedNutritionFilter} class="select">
+        {#each nutritionFilters as f}
+          <option value={f.value}>{f.label}</option>
         {/each}
       </select>
     </div>
     
     <!-- Sortierung -->
-    <div class="filter-section">
-      <label for="sort-by">Sortieren nach:</label>
-      <select id="sort-by" bind:value={sortBy} class="select-input">
-        {#each sortOptions as option}
-          <option value={option.value}>{option.label}</option>
+    <div class="filter-group">
+      <label>Sortierung:</label>
+      <select bind:value={sortBy} class="select">
+        {#each sortOptions as o}
+          <option value={o.value}>{o.label}</option>
         {/each}
       </select>
     </div>
   </div>
-  
-  <!-- NEU: Erweiterte Ergebnis-Info mit CO2-Stats -->
-  <div class="result-info">
-    <div class="result-text">
-      <strong>{filteredProdukte.length}</strong> {filteredProdukte.length === 1 ? 'Produkt' : 'Produkte'} gefunden
-      {#if filteredProdukte.length > 0}
-        <span class="stats-divider">|</span>
-        <span class="regional-stats">
-          🌱 {regionalCount} Regional · 🌍 {importCount} Import
-        </span>
-        <span class="stats-divider">|</span>
-        <span class="co2-avg">
-          Ø {avgCO2} kg CO₂
-        </span>
-      {/if}
-    </div>
-    {#if selectedNutritionFilter !== 'Alle' || selectedCategory !== 'Alle' || searchQuery || showOnlyRegional || selectedTransport !== 'Alle'}
-      <button class="reset-btn" on:click={resetFilters}>
-        ✕ Alle Filter zurücksetzen
-      </button>
-    {/if}
-  </div>
+</details>
+
+<!-- Kompakte Ergebnis-Info -->
+<div class="result-bar">
+  <span class="result-count">{filteredProdukte.length}</span>
+  {#if filteredProdukte.length > 0}
+    <span class="result-stats">
+      🌱 {regionalCount} · 🌍 {importCount}
+    </span>
+  {/if}
+  {#if selectedCategory !== 'Alle' || showOnlyRegional || searchQuery}
+    <button class="reset-btn" on:click={resetFilters}>✕</button>
+  {/if}
 </div>
 
+<!-- 2-spaltiges Produkt-Grid auf Mobile -->
 <div class="products-grid">
   {#each filteredProdukte as produkt (produkt.id)}
     <ProductCard {produkt} />
@@ -264,300 +249,358 @@
 </div>
 
 <style>
+  /* CSS Variables für Light & Dark Mode */
+  :global(:root) {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #fafafa;
+    --env-bg: rgba(76, 175, 80, 0.08);
+    --text-primary: #212121;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --accent: #4CAF50;
+    --border-color: rgba(0,0,0,0.08);
+    --shadow: rgba(0,0,0,0.1);
+    --shadow-hover: rgba(0,0,0,0.15);
+  }
+
+  :global(.dark-mode) {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2a2a2a;
+    --env-bg: rgba(76, 175, 80, 0.15);
+    --text-primary: #f5f5f5;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #888888;
+    --accent: #66BB6A;
+    --border-color: rgba(255,255,255,0.1);
+    --shadow: rgba(0,0,0,0.3);
+    --shadow-hover: rgba(0,0,0,0.4);
+  }
+
+  /* Hero kompakt */
   .hero {
     text-align: center;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    background: white;
+    padding: 1.5rem 1rem 1rem;
+    background: var(--bg-secondary);
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px var(--shadow);
   }
 
-  .hero h2 {
-    margin: 0;
-    color: #2E7D32;
-    font-size: 2rem;
+  .hero h1 {
+    margin: 0 0 0.5rem 0;
+    color: var(--accent);
+    font-size: 1.75rem;
+    font-weight: 700;
   }
 
-  .hero p {
-    margin: 0.5rem 0 0 0;
-    color: #666;
-    font-size: 1.1rem;
-  }
-
-  .month-navigation {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-
-  .month-navigation h3 {
-    margin: 0 0 1.5rem 0;
-    color: #333;
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-
-  .months-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0.5rem;
-  }
-
-  .month-card {
-    padding: 1rem 0.5rem;
-    background: #f5f5f5;
-    border-radius: 8px;
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: all 0.2s;
-    border: 2px solid transparent;
+  .stats-line {
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-width: 0;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
   }
 
-  .month-card:hover {
-    background: #4CAF50;
-    color: white;
-    transform: translateY(-2px);
+  .stat {
+    font-weight: 600;
+    color: var(--text-primary);
   }
 
-  .month-card.current {
-    background: #2E7D32;
-    color: white;
-    border-color: #1B5E20;
+  .divider {
+    color: var(--border-color);
   }
 
-  .controls {
-    margin-bottom: 2rem;
+  /* Suche */
+  .search-container {
+    margin-bottom: 1rem;
   }
 
   .search-input {
     width: 100%;
-    padding: 1rem;
+    padding: 0.875rem 1rem;
     font-size: 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     transition: border-color 0.2s;
   }
 
   .search-input:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: var(--accent);
   }
 
-  .filter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+  /* Section Titles */
+  .section-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Monate: 2×6 Grid kompakt */
+  .month-section {
     margin-bottom: 1rem;
   }
 
-  .filter-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    border: none;
+  .months-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
   }
 
-  .filter-section label {
+  .month-btn {
+    padding: 0.65rem 0.25rem;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-primary);
     font-weight: 600;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-  }
-
-  /* NEU: Toggle Checkbox Styling */
-  .toggle-label {
+    font-size: 0.8rem;
+    transition: all 0.2s;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    cursor: pointer;
-    padding: 0.75rem;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    border: 2px solid var(--border-color);
-    transition: all 0.2s ease;
+    justify-content: center;
   }
 
-  .toggle-label:hover {
-    border-color: #4CAF50;
-  }
-
-  .toggle-checkbox {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: #4CAF50;
-  }
-
-  .toggle-text {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--text-primary);
-  }
-
-  .category-filters {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    padding: 0;
-    background: transparent;
-  }
-
-  .filter-btn {
-    padding: 0.65rem 1.25rem;
-    border: 2px solid var(--border-color);
-    background: var(--bg-secondary);
-    border-radius: 24px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    font-weight: 500;
-    white-space: nowrap;
-    color: var(--text-primary);
-  }
-
-  .filter-btn:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px var(--shadow);
-  }
-
-  .filter-btn.active {
+  .month-btn:hover {
     background: var(--accent);
     color: white;
     border-color: var(--accent);
-    box-shadow: 0 4px 12px var(--shadow-hover);
+    transform: translateY(-2px);
   }
 
-  .select-input {
-    padding: 0.75rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    background: white;
+  .month-btn.current {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px var(--shadow-hover);
+  }
+
+  /* Kategorien: Horizontal Scroll */
+  .categories-section {
+    margin-bottom: 1rem;
+  }
+
+  .categories-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .categories-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .categories-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 2px;
+  }
+
+  .cat-pill {
+    padding: 0.5rem 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: all 0.2s;
+    flex-shrink: 0;
   }
 
-  .select-input:hover,
-  .select-input:focus {
-    outline: none;
-    border-color: #4CAF50;
+  .cat-pill:hover {
+    border-color: var(--accent);
   }
 
-  /* NEU: Erweiterte Result Info */
-  .result-info {
+  .cat-pill.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  /* Erweiterte Filter (kollapsierbar) */
+  .advanced-filters {
+    margin-bottom: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+  }
+
+  .filter-toggle {
+    padding: 0.875rem 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .filter-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .filter-content {
+    padding: 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .toggle-label {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--bg-tertiary);
     border-radius: 8px;
-    border-left: 4px solid #4CAF50;
+    cursor: pointer;
   }
 
-  .result-text {
+  .toggle-check {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--accent);
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .filter-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .select {
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  /* Ergebnis-Bar kompakt */
+  .result-bar {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    flex-wrap: wrap;
-    font-size: 0.95rem;
-    color: #333;
+    padding: 0.75rem 1rem;
+    background: var(--env-bg);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--accent);
   }
 
-  .result-text strong {
-    font-size: 1.1rem;
-    color: #2E7D32;
+  .result-count {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
   }
 
-  .stats-divider {
-    color: #ccc;
-    font-weight: 300;
-  }
-
-  .regional-stats {
-    font-weight: 500;
-  }
-
-  .co2-avg {
-    font-weight: 600;
-    color: #4CAF50;
+  .result-stats {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    flex: 1;
   }
 
   .reset-btn {
-    padding: 0.5rem 1rem;
-    background: #ff5252;
+    padding: 0.5rem 0.75rem;
+    background: #f44336;
     color: white;
     border: none;
     border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
     font-weight: 600;
+    cursor: pointer;
     transition: all 0.2s;
-    white-space: nowrap;
   }
 
   .reset-btn:hover {
-    background: #ff1744;
-    transform: scale(1.05);
+    background: #d32f2f;
   }
 
+  /* Produkt-Grid: 2 Spalten auf Mobile */
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
   }
 
   .no-results {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 3rem;
-    color: #999;
-    font-size: 1.1rem;
+    padding: 2rem;
+    color: var(--text-tertiary);
   }
 
-  @media (max-width: 768px) {
-    .hero h2 {
-      font-size: 1.5rem;
-    }
-    
-    .months-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .month-card {
-      padding: 0.75rem 0.25rem;
-      font-size: 0.85rem;
+  /* Desktop: Mehr Spalten */
+  @media (min-width: 769px) {
+    .hero h1 {
+      font-size: 2.5rem;
     }
 
-    .filter-grid {
-      grid-template-columns: 1fr;
+    .months-grid-compact {
+      grid-template-columns: repeat(12, 1fr);
     }
-    
-    .result-info {
-      flex-direction: column;
-      align-items: flex-start;
+
+    .month-btn {
+      font-size: 0.9rem;
+      padding: 0.75rem 0.5rem;
     }
-    
-    .result-text {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-    
+
     .products-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .filter-content {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .months-grid-compact {
+      gap: 0.35rem;
+    }
+
+    .month-btn {
+      font-size: 0.7rem;
+      padding: 0.5rem 0.15rem;
+    }
+
+    .products-grid {
+      gap: 0.5rem;
     }
   }
 </style>
