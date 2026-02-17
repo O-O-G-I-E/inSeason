@@ -31,8 +31,11 @@ export function calculateRegionalScore(produkt, currentMonth) {
   score -= (transportPenalty[regional_data.transport_method] || 0) * 0.4;
   
   // 2. Distanz (30% Gewichtung)
-  const distancePenalty = Math.min(regional_data.distance_km / 20, 100);
-  score -= distancePenalty * 0.3;
+  if (regional_data.distance_km > 100) {
+    const distancePenalty = Math.min((regional_data.distance_km - 100) / 20, 100);
+    score -= distancePenalty * 0.3;
+  }
+
   
   // 3. Saisonalität (30% Gewichtung)
   const inSeason = saison.monate.includes(currentMonth);

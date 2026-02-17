@@ -14,15 +14,15 @@
   
   function getCategoryColor(kat) {
     const colors = {
-      'Gemüse': '#4CAF50',
-      'Obst': '#FF9800',
-      'Nüsse': '#795548',
-      'Pilze': '#A1887F',
-      'Getreide': '#FFC107',
-      'Wildkräuter': '#8BC34A',
-      'Kräuter': '#66BB6A'
+      'Gemüse': '#2E7D32',
+      'Obst': '#F57C00',
+      'Nüsse': '#5D4037',
+      'Pilze': '#6D4C41',
+      'Getreide': '#9E7B3A',
+      'Wildkräuter': '#558B2F',
+      'Kräuter': '#388E3C'
     };
-    return colors[kat] || '#666';
+    return colors[kat] || '#424242';
   }
   
   // Smart Display: Ganzjährig = "Ganzjährig", sonst Haupternte

@@ -196,8 +196,8 @@
     
     <!-- Transport -->
     <div class="filter-group">
-      <label>Transport:</label>
-      <select bind:value={selectedTransport} class="select">
+      <label for="transport-select">Transport:</label>
+      <select id="transport-select" bind:value={selectedTransport} class="select">
         {#each transportFilters as f}
           <option value={f.value}>{f.label}</option>
         {/each}
@@ -206,8 +206,8 @@
     
     <!-- Nährwerte -->
     <div class="filter-group">
-      <label>Nährwerte:</label>
-      <select bind:value={selectedNutritionFilter} class="select">
+      <label for="nutrition-select">Nährwerte:</label>
+      <select id="nutrition-select" bind:value={selectedNutritionFilter} class="select">
         {#each nutritionFilters as f}
           <option value={f.value}>{f.label}</option>
         {/each}
@@ -216,8 +216,8 @@
     
     <!-- Sortierung -->
     <div class="filter-group">
-      <label>Sortierung:</label>
-      <select bind:value={sortBy} class="select">
+      <label for="sort-select">Sortierung:</label>
+      <select id="sort-select" bind:value={sortBy} class="select">
         {#each sortOptions as o}
           <option value={o.value}>{o.label}</option>
         {/each}
@@ -249,6 +249,15 @@
 </div>
 
 <style>
+    /* Global Box-Sizing Fix */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Verhindere Overflow */
+  :global(body) {
+    overflow-x: hidden;
+  }
   /* CSS Variables für Light & Dark Mode */
   :global(:root) {
     --bg-primary: #f5f5f5;
@@ -549,6 +558,8 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
     margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .no-results {
