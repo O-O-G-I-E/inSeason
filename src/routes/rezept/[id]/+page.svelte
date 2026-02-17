@@ -14,10 +14,57 @@
 	let naehrwerteProPortion = null;
 
 	const schwierigkeitEmoji = {
+		einfach: '👍 Einfach',
 		leicht: '👍 Leicht',
 		mittel: '👨‍🍳 Mittel',
 		schwer: '⭐ Anspruchsvoll'
 	};
+
+	const seasonTagByMonth = {
+		winter: [12, 1, 2],
+		frühling: [3, 4, 5],
+		sommer: [6, 7, 8],
+		herbst: [9, 10, 11]
+	};
+
+	const produktById = new Map(lebensmittel.map((p) => [p.id, p]));
+	const produktByName = new Map(
+		lebensmittel.map((p) => [normalizeIngredientName(p.name), p])
+	);
+
+	function normalizeIngredientName(name) {
+		return String(name || '')
+			.toLowerCase()
+			.replace(/\(.*?\)/g, '')
+			.replace(/\s+/g, ' ')
+			.trim();
+	}
+
+	function ingredientNameCandidates(name) {
+		const base = normalizeIngredientName(name);
+		const candidates = new Set([base]);
+		if (base.endsWith('en')) {
+			candidates.add(base.slice(0, -1));
+			candidates.add(base.slice(0, -2));
+		}
+		if (base.endsWith('n')) {
+			candidates.add(base.slice(0, -1));
+		}
+		return [...candidates].filter(Boolean);
+	}
+
+	function getProduktForZutat(zutat) {
+		if (!zutat) return null;
+		if (zutat.produktId && produktById.has(zutat.produktId)) {
+			return produktById.get(zutat.produktId);
+		}
+		for (const candidate of ingredientNameCandidates(zutat.name)) {
+			if (produktByName.has(candidate)) {
+				return produktByName.get(candidate);
+			}
+		}
+		return null;
+	}
 
 	function getCategoryColor(kategorie) {
 		const colors = {
@@ -36,22 +83,49 @@
 		return '#f44336';
 	}
 
+	function getRecipeSeasonDisplay(rezeptObj) {
+		if (rezeptObj?.saison?.monate) {
+			return getSeasonDisplay(rezeptObj.saison.monate);
+		}
+
+		const monate = new Set();
+		(rezeptObj?.tags || []).forEach((tag) => {
+			(seasonTagByMonth[tag] || []).forEach((m) => monate.add(m));
+		});
+
+		if (monate.size === 0 && rezeptObj?.tags?.includes('ganzjährig')) {
+			return 'Ganzjährig verfügbar';
+		}
+
+		if (monate.size === 0) {
+			(rezeptObj?.basis_zutaten || []).forEach((zutat) => {
+				const produkt = getProduktForZutat(zutat);
+				(produkt?.saison?.monate || []).forEach((m) => monate.add(m));
+			});
+		}
+
+		if (monate.size === 0) return 'Ganzjährig verfügbar';
+		return getSeasonDisplay([...monate].sort((a, b) => a - b));
+	}
+
+	function getDifficultyDisplay(level) {
+		return schwierigkeitEmoji[level] || '📌 Unbekannt';
+	}
+
 	// Helper: Regional Score berechnen
-	function calculateRegionalScore(zutaten, alleProdukte) {
+	function calculateRegionalScore(zutaten) {
 		if (!zutaten || zutaten.length === 0) return 0;
 
 		let regionalWeight = 0;
 		let totalWeight = 0;
 
 		zutaten.forEach((zutat) => {
-			if (zutat.produktId) {
-				const produkt = alleProdukte.find((p) => p.id === zutat.produktId);
-				if (produkt && produkt.regional_data) {
-					const weight = parseAmountToGrams(zutat.menge) || 100;
-					totalWeight += weight;
-					if (!produkt.regional_data.is_import) {
-						regionalWeight += weight;
-					}
+			const produkt = getProduktForZutat(zutat);
+			if (produkt && produkt.regional_data) {
+				const weight = parseAmountToGrams(zutat.menge) || 100;
+				totalWeight += weight;
+				if (!produkt.regional_data.is_import) {
+					regionalWeight += weight;
 				}
 			}
 		});
@@ -61,18 +135,17 @@
 	}
 
 	// Helper: CO2 berechnen
-	function calculateCO2Total(zutaten, alleProdukte, portionen) {
+	function calculateCO2Total(zutaten, portionen) {
 		let total = 0;
 
 		zutaten.forEach((zutat) => {
-			if (zutat.produktId && zutat.menge) {
-				const produkt = alleProdukte.find((p) => p.id === zutat.produktId);
-				if (produkt && produkt.regional_data && produkt.regional_data.co2_per_kg) {
-					const menge_g = parseAmountToGrams(zutat.menge);
-					if (!menge_g) return;
-					const menge_kg = menge_g / 1000;
-					total += produkt.regional_data.co2_per_kg * menge_kg;
-				}
+			if (!zutat.menge) return;
+			const produkt = getProduktForZutat(zutat);
+			if (produkt && produkt.regional_data && produkt.regional_data.co2_per_kg) {
+				const menge_g = parseAmountToGrams(zutat.menge);
+				if (!menge_g) return;
+				const menge_kg = menge_g / 1000;
+				total += produkt.regional_data.co2_per_kg * menge_kg;
 			}
 		});
 
@@ -92,9 +165,9 @@
 		};
 
 		activeIngredients.forEach((zutat) => {
-			if (!zutat.produktId || !zutat.menge) return;
+			if (!zutat.menge) return;
 
-			const produkt = lebensmittel.find((p) => p.id === zutat.produktId);
+			const produkt = getProduktForZutat(zutat);
 			if (!produkt || !produkt.naehrwerte) return;
 
 			const menge_g = parseAmountToGrams(zutat.menge);
@@ -152,16 +225,24 @@
 
 	$: if (rezept) {
 		// Kombiniere basis_zutaten mit vegan variante
-		activeIngredients = [...rezept.basis_zutaten, ...(rezept.varianten_zutaten?.vegan || [])];
+		activeIngredients = [...rezept.basis_zutaten, ...(rezept.varianten_zutaten?.vegan || [])].map(
+			(zutat) => {
+				const produkt = getProduktForZutat(zutat);
+				return {
+					...zutat,
+					resolvedProduktId: produkt?.id || null
+				};
+			}
+		);
 
 		// Kombiniere basis_zubereitung mit vegan variante
 		activeInstructions = [
-			...(rezept.basis_zubereitung || []),
+			...(rezept.basis_zubereitung || rezept.zubereitung || []),
 			...(rezept.varianten_zubereitung?.vegan || [])
 		];
 
-		totalCO2 = calculateCO2Total(activeIngredients, lebensmittel, rezept.portionen);
-		regionalScore = calculateRegionalScore(activeIngredients, lebensmittel);
+		totalCO2 = calculateCO2Total(activeIngredients, rezept.portionen);
+		regionalScore = calculateRegionalScore(activeIngredients);
 		naehrwerteProPortion = berechneNaehrwerte();
 	}
 
@@ -200,20 +281,20 @@
 							<div class="info-grid">
 								<div class="info-item">
 									<span class="icon">⏱️</span>
-									<span class="value">{rezept.zeit} Min</span>
+									<span class="value">{rezept.zeit_minuten ?? rezept.zeit} Min</span>
 								</div>
 								<div class="info-item">
 									<span class="icon">👥</span>
 									<span class="value">{rezept.portionen}</span>
 								</div>
 								<div class="info-item">
-									<span class="icon">{schwierigkeitEmoji[rezept.schwierigkeit].split(' ')[0]}</span>
-									<span class="value">{schwierigkeitEmoji[rezept.schwierigkeit].split(' ')[1]}</span
+									<span class="icon">{getDifficultyDisplay(rezept.schwierigkeit).split(' ')[0]}</span>
+									<span class="value">{getDifficultyDisplay(rezept.schwierigkeit).split(' ')[1]}</span
 									>
 								</div>
 								<div class="info-item">
 									<span class="icon">📅</span>
-									<span class="value">{getSeasonDisplay(rezept.saison.monate)}</span>
+									<span class="value">{getRecipeSeasonDisplay(rezept)}</span>
 								</div>
 							</div>
 						</div>
@@ -273,18 +354,22 @@
 				<ul class="ingredient-list">
 					{#each activeIngredients as zutat, index (`${zutat.name}-${zutat.menge}-${index}`)}
 						<li class="ingredient-item">
-							{#if zutat.produktId}
+							{#if zutat.resolvedProduktId}
 								<a
-									href={resolve('/produkt/[id]', { id: `${zutat.produktId}` })}
+									href={resolve('/produkt/[id]', { id: `${zutat.resolvedProduktId}` })}
 									class="ingredient-link"
 								>
-									<span class="ingredient-amount">{zutat.menge}{zutat.einheit}</span>
+									<span class="ingredient-amount"
+										>{zutat.menge}{zutat.einheit ? ` ${zutat.einheit}` : ''}</span
+									>
 									<span class="ingredient-name">{zutat.name}</span>
 									<span class="link-icon">→</span>
 								</a>
 							{:else}
 								<div class="ingredient-content">
-									<span class="ingredient-amount">{zutat.menge}{zutat.einheit}</span>
+									<span class="ingredient-amount"
+										>{zutat.menge}{zutat.einheit ? ` ${zutat.einheit}` : ''}</span
+									>
 									<span class="ingredient-name">{zutat.name}</span>
 								</div>
 							{/if}

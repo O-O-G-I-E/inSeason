@@ -8041,5 +8041,655 @@
 			},
 			"data_source": "CONCITO Big Climate Database v1.2"
 		}
+	},
+	{
+		"id": 190,
+		"name": "Gemüsebrühe",
+		"kategorie": "Basis",
+		"unterkategorie": "Würzmittel",
+		"beschreibung": "Würzende Basis für Suppen und Eintöpfe",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 40,
+			"protein": 1.5,
+			"fett": 0.5,
+			"kohlenhydrate": 8.0,
+			"ballaststoffe": 0.5
+		},
+		"co2_data": {
+			"co2_per_kg": 0.8,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 191,
+		"name": "Zucker",
+		"kategorie": "Basis",
+		"unterkategorie": "Süßungsmittel",
+		"beschreibung": "Weißer Haushaltszucker aus Zuckerrüben",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 387,
+			"protein": 0.0,
+			"fett": 0.0,
+			"kohlenhydrate": 99.8,
+			"ballaststoffe": 0.0
+		},
+		"co2_data": {
+			"co2_per_kg": 0.6,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 192,
+		"name": "Vanilleschote",
+		"kategorie": "Gewürze",
+		"unterkategorie": "Süßgewürze",
+		"beschreibung": "Aromatische Vanilleschote",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 288,
+			"protein": 0.1,
+			"fett": 0.1,
+			"kohlenhydrate": 12.6,
+			"ballaststoffe": 0.0
+		},
+		"co2_data": {
+			"co2_per_kg": 14.2,
+			"transport_impact": "sehr hoch",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 193,
+		"name": "Zimt",
+		"kategorie": "Gewürze",
+		"unterkategorie": "Süßgewürze",
+		"beschreibung": "Gemahlener Zimt",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 247,
+			"protein": 4.0,
+			"fett": 1.2,
+			"kohlenhydrate": 55.0,
+			"ballaststoffe": 53.1
+		},
+		"co2_data": {
+			"co2_per_kg": 8.5,
+			"transport_impact": "hoch",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 194,
+		"name": "Muskatnuss",
+		"kategorie": "Gewürze",
+		"unterkategorie": "Würzgewürze",
+		"beschreibung": "Geriebene Muskatnuss",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 525,
+			"protein": 5.8,
+			"fett": 36.3,
+			"kohlenhydrate": 49.3,
+			"ballaststoffe": 20.8
+		},
+		"co2_data": {
+			"co2_per_kg": 9.2,
+			"transport_impact": "hoch",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 195,
+		"name": "Salz",
+		"kategorie": "Basis",
+		"unterkategorie": "Würzmittel",
+		"beschreibung": "Speisesalz zum Würzen",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 0,
+			"protein": 0.0,
+			"fett": 0.0,
+			"kohlenhydrate": 0.0,
+			"ballaststoffe": 0.0
+		},
+		"co2_data": {
+			"co2_per_kg": 0.3,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 196,
+		"name": "Pfeffer",
+		"kategorie": "Gewürze",
+		"unterkategorie": "Würzgewürze",
+		"beschreibung": "Schwarzer Pfeffer gemahlen",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 251,
+			"protein": 10.4,
+			"fett": 3.3,
+			"kohlenhydrate": 38.3,
+			"ballaststoffe": 25.3
+		},
+		"co2_data": {
+			"co2_per_kg": 7.8,
+			"transport_impact": "hoch",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 197,
+		"name": "Balsamico",
+		"kategorie": "Basis",
+		"unterkategorie": "Essig",
+		"beschreibung": "Balsamico-Essig",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 88,
+			"protein": 0.5,
+			"fett": 0.0,
+			"kohlenhydrate": 17.0,
+			"ballaststoffe": 0.0
+		},
+		"co2_data": {
+			"co2_per_kg": 2.8,
+			"transport_impact": "mittel",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 198,
+		"name": "Weißwein",
+		"kategorie": "Basis",
+		"unterkategorie": "Alkohol",
+		"beschreibung": "Trockener Weißwein zum Kochen",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 82,
+			"protein": 0.1,
+			"fett": 0.0,
+			"kohlenhydrate": 2.6,
+			"ballaststoffe": 0.0
+		},
+		"co2_data": {
+			"co2_per_kg": 1.5,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 199,
+		"name": "Semmelbrösel",
+		"kategorie": "Basis",
+		"unterkategorie": "Paniermehl",
+		"beschreibung": "Getrocknete Brotkrumen zum Panieren",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 395,
+			"protein": 13.0,
+			"fett": 5.5,
+			"kohlenhydrate": 72.0,
+			"ballaststoffe": 4.5
+		},
+		"co2_data": {
+			"co2_per_kg": 0.9,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 200,
+		"name": "Hafersahne",
+		"kategorie": "Vegan",
+		"unterkategorie": "Milchalternativen",
+		"beschreibung": "Cremige Sahne-Alternative auf Haferbasis",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 140,
+			"protein": 1.0,
+			"fett": 10.0,
+			"kohlenhydrate": 10.0,
+			"ballaststoffe": 1.0
+		},
+		"co2_data": {
+			"co2_per_kg": 0.9,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 201,
+		"name": "Hafermilch",
+		"kategorie": "Vegan",
+		"unterkategorie": "Milchalternativen",
+		"beschreibung": "Pflanzliche Milch-Alternative aus Hafer",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 42,
+			"protein": 1.0,
+			"fett": 1.5,
+			"kohlenhydrate": 6.5,
+			"ballaststoffe": 0.8
+		},
+		"co2_data": {
+			"co2_per_kg": 0.9,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 202,
+		"name": "Haferjoghurt",
+		"kategorie": "Vegan",
+		"unterkategorie": "Joghurtalternativen",
+		"beschreibung": "Cremiger Joghurt auf Haferbasis",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 54,
+			"protein": 1.2,
+			"fett": 2.0,
+			"kohlenhydrate": 7.5,
+			"ballaststoffe": 1.0
+		},
+		"co2_data": {
+			"co2_per_kg": 1.0,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 203,
+		"name": "Sojajoghurt",
+		"kategorie": "Vegan",
+		"unterkategorie": "Joghurtalternativen",
+		"beschreibung": "Proteinreicher Joghurt auf Sojabasis",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 47,
+			"protein": 3.5,
+			"fett": 2.0,
+			"kohlenhydrate": 2.5,
+			"ballaststoffe": 1.0
+		},
+		"co2_data": {
+			"co2_per_kg": 1.2,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 204,
+		"name": "Vegane Butter",
+		"kategorie": "Vegan",
+		"unterkategorie": "Streichfett",
+		"beschreibung": "Pflanzliche Butter-Alternative",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 720,
+			"protein": 0.5,
+			"fett": 80.0,
+			"kohlenhydrate": 0.5,
+			"ballaststoffe": 0.0
+		},
+		"co2_data": {
+			"co2_per_kg": 3.8,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 205,
+		"name": "Veganer Käse",
+		"kategorie": "Vegan",
+		"unterkategorie": "Käsealternativen",
+		"beschreibung": "Schmelzender veganer Käse",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 280,
+			"protein": 1.5,
+			"fett": 23.0,
+			"kohlenhydrate": 15.0,
+			"ballaststoffe": 2.0
+		},
+		"co2_data": {
+			"co2_per_kg": 3.5,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 206,
+		"name": "Veganer Frischkäse",
+		"kategorie": "Vegan",
+		"unterkategorie": "Käsealternativen",
+		"beschreibung": "Cremiger Frischkäse auf Pflanzenbasis",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 220,
+			"protein": 2.0,
+			"fett": 18.0,
+			"kohlenhydrate": 12.0,
+			"ballaststoffe": 1.5
+		},
+		"co2_data": {
+			"co2_per_kg": 3.2,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 207,
+		"name": "Räuchertofu",
+		"kategorie": "Vegan",
+		"unterkategorie": "Tofu",
+		"beschreibung": "Geräucherter Tofu mit herzhaftem Aroma",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 168,
+			"protein": 17.0,
+			"fett": 10.0,
+			"kohlenhydrate": 1.5,
+			"ballaststoffe": 1.0
+		},
+		"co2_data": {
+			"co2_per_kg": 2.0,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "concito"
+		}
+	},
+	{
+		"id": 208,
+		"name": "Aquafaba",
+		"kategorie": "Vegan",
+		"unterkategorie": "Bindemittel",
+		"beschreibung": "Kichererbsenwasser als Ei-Ersatz",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 8,
+			"protein": 0.3,
+			"fett": 0.1,
+			"kohlenhydrate": 1.5,
+			"ballaststoffe": 0.0
+		},
+		"co2_data": {
+			"co2_per_kg": 0.5,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 209,
+		"name": "Kokosmilch",
+		"kategorie": "Vegan",
+		"unterkategorie": "Milchalternativen",
+		"beschreibung": "Cremige Kokosmilch für exotische Gerichte",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 230,
+			"protein": 2.3,
+			"fett": 24.0,
+			"kohlenhydrate": 6.0,
+			"ballaststoffe": 2.2
+		},
+		"co2_data": {
+			"co2_per_kg": 2.5,
+			"transport_impact": "hoch",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 210,
+		"name": "Kürbiskerne geröstet",
+		"kategorie": "Nüsse",
+		"unterkategorie": "Saaten",
+		"beschreibung": "Geröstete Kürbiskerne als Topping",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": [9, 10]
+		},
+		"naehrwerte": {
+			"kcal": 559,
+			"protein": 30.2,
+			"fett": 49.0,
+			"kohlenhydrate": 10.7,
+			"ballaststoffe": 8.8
+		},
+		"co2_data": {
+			"co2_per_kg": 0.8,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "lagerbar",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 211,
+		"name": "Mandelblättchen",
+		"kategorie": "Nüsse",
+		"unterkategorie": "Mandeln",
+		"beschreibung": "Gehobelte Mandeln zum Backen",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 579,
+			"protein": 21.2,
+			"fett": 49.9,
+			"kohlenhydrate": 21.6,
+			"ballaststoffe": 12.5
+		},
+		"co2_data": {
+			"co2_per_kg": 5.5,
+			"transport_impact": "mittel",
+			"seasonal_impact": "ganzjährig",
+			"source": "concito"
+		}
+	},
+	{
+		"id": 212,
+		"name": "Pinienkerne",
+		"kategorie": "Nüsse",
+		"unterkategorie": "Kerne",
+		"beschreibung": "Edle Pinienkerne für Pesto und Salate",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 673,
+			"protein": 13.7,
+			"fett": 68.4,
+			"kohlenhydrate": 13.1,
+			"ballaststoffe": 3.7
+		},
+		"co2_data": {
+			"co2_per_kg": 7.2,
+			"transport_impact": "hoch",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 213,
+		"name": "Hefeflocken",
+		"kategorie": "Vegan",
+		"unterkategorie": "Würzmittel",
+		"beschreibung": "Nährhefe mit käsigem Geschmack",
+		"herkunft": "Deutschland",
+		"is_import": false,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 325,
+			"protein": 50.0,
+			"fett": 5.0,
+			"kohlenhydrate": 20.0,
+			"ballaststoffe": 20.0
+		},
+		"co2_data": {
+			"co2_per_kg": 1.5,
+			"transport_impact": "niedrig",
+			"seasonal_impact": "ganzjährig",
+			"source": "estimate"
+		}
+	},
+	{
+		"id": 214,
+		"name": "Zitronensaft",
+		"kategorie": "Obst",
+		"unterkategorie": "Saft",
+		"beschreibung": "Frischer Saft aus Zitronen",
+		"herkunft": "Import",
+		"is_import": true,
+		"saison": {
+			"monate": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"haupterntezeit_monate": []
+		},
+		"naehrwerte": {
+			"kcal": 25,
+			"protein": 0.4,
+			"fett": 0.3,
+			"kohlenhydrate": 2.5,
+			"ballaststoffe": 0.3
+		},
+		"co2_data": {
+			"co2_per_kg": 0.6,
+			"transport_impact": "mittel",
+			"seasonal_impact": "ganzjährig",
+			"source": "concito"
+		}
 	}
 ]

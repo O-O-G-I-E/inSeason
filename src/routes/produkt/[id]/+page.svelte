@@ -7,10 +7,19 @@
 
 	$: id = parseInt($page.params.id);
 	$: produkt = lebensmittelData.find((p) => p.id === id);
+	$: saisonMonate = produkt?.saison?.monate || [];
+	$: naehrwerte = produkt?.naehrwerte || {};
+	$: mineralstoffe = produkt?.mineralstoffe || {};
+	$: vitamine = produkt?.vitamine || {};
 
 	const currentMonth = getCurrentMonth();
 	$: regionalScore = produkt?.regional_data ? calculateRegionalScore(produkt, currentMonth) : null;
 	$: regionalScoreDisplay = regionalScore === null ? null : Math.round(regionalScore / 10);
+
+	function displayValue(value, unit = '') {
+		if (value === undefined || value === null || value === '') return '-';
+		return `${value}${unit}`;
+	}
 
 	function getCategoryColor(kat) {
 		const colors = {
@@ -54,15 +63,17 @@
 							<div class="info-grid">
 								<div class="info-item">
 									<span class="icon">📅</span>
-									<span class="value">{getSeasonDisplay(produkt.saison.monate)}</span>
+									<span class="value"
+										>{saisonMonate.length ? getSeasonDisplay(saisonMonate) : 'Keine Saisondaten'}</span
+									>
 								</div>
 								<div class="info-item">
 									<span class="icon">🌱</span>
-									<span class="value">{produkt.saison.haupternte}</span>
+									<span class="value">{produkt.saison?.haupternte || '-'}</span>
 								</div>
 								<div class="info-item">
 									<span class="icon">🏷️</span>
-									<span class="value">{produkt.saison.typ}</span>
+									<span class="value">{produkt.saison?.typ || '-'}</span>
 								</div>
 							</div>
 						</div>
@@ -75,23 +86,23 @@
 									<div class="nutrition-grid">
 										<div class="nutrition-item">
 											<span class="label">Kalorien</span>
-											<span class="value">{produkt.naehrwerte.energie_kcal} kcal</span>
+											<span class="value">{displayValue(naehrwerte.energie_kcal, ' kcal')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Protein</span>
-											<span class="value">{produkt.naehrwerte.protein_g}g</span>
+											<span class="value">{displayValue(naehrwerte.protein_g, 'g')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Fett</span>
-											<span class="value">{produkt.naehrwerte.fett_g}g</span>
+											<span class="value">{displayValue(naehrwerte.fett_g, 'g')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Kohlenhydrate</span>
-											<span class="value">{produkt.naehrwerte.kohlenhydrate_g}g</span>
+											<span class="value">{displayValue(naehrwerte.kohlenhydrate_g, 'g')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Ballaststoffe</span>
-											<span class="value">{produkt.naehrwerte.ballaststoffe_g}g</span>
+											<span class="value">{displayValue(naehrwerte.ballaststoffe_g, 'g')}</span>
 										</div>
 									</div>
 								</div>
@@ -100,73 +111,73 @@
 									<div class="nutrition-grid">
 										<div class="nutrition-item">
 											<span class="label">Kalium</span>
-											<span class="value">{produkt.mineralstoffe.kalium_mg} mg</span>
+											<span class="value">{displayValue(mineralstoffe.kalium_mg, ' mg')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Magnesium</span>
-											<span class="value">{produkt.mineralstoffe.magnesium_mg} mg</span>
+											<span class="value">{displayValue(mineralstoffe.magnesium_mg, ' mg')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Calcium</span>
-											<span class="value">{produkt.mineralstoffe.calcium_mg} mg</span>
+											<span class="value">{displayValue(mineralstoffe.calcium_mg, ' mg')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Phosphor</span>
-											<span class="value">{produkt.mineralstoffe.phosphor_mg} mg</span>
+											<span class="value">{displayValue(mineralstoffe.phosphor_mg, ' mg')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Eisen</span>
-											<span class="value">{produkt.mineralstoffe.eisen_mg} mg</span>
+											<span class="value">{displayValue(mineralstoffe.eisen_mg, ' mg')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Zink</span>
-											<span class="value">{produkt.mineralstoffe.zink_mg} mg</span>
+											<span class="value">{displayValue(mineralstoffe.zink_mg, ' mg')}</span>
 										</div>
 									</div>
 								</div>
 								<div class="nutrient-column">
 									<h4 class="nutrient-heading">Vitamine</h4>
 									<div class="nutrition-grid">
-										{#if produkt.vitamine.vitamin_c_mg}
+										{#if vitamine.vitamin_c_mg}
 											<div class="nutrition-item">
 												<span class="label">Vitamin C</span>
-												<span class="value">{produkt.vitamine.vitamin_c_mg} mg</span>
+												<span class="value">{vitamine.vitamin_c_mg} mg</span>
 											</div>
 										{/if}
-										{#if produkt.vitamine.vitamin_a_ug}
+										{#if vitamine.vitamin_a_ug}
 											<div class="nutrition-item">
 												<span class="label">Vitamin A</span>
-												<span class="value">{produkt.vitamine.vitamin_a_ug} µg</span>
+												<span class="value">{vitamine.vitamin_a_ug} µg</span>
 											</div>
 										{/if}
-										{#if produkt.vitamine.vitamin_e_mg}
+										{#if vitamine.vitamin_e_mg}
 											<div class="nutrition-item">
 												<span class="label">Vitamin E</span>
-												<span class="value">{produkt.vitamine.vitamin_e_mg} mg</span>
+												<span class="value">{vitamine.vitamin_e_mg} mg</span>
 											</div>
 										{/if}
-										{#if produkt.vitamine.vitamin_k_ug}
+										{#if vitamine.vitamin_k_ug}
 											<div class="nutrition-item">
 												<span class="label">Vitamin K</span>
-												<span class="value">{produkt.vitamine.vitamin_k_ug} µg</span>
+												<span class="value">{vitamine.vitamin_k_ug} µg</span>
 											</div>
 										{/if}
 										<div class="nutrition-item">
 											<span class="label">Vitamin B1</span>
-											<span class="value">{produkt.vitamine.vitamin_b1_mg} mg</span>
+											<span class="value">{displayValue(vitamine.vitamin_b1_mg, ' mg')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Vitamin B2</span>
-											<span class="value">{produkt.vitamine.vitamin_b2_mg} mg</span>
+											<span class="value">{displayValue(vitamine.vitamin_b2_mg, ' mg')}</span>
 										</div>
 										<div class="nutrition-item">
 											<span class="label">Vitamin B6</span>
-											<span class="value">{produkt.vitamine.vitamin_b6_mg} mg</span>
+											<span class="value">{displayValue(vitamine.vitamin_b6_mg, ' mg')}</span>
 										</div>
-										{#if produkt.vitamine.folsaeure_ug}
+										{#if vitamine.folsaeure_ug}
 											<div class="nutrition-item">
 												<span class="label">Folsaeure</span>
-												<span class="value">{produkt.vitamine.folsaeure_ug} µg</span>
+												<span class="value">{vitamine.folsaeure_ug} µg</span>
 											</div>
 										{/if}
 									</div>

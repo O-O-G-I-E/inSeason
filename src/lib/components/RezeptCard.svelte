@@ -5,17 +5,29 @@
 	export let rezept;
 
 	const schwierigkeitEmoji = {
+		einfach: '👍',
 		leicht: '👍',
 		mittel: '👨‍🍳',
 		schwer: '⭐'
 	};
+	const seasonLabels = ['winter', 'frühling', 'sommer', 'herbst', 'ganzjährig'];
+
+	function getRezeptSeasonText(rezept) {
+		if (rezept?.saison?.monate) {
+			return getMonthRangeDisplay(rezept.saison.monate);
+		}
+
+		const tags = (rezept?.tags || []).filter((tag) => seasonLabels.includes(tag));
+		if (tags.length === 0) return 'Ganzjährig verfügbar';
+		return tags.map((t) => t.charAt(0).toUpperCase() + t.slice(1)).join(', ');
+	}
 
 	function getCategoryColor(kategorie) {
 		const colors = {
 			Hauptgericht: '#4CAF50',
 			Suppe: '#FF9800',
 			Salat: '#8BC34A',
-			Aufstrich: '#9C27B0',
+			Beilage: '#9C27B0',
 			Dessert: '#E91E63'
 		};
 		return colors[kategorie] || '#757575';
@@ -31,12 +43,12 @@
 	</div>
 
 	<div class="card-info">
-		<span>⏱️ {rezept.zeit} Min</span>
-		<span>{schwierigkeitEmoji[rezept.schwierigkeit]}</span>
+		<span>⏱️ {rezept.zeit_minuten ?? rezept.zeit ?? '-'} Min</span>
+		<span>{schwierigkeitEmoji[rezept.schwierigkeit] ?? '📌'}</span>
 		<span>👥 {rezept.portionen}</span>
 	</div>
 
-	<p class="season">📅 {getMonthRangeDisplay(rezept.saison.monate)}</p>
+	<p class="season">📅 {getRezeptSeasonText(rezept)}</p>
 </a>
 
 <style>

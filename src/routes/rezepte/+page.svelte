@@ -2,6 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import rezepteData from '$lib/data/rezepte.json';
+	import lebensmittel from '$lib/data/lebensmittel.json';
 	import RezeptCard from '$lib/components/RezeptCard.svelte';
 	import {
 		getAllRezeptCategories,
@@ -33,6 +34,78 @@
 		{ value: 'portionen_desc', label: '👥 Portionen ↓' }
 	];
 
+	const seasonTagByMonth = {
+		1: 'winter',
+		2: 'winter',
+		3: 'frühling',
+		4: 'frühling',
+		5: 'frühling',
+		6: 'sommer',
+		7: 'sommer',
+		8: 'sommer',
+		9: 'herbst',
+		10: 'herbst',
+		11: 'herbst',
+		12: 'winter'
+	};
+
+	const produktById = new Map(lebensmittel.map((p) => [p.id, p]));
+	const produktByName = new Map(lebensmittel.map((p) => [normalizeName(p.name), p]));
+
+	function normalizeName(name) {
+		return String(name || '')
+			.toLowerCase()
+			.replace(/\(.*?\)/g, '')
+			.replace(/\s+/g, ' ')
+			.trim();
+	}
+
+	function nameCandidates(name) {
+		const base = normalizeName(name);
+		const candidates = new Set([base]);
+		if (base.endsWith('en')) {
+			candidates.add(base.slice(0, -1));
+			candidates.add(base.slice(0, -2));
+		}
+		if (base.endsWith('n')) {
+			candidates.add(base.slice(0, -1));
+		}
+		return [...candidates].filter(Boolean);
+	}
+
+	function getProduktForZutat(zutat) {
+		if (!zutat) return null;
+		if (zutat.produktId && produktById.has(zutat.produktId)) {
+			return produktById.get(zutat.produktId);
+		}
+		for (const candidate of nameCandidates(zutat.name)) {
+			if (produktByName.has(candidate)) {
+				return produktByName.get(candidate);
+			}
+		}
+		return null;
+	}
+
+	function isRecipeInMonth(rezept, month) {
+		if (!month || month === 0) return true;
+
+		const seasonTag = seasonTagByMonth[month];
+		const tags = rezept.tags || [];
+		if (tags.includes('ganzjährig')) return true;
+		if (seasonTag && ['winter', 'frühling', 'sommer', 'herbst'].some((t) => tags.includes(t))) {
+			return tags.includes(seasonTag);
+		}
+
+		const zutaten = rezept.basis_zutaten || [];
+		const produkteMitSaison = zutaten.map(getProduktForZutat).filter((p) => p?.saison?.monate?.length);
+
+		if (produkteMitSaison.length === 0) {
+			return (rezept.tags || []).includes('ganzjährig');
+		}
+
+		return produkteMitSaison.some((produkt) => produkt.saison.monate.includes(month));
+	}
+
 	// Filter in URL speichern
 	function updateFilters() {
 		const params = [];
@@ -45,11 +118,11 @@
 	}
 
 	$: filteredRezepte = (() => {
-		let results = rezepteData.filter((r) => r.varianten.includes('vegan'));
+		let results = [...rezepteData];
 
 		// Monatsfilter
 		if (selectedMonth !== 0) {
-			results = results.filter((r) => r.saison.monate.includes(selectedMonth));
+			results = results.filter((r) => isRecipeInMonth(r, selectedMonth));
 		}
 
 		// Kategoriefilter
@@ -59,13 +132,16 @@
 
 		// Sortierung
 		results = [...results].sort((a, b) => {
+			const zeitA = a.zeit_minuten ?? a.zeit ?? 0;
+			const zeitB = b.zeit_minuten ?? b.zeit ?? 0;
+
 			switch (sortBy) {
 				case 'name':
 					return a.name.localeCompare(b.name);
 				case 'zeit_asc':
-					return a.zeit - b.zeit;
+					return zeitA - zeitB;
 				case 'zeit_desc':
-					return b.zeit - a.zeit;
+					return zeitB - zeitA;
 				case 'portionen_desc':
 					return b.portionen - a.portionen;
 				default:
