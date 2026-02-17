@@ -9,6 +9,10 @@
   let selectedNutritionFilter = 'Alle';
   let sortBy = 'name';
   
+  // NEU: Regional & Transport Filter
+  let showOnlyRegional = false;
+  let selectedTransport = 'Alle';
+  
   $: inSaisonProdukte = filterByMonth(lebensmittelData, currentMonth);
   $: categories = ['Alle', ...getAllCategories(lebensmittelData)];
   
@@ -23,9 +27,20 @@
     { value: 'eisenreich', label: '⚡ Eisenreich (>2mg)' }
   ];
   
-  // Sortier-Optionen
+  // NEU: Transport-Filter Optionen
+  const transportFilters = [
+    { value: 'Alle', label: 'Alle Transportarten' },
+    { value: 'local', label: '🌱 Lokal (<100km)' },
+    { value: 'truck', label: '🚛 LKW (EU)' },
+    { value: 'ship', label: '🚢 Schiff (Übersee)' },
+    { value: 'plane', label: '✈️ Flugzeug' }
+  ];
+  
+  // Sortier-Optionen (erweitert um CO2)
   const sortOptions = [
     { value: 'name', label: 'Name (A-Z)' },
+    { value: 'co2_asc', label: '🌱 CO₂ (niedrig → hoch)' },
+    { value: 'co2_desc', label: '⚠️ CO₂ (hoch → niedrig)' },
     { value: 'kalorien_asc', label: 'Kalorien (niedrig → hoch)' },
     { value: 'kalorien_desc', label: 'Kalorien (hoch → niedrig)' },
     { value: 'protein_desc', label: 'Protein (hoch → niedrig)' },
@@ -43,6 +58,16 @@
     // Kategorie-Filter
     if (selectedCategory !== 'Alle') {
       results = results.filter(p => p.kategorie === selectedCategory);
+    }
+    
+    // NEU: Regional-Filter
+    if (showOnlyRegional) {
+      results = results.filter(p => p.regional_data && !p.regional_data.is_import);
+    }
+    
+    // NEU: Transport-Filter
+    if (selectedTransport !== 'Alle') {
+      results = results.filter(p => p.regional_data && p.regional_data.transport_method === selectedTransport);
     }
     
     // Nährwert-Filter
@@ -67,11 +92,15 @@
       });
     }
     
-    // Sortierung
+    // Sortierung (erweitert um CO2)
     results = [...results].sort((a, b) => {
       switch(sortBy) {
         case 'name':
           return a.name.localeCompare(b.name);
+        case 'co2_asc':
+          return (a.regional_data?.co2_per_kg || 999) - (b.regional_data?.co2_per_kg || 999);
+        case 'co2_desc':
+          return (b.regional_data?.co2_per_kg || 0) - (a.regional_data?.co2_per_kg || 0);
         case 'kalorien_asc':
           return a.naehrwerte.energie_kcal - b.naehrwerte.energie_kcal;
         case 'kalorien_desc':
@@ -89,6 +118,23 @@
     
     return results;
   })();
+  
+  // NEU: Berechne durchschnittlichen CO2-Fußabdruck
+  $: avgCO2 = filteredProdukte.length > 0
+    ? (filteredProdukte.reduce((sum, p) => sum + (p.regional_data?.co2_per_kg || 0), 0) / filteredProdukte.length).toFixed(2)
+    : 0;
+  
+  // NEU: Zähle regionale vs. Import-Produkte
+  $: regionalCount = filteredProdukte.filter(p => p.regional_data && !p.regional_data.is_import).length;
+  $: importCount = filteredProdukte.filter(p => p.regional_data && p.regional_data.is_import).length;
+  
+  function resetFilters() {
+    selectedNutritionFilter = 'Alle';
+    selectedCategory = 'Alle';
+    selectedTransport = 'Alle';
+    showOnlyRegional = false;
+    searchQuery = '';
+  }
 </script>
 
 <svelte:head>
@@ -143,6 +189,28 @@
       </div>
     </fieldset>
     
+    <!-- NEU: Regional Toggle -->
+    <div class="filter-section">
+      <label class="toggle-label">
+        <input 
+          type="checkbox" 
+          bind:checked={showOnlyRegional}
+          class="toggle-checkbox"
+        />
+        <span class="toggle-text">🌱 Nur regionale Produkte</span>
+      </label>
+    </div>
+    
+    <!-- NEU: Transport-Filter -->
+    <div class="filter-section">
+      <label for="transport-filter">Transport:</label>
+      <select id="transport-filter" bind:value={selectedTransport} class="select-input">
+        {#each transportFilters as filter}
+          <option value={filter.value}>{filter.label}</option>
+        {/each}
+      </select>
+    </div>
+    
     <!-- Nährwert-Filter -->
     <div class="filter-section">
       <label for="nutrition-filter">Nährwert-Filter:</label>
@@ -164,12 +232,24 @@
     </div>
   </div>
   
-  <!-- Ergebnis-Info -->
+  <!-- NEU: Erweiterte Ergebnis-Info mit CO2-Stats -->
   <div class="result-info">
-    {filteredProdukte.length} {filteredProdukte.length === 1 ? 'Produkt' : 'Produkte'} gefunden
-    {#if selectedNutritionFilter !== 'Alle' || selectedCategory !== 'Alle' || searchQuery}
-      <button class="reset-btn" on:click={() => { selectedNutritionFilter = 'Alle'; selectedCategory = 'Alle'; searchQuery = ''; }}>
-        ✕ Filter zurücksetzen
+    <div class="result-text">
+      <strong>{filteredProdukte.length}</strong> {filteredProdukte.length === 1 ? 'Produkt' : 'Produkte'} gefunden
+      {#if filteredProdukte.length > 0}
+        <span class="stats-divider">|</span>
+        <span class="regional-stats">
+          🌱 {regionalCount} Regional · 🌍 {importCount} Import
+        </span>
+        <span class="stats-divider">|</span>
+        <span class="co2-avg">
+          Ø {avgCO2} kg CO₂
+        </span>
+      {/if}
+    </div>
+    {#if selectedNutritionFilter !== 'Alle' || selectedCategory !== 'Alle' || searchQuery || showOnlyRegional || selectedTransport !== 'Alle'}
+      <button class="reset-btn" on:click={resetFilters}>
+        ✕ Alle Filter zurücksetzen
       </button>
     {/if}
   </div>
@@ -294,6 +374,36 @@
     margin-bottom: 0.25rem;
   }
 
+  /* NEU: Toggle Checkbox Styling */
+  .toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    transition: all 0.2s ease;
+  }
+
+  .toggle-label:hover {
+    border-color: #4CAF50;
+  }
+
+  .toggle-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #4CAF50;
+  }
+
+  .toggle-text {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
   .category-filters {
     display: flex;
     gap: 0.75rem;
@@ -344,15 +454,44 @@
     border-color: #4CAF50;
   }
 
+  /* NEU: Erweiterte Result Info */
   .result-info {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
-    padding: 1rem;
-    background: #f5f5f5;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
     border-radius: 8px;
+    border-left: 4px solid #4CAF50;
+  }
+
+  .result-text {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .result-text strong {
+    font-size: 1.1rem;
+    color: #2E7D32;
+  }
+
+  .stats-divider {
+    color: #ccc;
+    font-weight: 300;
+  }
+
+  .regional-stats {
     font-weight: 500;
-    color: #555;
+  }
+
+  .co2-avg {
+    font-weight: 600;
+    color: #4CAF50;
   }
 
   .reset-btn {
@@ -363,11 +502,14 @@
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.85rem;
+    font-weight: 600;
     transition: all 0.2s;
+    white-space: nowrap;
   }
 
   .reset-btn:hover {
     background: #ff1744;
+    transform: scale(1.05);
   }
 
   .products-grid {
@@ -400,6 +542,17 @@
 
     .filter-grid {
       grid-template-columns: 1fr;
+    }
+    
+    .result-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .result-text {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
     }
     
     .products-grid {
