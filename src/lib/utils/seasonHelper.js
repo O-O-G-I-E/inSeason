@@ -102,34 +102,10 @@ export function getMonthRangeDisplay(monate) {
 	return getSeasonDisplay(monate);
 }
 
-// Rezepte nach Monat filtern
-export function filterRezepteByMonth(rezepte, month) {
-	return rezepte.filter((rezept) => rezept.saison.monate.includes(month));
-}
-
-// Rezepte nach Kategorie filtern
-export function filterRezepteByCategory(rezepte, category) {
-	if (category === 'Alle') return rezepte;
-	return rezepte.filter((rezept) => rezept.kategorie === category);
-}
-
 // Alle Rezept-Kategorien extrahieren
 export function getAllRezeptCategories(rezepte) {
 	const categories = rezepte.map((r) => r.kategorie);
 	return ['Alle', ...new Set(categories)];
-}
-
-// Zutaten mit Produkt-Daten anreichern (für Verlinkung auf Rezept-Seite)
-export function enrichRezeptZutaten(rezept, produkte) {
-	if (!rezept.zutaten) return [];
-
-	return rezept.zutaten.map((zutat) => {
-		if (zutat.produktId) {
-			const produkt = produkte.find((p) => p.id === zutat.produktId);
-			return { ...zutat, produkt };
-		}
-		return zutat;
-	});
 }
 
 // Kurze Monatsnamen für Mobile

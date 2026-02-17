@@ -64,7 +64,9 @@
 								<div class="info-item">
 									<span class="icon">📅</span>
 									<span class="value"
-										>{saisonMonate.length ? getSeasonDisplay(saisonMonate) : 'Keine Saisondaten'}</span
+										>{saisonMonate.length
+											? getSeasonDisplay(saisonMonate)
+											: 'Keine Saisondaten'}</span
 									>
 								</div>
 								<div class="info-item">

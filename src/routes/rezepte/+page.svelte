@@ -62,15 +62,18 @@
 
 	function nameCandidates(name) {
 		const base = normalizeName(name);
-		const candidates = new Set([base]);
+		const candidates = [base];
+		const addCandidate = (value) => {
+			if (value && !candidates.includes(value)) candidates.push(value);
+		};
 		if (base.endsWith('en')) {
-			candidates.add(base.slice(0, -1));
-			candidates.add(base.slice(0, -2));
+			addCandidate(base.slice(0, -1));
+			addCandidate(base.slice(0, -2));
 		}
 		if (base.endsWith('n')) {
-			candidates.add(base.slice(0, -1));
+			addCandidate(base.slice(0, -1));
 		}
-		return [...candidates].filter(Boolean);
+		return candidates.filter(Boolean);
 	}
 
 	function getProduktForZutat(zutat) {
@@ -97,7 +100,9 @@
 		}
 
 		const zutaten = rezept.basis_zutaten || [];
-		const produkteMitSaison = zutaten.map(getProduktForZutat).filter((p) => p?.saison?.monate?.length);
+		const produkteMitSaison = zutaten
+			.map(getProduktForZutat)
+			.filter((p) => p?.saison?.monate?.length);
 
 		if (produkteMitSaison.length === 0) {
 			return (rezept.tags || []).includes('ganzjährig');

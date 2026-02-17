@@ -6,9 +6,7 @@
 
 	const schwierigkeitEmoji = {
 		einfach: '👍',
-		leicht: '👍',
-		mittel: '👨‍🍳',
-		schwer: '⭐'
+		mittel: '👨‍🍳'
 	};
 	const seasonLabels = ['winter', 'frühling', 'sommer', 'herbst', 'ganzjährig'];
 

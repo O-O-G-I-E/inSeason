@@ -1,11 +1,3 @@
-// Transport-Icons
-export const TRANSPORT_ICONS = {
-	local: '🌱',
-	truck: '🚛',
-	ship: '🚢',
-	plane: '✈️'
-};
-
 // Regional Score berechnen (0-100)
 export function calculateRegionalScore(produkt, currentMonth) {
 	let score = 100;
@@ -42,17 +34,6 @@ export function getScoreColor(score) {
 	if (score >= 80) return '#4CAF50'; // Grün
 	if (score >= 50) return '#FF9800'; // Orange
 	return '#f44336'; // Rot
-}
-
-// Import-Badge-Text
-export function getImportBadgeText(regionalData) {
-	if (!regionalData.is_import) return null;
-
-	return {
-		text: `Import: ${regionalData.origin_region}`,
-		icon: TRANSPORT_ICONS[regionalData.transport_method],
-		color: getScoreColor(regionalData.co2_per_kg < 0.5 ? 80 : regionalData.co2_per_kg < 1 ? 50 : 20)
-	};
 }
 
 // Flaggen-Emoji (optional, für visuellen Effekt)

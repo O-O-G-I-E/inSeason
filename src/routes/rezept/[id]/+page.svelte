@@ -28,9 +28,7 @@
 	};
 
 	const produktById = new Map(lebensmittel.map((p) => [p.id, p]));
-	const produktByName = new Map(
-		lebensmittel.map((p) => [normalizeIngredientName(p.name), p])
-	);
+	const produktByName = new Map(lebensmittel.map((p) => [normalizeIngredientName(p.name), p]));
 
 	function normalizeIngredientName(name) {
 		return String(name || '')
@@ -42,15 +40,18 @@
 
 	function ingredientNameCandidates(name) {
 		const base = normalizeIngredientName(name);
-		const candidates = new Set([base]);
+		const candidates = [base];
+		const addCandidate = (value) => {
+			if (value && !candidates.includes(value)) candidates.push(value);
+		};
 		if (base.endsWith('en')) {
-			candidates.add(base.slice(0, -1));
-			candidates.add(base.slice(0, -2));
+			addCandidate(base.slice(0, -1));
+			addCandidate(base.slice(0, -2));
 		}
 		if (base.endsWith('n')) {
-			candidates.add(base.slice(0, -1));
+			addCandidate(base.slice(0, -1));
 		}
-		return [...candidates].filter(Boolean);
+		return candidates.filter(Boolean);
 	}
 
 	function getProduktForZutat(zutat) {
@@ -88,23 +89,26 @@
 			return getSeasonDisplay(rezeptObj.saison.monate);
 		}
 
-		const monate = new Set();
+		const monate = [];
+		const addMonat = (value) => {
+			if (!monate.includes(value)) monate.push(value);
+		};
 		(rezeptObj?.tags || []).forEach((tag) => {
-			(seasonTagByMonth[tag] || []).forEach((m) => monate.add(m));
+			(seasonTagByMonth[tag] || []).forEach(addMonat);
 		});
 
-		if (monate.size === 0 && rezeptObj?.tags?.includes('ganzjährig')) {
+		if (monate.length === 0 && rezeptObj?.tags?.includes('ganzjährig')) {
 			return 'Ganzjährig verfügbar';
 		}
 
-		if (monate.size === 0) {
+		if (monate.length === 0) {
 			(rezeptObj?.basis_zutaten || []).forEach((zutat) => {
 				const produkt = getProduktForZutat(zutat);
-				(produkt?.saison?.monate || []).forEach((m) => monate.add(m));
+				(produkt?.saison?.monate || []).forEach(addMonat);
 			});
 		}
 
-		if (monate.size === 0) return 'Ganzjährig verfügbar';
+		if (monate.length === 0) return 'Ganzjährig verfügbar';
 		return getSeasonDisplay([...monate].sort((a, b) => a - b));
 	}
 
@@ -288,8 +292,11 @@
 									<span class="value">{rezept.portionen}</span>
 								</div>
 								<div class="info-item">
-									<span class="icon">{getDifficultyDisplay(rezept.schwierigkeit).split(' ')[0]}</span>
-									<span class="value">{getDifficultyDisplay(rezept.schwierigkeit).split(' ')[1]}</span
+									<span class="icon"
+										>{getDifficultyDisplay(rezept.schwierigkeit).split(' ')[0]}</span
+									>
+									<span class="value"
+										>{getDifficultyDisplay(rezept.schwierigkeit).split(' ')[1]}</span
 									>
 								</div>
 								<div class="info-item">
