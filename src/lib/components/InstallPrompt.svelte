@@ -361,6 +361,13 @@
 
 		.install-button {
 			padding: 10px 20px;
+			font-size: 13px;
+		}
+
+		.install-prompt.ios {
+			padding: 16px;
+		}
+	}
 
 	.debug-info {
 		position: fixed;
@@ -375,12 +382,5 @@
 		z-index: 999;
 		max-width: 90%;
 		text-align: center;
-	}
-			font-size: 13px;
-		}
-
-		.install-prompt.ios {
-			padding: 16px;
-		}
 	}
 </style>
