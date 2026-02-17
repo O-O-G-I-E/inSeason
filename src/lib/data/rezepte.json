@@ -19,7 +19,7 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 8,
+        "produktId": 4,
         "menge": "500g",
         "name": "Grünkohl"
       },
@@ -95,17 +95,17 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 6,
+        "produktId": 11,
         "menge": "3",
         "name": "Rote Bete"
       },
       {
-        "produktId": 18,
+        "produktId": 43,
         "menge": "50g",
         "name": "Walnüsse"
       },
       {
-        "produktId": 24,
+        "produktId": 9,
         "menge": "100g",
         "name": "Feldsalat"
       },
@@ -173,12 +173,12 @@
         "name": "Kartoffeln"
       },
       {
-        "produktId": 10,
+        "produktId": 72,
         "menge": "2 Stangen",
         "name": "Lauch"
       },
       {
-        "produktId": 13,
+        "produktId": 30,
         "menge": "2",
         "name": "Äpfel"
       }
@@ -238,7 +238,7 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 12,
+        "produktId": 18,
         "menge": "1kg",
         "name": "Hokkaido Kürbis"
       },
@@ -309,12 +309,12 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 33,
+        "produktId": 45,
         "menge": "200g",
         "name": "Bärlauch"
       },
       {
-        "produktId": 18,
+        "produktId": 43,
         "menge": "50g",
         "name": "Walnüsse"
       },
@@ -370,12 +370,12 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 14,
+        "produktId": 32,
         "menge": "500g",
         "name": "Erdbeeren"
       },
       {
-        "produktId": 11,
+        "produktId": 42,
         "menge": "500g",
         "name": "Rhabarber"
       },
