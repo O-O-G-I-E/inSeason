@@ -8,12 +8,22 @@
   let currentMonth = getCurrentMonth();
   
   // Filter aus URL laden
-  $: searchQuery = $page.url.searchParams.get('q') || '';
-  $: selectedCategory = $page.url.searchParams.get('cat') || 'Alle';
-  $: selectedNutritionFilter = $page.url.searchParams.get('nutrition') || 'Alle';
-  $: sortBy = $page.url.searchParams.get('sort') || 'name';
-  $: showOnlyRegional = $page.url.searchParams.get('regional') === 'true';
-  $: selectedTransport = $page.url.searchParams.get('transport') || 'Alle';
+  let searchQuery = '';
+  let selectedCategory = 'Alle';
+  let selectedNutritionFilter = 'Alle';
+  let sortBy = 'name';
+  let showOnlyRegional = false;
+  let selectedTransport = 'Alle';
+  
+  // URL-Params in lokale Variablen laden
+  $: {
+    searchQuery = $page.url.searchParams.get('q') || '';
+    selectedCategory = $page.url.searchParams.get('cat') || 'Alle';
+    selectedNutritionFilter = $page.url.searchParams.get('nutrition') || 'Alle';
+    sortBy = $page.url.searchParams.get('sort') || 'name';
+    showOnlyRegional = $page.url.searchParams.get('regional') === 'true';
+    selectedTransport = $page.url.searchParams.get('transport') || 'Alle';
+  }
   
   $: inSaisonProdukte = filterByMonth(lebensmittelData, currentMonth);
   $: categories = ['Alle', ...getAllCategories(lebensmittelData).sort()];
@@ -45,7 +55,7 @@
   ];
   
   // Filter in URL speichern
-  function updateURL() {
+  function updateFilters() {
     const params = new URLSearchParams();
     if (searchQuery) params.set('q', searchQuery);
     if (selectedCategory !== 'Alle') params.set('cat', selectedCategory);
@@ -58,21 +68,22 @@
     goto(newURL, { replaceState: true, keepFocus: true, noScroll: true });
   }
   
-  // Reactive: Bei Änderung URL updaten
-  $: if (typeof window !== 'undefined') {
-    updateURL();
-  }
-  
   // Funktion um aktuelle Filter als Query String zu bekommen
-  function getFilterParams() {
-    return $page.url.searchParams.toString();
-  }
+  $: filterParams = (() => {
+    const params = new URLSearchParams();
+    if (searchQuery) params.set('q', searchQuery);
+    if (selectedCategory !== 'Alle') params.set('cat', selectedCategory);
+    if (selectedNutritionFilter !== 'Alle') params.set('nutrition', selectedNutritionFilter);
+    if (sortBy !== 'name') params.set('sort', sortBy);
+    if (showOnlyRegional) params.set('regional', 'true');
+    if (selectedTransport !== 'Alle') params.set('transport', selectedTransport);
+    return params.toString();
+  })();
   
   // Monatswahl mit Filtern
-  function getMonthURL(monthNum) {
-    const params = getFilterParams();
-    return params ? `/monat/${monthNum}?${params}` : `/monat/${monthNum}`;
-  }
+  $: getMonthURL = (monthNum) => {
+    return filterParams ? `/monat/${monthNum}?${filterParams}` : `/monat/${monthNum}`;
+  };
   
   $: filteredProdukte = (() => {
     let results = inSaisonProdukte;
@@ -154,7 +165,8 @@
   <input 
     type="search" 
     placeholder="🔍 Suchen..."
-    bind:value={searchQuery}
+    value={searchQuery}
+    on:input={(e) => { searchQuery = e.target.value; updateFilters(); }}
     class="search-input"
   />
 </div>
@@ -183,7 +195,7 @@
       <button 
         class="cat-pill"
         class:active={selectedCategory === cat}
-        on:click={() => selectedCategory = cat}
+        on:click={() => { selectedCategory = cat; updateFilters(); }}
       >
         {cat}
       </button>
@@ -199,7 +211,8 @@
     <label class="toggle-label">
       <input 
         type="checkbox" 
-        bind:checked={showOnlyRegional}
+        checked={showOnlyRegional}
+        on:change={(e) => { showOnlyRegional = e.target.checked; updateFilters(); }}
         class="toggle-check"
       />
       <span>🌱 Nur Regional</span>
@@ -207,7 +220,7 @@
     
     <div class="filter-group">
       <label for="transport-select">Transport:</label>
-      <select id="transport-select" bind:value={selectedTransport} class="select">
+      <select id="transport-select" value={selectedTransport} on:change={(e) => { selectedTransport = e.target.value; updateFilters(); }} class="select">
         {#each transportFilters as f}
           <option value={f.value}>{f.label}</option>
         {/each}
@@ -216,7 +229,7 @@
     
     <div class="filter-group">
       <label for="nutrition-select">Nährwerte:</label>
-      <select id="nutrition-select" bind:value={selectedNutritionFilter} class="select">
+      <select id="nutrition-select" value={selectedNutritionFilter} on:change={(e) => { selectedNutritionFilter = e.target.value; updateFilters(); }} class="select">
         {#each nutritionFilters as f}
           <option value={f.value}>{f.label}</option>
         {/each}
@@ -225,7 +238,7 @@
     
     <div class="filter-group">
       <label for="sort-select">Sortierung:</label>
-      <select id="sort-select" bind:value={sortBy} class="select">
+      <select id="sort-select" value={sortBy} on:change={(e) => { sortBy = e.target.value; updateFilters(); }} class="select">
         {#each sortOptions as o}
           <option value={o.value}>{o.label}</option>
         {/each}
