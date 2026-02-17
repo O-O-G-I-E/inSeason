@@ -1,243 +1,448 @@
 <script>
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
   import rezepteData from '$lib/data/rezepte.json';
   import RezeptCard from '$lib/components/RezeptCard.svelte';
-  import { getAllRezeptCategories } from '$lib/utils/seasonHelper.js';
+  import { getAllRezeptCategories, getCurrentMonth, getShortMonthName } from '$lib/utils/seasonHelper.js';
+
+  const currentMonth = getCurrentMonth();
   
-  let selectedMonth = new Date().getMonth() + 1;
+  // Filter aus URL laden
+  let selectedMonth = 0;
   let selectedCategory = 'Alle';
+  let sortBy = 'name';
+  
+  // URL-Params in lokale Variablen laden
+  $: {
+    const monthParam = $page.url.searchParams.get('month');
+    selectedMonth = monthParam ? parseInt(monthParam) : 0;
+    selectedCategory = $page.url.searchParams.get('cat') || 'Alle';
+    sortBy = $page.url.searchParams.get('sort') || 'name';
+  }
+  
   $: kategorien = getAllRezeptCategories(rezepteData);
   
-  $: filteredRezepte = rezepteData
-    .filter(r => r.varianten.includes('vegan'))
-    .filter(r => selectedMonth === 0 || r.saison.monate.includes(selectedMonth))
-    .filter(r => selectedCategory === 'Alle' || r.kategorie === selectedCategory);
-  
-  const monate = [
-    { value: 0, name: 'Alle' },
-    { value: 1, name: 'Januar' },
-    { value: 2, name: 'Februar' },
-    { value: 3, name: 'März' },
-    { value: 4, name: 'April' },
-    { value: 5, name: 'Mai' },
-    { value: 6, name: 'Juni' },
-    { value: 7, name: 'Juli' },
-    { value: 8, name: 'August' },
-    { value: 9, name: 'September' },
-    { value: 10, name: 'Oktober' },
-    { value: 11, name: 'November' },
-    { value: 12, name: 'Dezember' }
+  const sortOptions = [
+    { value: 'name', label: 'Name (A-Z)' },
+    { value: 'zeit_asc', label: '⏱️ Zeit ↑' },
+    { value: 'zeit_desc', label: '⏱️ Zeit ↓' },
+    { value: 'portionen_desc', label: '👥 Portionen ↓' }
   ];
+  
+  // Filter in URL speichern
+  function updateFilters() {
+    const params = new URLSearchParams();
+    if (selectedMonth !== 0) params.set('month', selectedMonth.toString());
+    if (selectedCategory !== 'Alle') params.set('cat', selectedCategory);
+    if (sortBy !== 'name') params.set('sort', sortBy);
+    
+    const newURL = params.toString() ? `/rezepte?${params.toString()}` : '/rezepte';
+    goto(newURL, { replaceState: true, keepFocus: true, noScroll: true });
+  }
+  
+  $: filteredRezepte = (() => {
+    let results = rezepteData.filter(r => r.varianten.includes('vegan'));
+    
+    // Monatsfilter
+    if (selectedMonth !== 0) {
+      results = results.filter(r => r.saison.monate.includes(selectedMonth));
+    }
+    
+    // Kategoriefilter
+    if (selectedCategory !== 'Alle') {
+      results = results.filter(r => r.kategorie === selectedCategory);
+    }
+    
+    // Sortierung
+    results = [...results].sort((a, b) => {
+      switch(sortBy) {
+        case 'name':
+          return a.name.localeCompare(b.name);
+        case 'zeit_asc':
+          return a.zeit - b.zeit;
+        case 'zeit_desc':
+          return b.zeit - a.zeit;
+        case 'portionen_desc':
+          return b.portionen - a.portionen;
+        default:
+          return 0;
+      }
+    });
+    
+    return results;
+  })();
+  
+  function resetFilters() {
+    goto('/rezepte', { replaceState: true });
+  }
 </script>
 
 <svelte:head>
   <title>Saisonale Rezepte - inSeason</title>
 </svelte:head>
 
-<div class="container">
-  <header>
-    <h1>🥗 Saisonale Rezepte</h1>
-    <p>Leckere Gerichte mit regionalen Zutaten der Saison</p>
-  </header>
+<!-- Hero -->
+<div class="hero">
+  <h1>🥗 Saisonale Rezepte</h1>
+  <p class="count">{filteredRezepte.length} Rezepte</p>
+</div>
+
+<!-- Schnellwahl Monate -->
+<div class="month-section">
+  <h2 class="section-title">Schnellwahl</h2>
+  <div class="months-grid">
+    <button 
+      class="month-btn"
+      class:current={selectedMonth === 0}
+      on:click={() => { selectedMonth = 0; updateFilters(); }}
+    >
+      Alle
+    </button>
+    {#each Array(12) as _, i}
+      <button 
+        class="month-btn"
+        class:current={selectedMonth === i + 1}
+        class:today={i + 1 === currentMonth && selectedMonth !== i + 1}
+        on:click={() => { selectedMonth = i + 1; updateFilters(); }}
+      >
+        {getShortMonthName(i + 1)}
+      </button>
+    {/each}
+  </div>
+</div>
+
+<!-- Kategorien -->
+<div class="categories-section">
+  <h2 class="section-title">Kategorien</h2>
+  <div class="categories-scroll">
+    {#each kategorien as cat}
+      <button 
+        class="cat-pill"
+        class:active={selectedCategory === cat}
+        on:click={() => { selectedCategory = cat; updateFilters(); }}
+      >
+        {cat}
+      </button>
+    {/each}
+  </div>
+</div>
+
+<!-- Sortierung -->
+<details class="advanced-filters">
+  <summary class="filter-toggle">⚙️ Sortierung</summary>
   
-  <div class="filters">
-    <!-- Monat Filter -->
-    <div class="filter-section">
-      <h3>Monat</h3>
-      <div class="filter-buttons months">
-        {#each monate as monat}
-          <button
-            class="filter-btn"
-            class:active={selectedMonth === monat.value}
-            on:click={() => selectedMonth = monat.value}
-          >
-            {monat.name}
-          </button>
+  <div class="filter-content">
+    <div class="filter-group">
+      <label for="sort-select">Sortierung:</label>
+      <select id="sort-select" value={sortBy} on:change={(e) => { sortBy = e.target.value; updateFilters(); }} class="select">
+        {#each sortOptions as o}
+          <option value={o.value}>{o.label}</option>
         {/each}
-      </div>
+      </select>
     </div>
     
-    <!-- Kategorie Filter -->
-    <div class="filter-section">
-      <h3>Kategorie</h3>
-      <div class="filter-buttons">
-        {#each kategorien as kategorie}
-          <button
-            class="filter-btn"
-            class:active={selectedCategory === kategorie}
-            on:click={() => selectedCategory = kategorie}
-          >
-            {kategorie}
-          </button>
-        {/each}
-      </div>
-    </div>
+    {#if selectedMonth !== 0 || selectedCategory !== 'Alle' || sortBy !== 'name'}
+      <button class="reset-btn" on:click={resetFilters}>✕ Zurücksetzen</button>
+    {/if}
   </div>
-  
-  <!-- Ergebnis-Anzeige -->
-  <div class="results-info">
-    <p>{filteredRezepte.length} {filteredRezepte.length === 1 ? 'Rezept' : 'Rezepte'} gefunden</p>
-  </div>
-  
-  <!-- Rezept-Grid -->
-  {#if filteredRezepte.length > 0}
-    <div class="rezepte-grid">
-      {#each filteredRezepte as rezept (rezept.id)}
-        <RezeptCard {rezept} />
-      {/each}
-    </div>
+</details>
+
+<!-- Rezept Grid -->
+<div class="products-grid">
+  {#each filteredRezepte as rezept (rezept.id)}
+    <RezeptCard {rezept} />
   {:else}
-    <div class="no-results">
-      <p>Keine Rezepte für diese Filter gefunden.</p>
-      <button on:click={() => { selectedMonth = 0; selectedCategory = 'Alle'; }}>
-        Filter zurücksetzen
-      </button>
-    </div>
-  {/if}
+    <p class="no-results">Keine Rezepte gefunden 😔</p>
+  {/each}
 </div>
 
 <style>
-  .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0;
+  * {
+    box-sizing: border-box;
   }
-  
-  header {
+
+  :global(body) {
+    overflow-x: hidden;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  :global(:root) {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #fafafa;
+    --text-primary: #212121;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --accent: #4CAF50;
+    --border-color: rgba(0,0,0,0.08);
+    --shadow: rgba(0,0,0,0.08);
+    --shadow-hover: rgba(0,0,0,0.12);
+  }
+
+  :global(.dark-mode) {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2a2a2a;
+    --text-primary: #f5f5f5;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #888888;
+    --accent: #66BB6A;
+    --border-color: rgba(255,255,255,0.1);
+    --shadow: rgba(0,0,0,0.3);
+    --shadow-hover: rgba(0,0,0,0.4);
+  }
+
+  .hero {
     text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  header h1 {
-    margin: 0 0 0.5rem 0;
-    color: var(--accent);
-    font-size: 3rem;
-  }
-  
-  header p {
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-  }
-  
-  .filters {
+    padding: 1rem;
     background: var(--bg-secondary);
-    padding: 2rem;
     border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px var(--shadow);
-    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px var(--shadow);
   }
-  
-  .filter-section {
-    margin-bottom: 2rem;
+
+  .hero h1 {
+    margin: 0 0 0.25rem 0;
+    color: var(--accent);
+    font-size: 1.75rem;
+    font-weight: 700;
   }
-  
-  .filter-section:last-child {
-    margin-bottom: 0;
+
+  .count {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
   }
-  
-  .filter-section h3 {
-    margin: 0 0 1rem 0;
-    color: var(--text-primary);
-    font-size: 1.1rem;
+
+  .section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
-  
-  .filter-buttons {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
+
+  .month-section {
+    margin-bottom: 1rem;
   }
-  
-  .filter-buttons.months {
+
+  .months-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 0.5rem;
   }
-  
-  .filter-btn {
-    padding: 0.5rem 1rem;
-    background: var(--bg-tertiary);
+
+  .month-btn {
+    padding: 0.65rem 0.25rem;
+    background: var(--bg-secondary);
     border: 2px solid var(--border-color);
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 0.95rem;
-    color: var(--text-primary);
+    border-radius: 8px;
     text-align: center;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  .filter-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px var(--shadow-hover);
+
+  .month-btn:active {
+    transform: scale(0.95);
   }
-  
-  .filter-btn.active {
+
+  .month-btn.current {
     background: var(--accent);
     color: white;
     border-color: var(--accent);
   }
-  
-  .results-info {
-    margin-bottom: 1.5rem;
-    text-align: center;
+
+  .month-btn.today:not(.current) {
+    border-color: var(--accent);
+    border-width: 3px;
   }
-  
-  .results-info p {
-    color: var(--text-secondary);
-    font-size: 1rem;
+
+  .categories-section {
+    margin-bottom: 1rem;
   }
-  
-  .rezepte-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
+
+  .categories-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
-  
-  .no-results {
-    text-align: center;
-    padding: 4rem 2rem;
+
+  .categories-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .categories-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 2px;
+  }
+
+  .cat-pill {
+    padding: 0.5rem 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .cat-pill:active {
+    transform: scale(0.95);
+  }
+
+  .cat-pill.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .advanced-filters {
+    margin-bottom: 1rem;
     background: var(--bg-secondary);
     border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
   }
-  
-  .no-results p {
-    margin: 0 0 1.5rem 0;
+
+  .filter-toggle {
+    padding: 0.875rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .filter-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .filter-content {
+    padding: 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .filter-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--text-secondary);
-    font-size: 1.2rem;
   }
-  
-  .no-results button {
-    padding: 0.75rem 2rem;
-    background: var(--accent);
+
+  .select {
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .reset-btn {
+    padding: 0.65rem 1rem;
+    background: #f44336;
     color: white;
     border: none;
     border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
     cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.2s ease;
+    transition: all 0.2s;
   }
-  
-  .no-results button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-hover);
+
+  .reset-btn:hover {
+    background: #d32f2f;
   }
-  
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-tertiary);
+    font-size: 0.95rem;
+  }
+
+  @media (min-width: 769px) {
+    .hero h1 {
+      font-size: 2.5rem;
     }
-    
-    .filters {
-      padding: 1.5rem;
+
+    .count {
+      font-size: 1.1rem;
     }
-    
-    .filter-buttons.months {
-      grid-template-columns: repeat(3, 1fr);
+
+    .months-grid {
+      grid-template-columns: repeat(13, 1fr);
     }
-    
-    .rezepte-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+
+    .month-btn {
+      font-size: 0.9rem;
+      padding: 0.75rem 0.5rem;
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .filter-content {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .months-grid {
+      gap: 0.4rem;
+    }
+
+    .month-btn {
+      font-size: 0.72rem;
+      padding: 0.55rem 0.15rem;
+    }
+
+    .products-grid {
+      gap: 0.4rem;
     }
   }
 </style>
