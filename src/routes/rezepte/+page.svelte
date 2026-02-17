@@ -168,7 +168,7 @@
 
 <!-- Hero -->
 <div class="hero">
-	<h1>🥗 Saisonale Rezepte</h1>
+	<h1>Saisonale Rezepte</h1>
 	<p class="count">{filteredRezepte.length} Rezepte</p>
 </div>
 

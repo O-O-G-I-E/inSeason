@@ -6,6 +6,7 @@
 
 	import { onMount } from 'svelte';
 	import { theme } from '$lib/stores/theme.js';
+	import InstallPrompt from '$lib/components/InstallPrompt.svelte';
 	import '../app.css';
 
 	function toggleTheme() {
@@ -78,6 +79,8 @@
 		</div>
 	</footer>
 </div>
+
+<InstallPrompt />
 
 <style>
 	:global(*) {
