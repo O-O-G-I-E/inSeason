@@ -1,5 +1,5 @@
 <script>
-  import { getCurrentMonth } from '$lib/utils/seasonHelper';
+  import { getCurrentMonth, getSeasonDisplay } from '$lib/utils/seasonHelper';
 
   export let produkt;
   
@@ -18,12 +18,10 @@
     return colors[kat] || '#424242';
   }
   
-  function getSeasonDisplay(saison) {
-    if (saison.monate.length === 12) {
-      return '📅 Ganzjährig';
-    }
-    return `📅 ${saison.haupternte}`;
-  }
+  // Formatiere Verfügbarkeit
+  $: verfugbarkeit = saison.monate.length === 12 
+    ? '📅 Ganzjährig' 
+    : `📅 ${getSeasonDisplay(saison.monate)}`;
 </script>
 
 <a href={`/produkt/${id}`} class="card">
@@ -31,7 +29,7 @@
   <span class="badge" style="background: {getCategoryColor(kategorie)}">
     {kategorie}
   </span>
-  <p class="season">{getSeasonDisplay(saison)}</p>
+  <p class="season">{verfugbarkeit}</p>
 </a>
 
 <style>
