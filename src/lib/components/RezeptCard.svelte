@@ -1,8 +1,5 @@
 <script>
   import { getMonthRangeDisplay } from '$lib/utils/seasonHelper.js';
-  import { calculateRezeptCO2 } from '$lib/utils/rezeptHelper.js';
-  import lebensmittelData from '$lib/data/lebensmittel.json';
-  import { getScoreColor } from '$lib/utils/regionalHelper.js';
   
   export let rezept;
   
@@ -22,47 +19,29 @@
     };
     return colors[kategorie] || '#757575';
   }
-  
-  $: co2Data = calculateRezeptCO2(rezept, lebensmittelData);
 </script>
 
-<a href={`/rezept/${rezept.id}`} class="rezept-card">
-  <div class="card-header">
-    <h3>{rezept.name}</h3>
-    <span class="kategorie" style="background: {getCategoryColor(rezept.kategorie)}">
-      {rezept.kategorie}
-    </span>
-  </div>
+<a href={`/rezept/${rezept.id}`} class="card">
+  <h3 class="name">{rezept.name}</h3>
+  <span class="badge" style="background: {getCategoryColor(rezept.kategorie)}">
+    {rezept.kategorie}
+  </span>
   
   <div class="card-info">
     <span>⏱️ {rezept.zeit} Min</span>
-    <span>{schwierigkeitEmoji[rezept.schwierigkeit]} {rezept.schwierigkeit}</span>
-    <span>👥 {rezept.portionen} Pers.</span>
+    <span>{schwierigkeitEmoji[rezept.schwierigkeit]}</span>
+    <span>👥 {rezept.portionen}</span>
   </div>
   
-  <!-- CO2 Badge -->
-  {#if co2Data.regionalScore !== null}
-    <div class="sustainability-row">
-      <div class="co2-badge">
-        🌍 {co2Data.co2PerPortion} kg CO₂
-      </div>
-      <div class="score-badge" style="color: {getScoreColor(co2Data.regionalScore)}; border-color: {getScoreColor(co2Data.regionalScore)}">
-        {co2Data.regionalScore}/10
-      </div>
-    </div>
-  {/if}
-  
-  <div class="card-footer">
-    <span class="saison">📅 {getMonthRangeDisplay(rezept.saison.monate)}</span>
-  </div>
+  <p class="season">📅 {getMonthRangeDisplay(rezept.saison.monate)}</p>
 </a>
 
 <style>
-  .rezept-card {
-    background: var(--bg-secondary);
+  .card {
+    background: var(--bg-secondary, #ffffff);
     border-radius: 10px;
     padding: 0.875rem;
-    box-shadow: 0 1px 4px var(--shadow);
+    box-shadow: 0 1px 4px var(--shadow, rgba(0,0,0,0.08));
     transition: all 0.25s ease;
     cursor: pointer;
     text-decoration: none;
@@ -72,51 +51,52 @@
     gap: 0.5rem;
     border: 2px solid transparent;
     position: relative;
+    
+    /* Quadratisch: 1:1 Aspect Ratio */
     aspect-ratio: 1 / 1;
     width: 100%;
   }
 
-  .rezept-card:active {
+  .card:active {
     transform: scale(0.98);
   }
 
-  .rezept-card:hover {
+  .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 12px var(--shadow-hover);
-    border-color: var(--accent);
+    box-shadow: 0 4px 12px var(--shadow-hover, rgba(0,0,0,0.12));
+    border-color: var(--accent, #4CAF50);
   }
 
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .card-header h3 {
+  .name {
     margin: 0;
     font-size: 1rem;
-    color: var(--text-primary);
     font-weight: 600;
+    color: var(--text-primary, #212121);
     line-height: 1.3;
     flex: 1;
-    padding-right: 0.5rem;
+    padding-right: 3.5rem;
     overflow-wrap: break-word;
     word-break: break-word;
+    /* Verhindert zu lange Namen - max 3 Zeilen */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .kategorie {
+  .badge {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    color: white;
     padding: 0.25rem 0.5rem;
     border-radius: 10px;
+    color: white;
     font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.3px;
     line-height: 1;
+    white-space: nowrap;
   }
 
   .card-info {
@@ -124,64 +104,49 @@
     gap: 0.5rem;
     flex-wrap: wrap;
     font-size: 0.75rem;
-    color: var(--text-secondary);
+    color: var(--text-secondary, #666666);
     font-weight: 500;
   }
 
-  .sustainability-row {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    font-size: 0.7rem;
-    font-weight: 600;
-  }
-
-  .co2-badge {
-    background: var(--bg-tertiary);
-    padding: 0.25rem 0.5rem;
-    border-radius: 8px;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-  }
-
-  .score-badge {
-    padding: 0.25rem 0.5rem;
-    border-radius: 8px;
-    border: 2px solid;
-    font-weight: 700;
-  }
-
-  .card-footer {
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: auto;
-  }
-
-  .saison {
+  .season {
+    margin: 0;
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    color: var(--text-secondary, #666666);
     font-weight: 500;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color, rgba(0,0,0,0.08));
   }
 
-  :global(.dark-mode) .rezept-card {
-    background: var(--bg-secondary);
+  /* Dark Mode */
+  :global(.dark-mode) .card {
+    background: var(--bg-secondary, #2a2a2a);
     box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   }
 
-  :global(.dark-mode) .rezept-card:hover {
+  :global(.dark-mode) .card:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   }
 
+  :global(.dark-mode) .name {
+    color: var(--text-primary, #f5f5f5);
+  }
+
+  :global(.dark-mode) .card-info,
+  :global(.dark-mode) .season {
+    color: var(--text-secondary, #b0b0b0);
+  }
+
   @media (max-width: 768px) {
-    .rezept-card {
+    .card {
       padding: 0.75rem;
     }
 
-    .card-header h3 {
+    .name {
       font-size: 0.9rem;
     }
 
-    .kategorie {
+    .badge {
       font-size: 0.55rem;
       padding: 0.2rem 0.45rem;
     }
@@ -190,11 +155,7 @@
       font-size: 0.7rem;
     }
 
-    .sustainability-row {
-      font-size: 0.65rem;
-    }
-
-    .saison {
+    .season {
       font-size: 0.75rem;
     }
   }

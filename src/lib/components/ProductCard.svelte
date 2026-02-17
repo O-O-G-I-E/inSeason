@@ -95,6 +95,8 @@
     color: var(--text-secondary, #666666);
     font-weight: 500;
     margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color, rgba(0,0,0,0.08));
   }
 
   /* Dark Mode */
