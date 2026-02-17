@@ -1,660 +1,761 @@
 <script>
-  import { page } from '$app/stores';
-  import rezepteData from '$lib/data/rezepte.json';
-  import lebensmittelData from '$lib/data/lebensmittel.json';
-  import { getMonthRangeDisplay } from '$lib/utils/seasonHelper.js';
-  import { calculateRezeptCO2, calculateRezeptNaehrwerte, enrichZutaten } from '$lib/utils/rezeptHelper.js';
-  import { getScoreColor, getFlagEmoji } from '$lib/utils/regionalHelper.js';
-  
-  $: rezeptId = parseInt($page.params.id);
-  $: rezept = rezepteData.find(r => r.id === rezeptId);
-  $: isVegan = rezept && rezept.varianten && rezept.varianten.includes('vegan');
-  
-  $: zutatenMitProdukten = rezept ? enrichZutaten(rezept, lebensmittelData) : [];
-  
-  $: alleSchritte = rezept ? [
-    ...rezept.basis_zubereitung,
-    ...(rezept.varianten_zubereitung?.vegan || [])
-  ] : [];
-  
-  $: co2Data = rezept ? calculateRezeptCO2(rezept, lebensmittelData) : null;
-  $: naehrwerte = rezept ? calculateRezeptNaehrwerte(rezept, lebensmittelData) : null;
-  
-  const schwierigkeitEmoji = {
-    'leicht': '👍',
-    'mittel': '👨‍🍳',
-    'schwer': '⭐'
-  };
-  
-  function getCategoryColor(kategorie) {
-    const colors = {
-      'Hauptgericht': '#4CAF50',
-      'Suppe': '#FF9800',
-      'Salat': '#8BC34A',
-      'Aufstrich': '#9C27B0',
-      'Dessert': '#E91E63'
-    };
-    return colors[kategorie] || '#757575';
-  }
+	import { page } from '$app/stores';
+	import { resolve } from '$app/paths';
+	import { onMount } from 'svelte';
+	import { getMonthName } from '$lib/utils/seasonHelper.js';
+	import rezepte from '$lib/data/rezepte.json';
+	import lebensmittel from '$lib/data/lebensmittel.json';
+
+	let rezept = null;
+	let selectedVariant = 'standard';
+	let activeIngredients = [];
+	let regionalScore = 0;
+	let totalCO2 = 0;
+	let naehrwerteProPortion = null;
+
+	const schwierigkeitEmoji = {
+		leicht: '👍 Leicht',
+		mittel: '👨‍🍳 Mittel',
+		schwer: '⭐ Anspruchsvoll'
+	};
+
+	function getCategoryColor(kategorie) {
+		const colors = {
+			Hauptgericht: '#4CAF50',
+			Suppe: '#FF9800',
+			Salat: '#8BC34A',
+			Aufstrich: '#9C27B0',
+			Dessert: '#E91E63'
+		};
+		return colors[kategorie] || '#757575';
+	}
+
+	function getScoreColor(score) {
+		if (score >= 9) return '#4CAF50';
+		if (score >= 7) return '#FF9800';
+		return '#f44336';
+	}
+
+	// Helper: Regional Score berechnen
+	function calculateRegionalScore(zutaten, alleProdukte) {
+		if (!zutaten || zutaten.length === 0) return 0;
+
+		let regionalCount = 0;
+		let totalCount = 0;
+
+		zutaten.forEach((zutat) => {
+			if (zutat.produktId) {
+				const produkt = alleProdukte.find((p) => p.id === zutat.produktId);
+				if (produkt && produkt.regional_data) {
+					totalCount++;
+					if (!produkt.regional_data.is_import) {
+						regionalCount++;
+					}
+				}
+			}
+		});
+
+		if (totalCount === 0) return 0;
+		return Math.round((regionalCount / totalCount) * 10);
+	}
+
+	// Helper: CO2 berechnen
+	function calculateCO2Total(zutaten, alleProdukte, portionen) {
+		let total = 0;
+
+		zutaten.forEach((zutat) => {
+			if (zutat.produktId && zutat.menge) {
+				const produkt = alleProdukte.find((p) => p.id === zutat.produktId);
+				if (produkt && produkt.regional_data && produkt.regional_data.co2_per_kg) {
+					// Extrahiere Gramm aus String wie "800g"
+					const mengeMatch = zutat.menge.match(/(\d+)/);
+					if (mengeMatch) {
+						const menge_g = parseInt(mengeMatch[1]);
+						const menge_kg = menge_g / 1000;
+						total += produkt.regional_data.co2_per_kg * menge_kg;
+					}
+				}
+			}
+		});
+
+		return portionen > 0 ? total / portionen : 0;
+	}
+
+	// Nährwerte berechnen
+	function berechneNaehrwerte() {
+		if (!rezept || !activeIngredients.length) return null;
+
+		const gesamt = {
+			energie_kcal: 0,
+			protein_g: 0,
+			fett_g: 0,
+			kohlenhydrate_g: 0,
+			ballaststoffe_g: 0
+		};
+
+		activeIngredients.forEach((zutat) => {
+			if (!zutat.produktId || !zutat.menge) return;
+
+			const produkt = lebensmittel.find((p) => p.id === zutat.produktId);
+			if (!produkt || !produkt.naehrwerte) return;
+
+			const mengeMatch = zutat.menge.match(/(\d+)/);
+			if (!mengeMatch) return;
+
+			const menge_g = parseInt(mengeMatch[1]);
+			const menge_kg = menge_g / 1000;
+
+			gesamt.energie_kcal += (produkt.naehrwerte.energie_kcal || 0) * menge_kg;
+			gesamt.protein_g += (produkt.naehrwerte.protein_g || 0) * menge_kg;
+			gesamt.fett_g += (produkt.naehrwerte.fett_g || 0) * menge_kg;
+			gesamt.kohlenhydrate_g += (produkt.naehrwerte.kohlenhydrate_g || 0) * menge_kg;
+			gesamt.ballaststoffe_g += (produkt.naehrwerte.ballaststoffe_g || 0) * menge_kg;
+		});
+
+		const portionen = rezept.portionen || 4;
+		return {
+			energie_kcal: Math.round(gesamt.energie_kcal / portionen),
+			protein_g: Math.round((gesamt.protein_g / portionen) * 10) / 10,
+			fett_g: Math.round((gesamt.fett_g / portionen) * 10) / 10,
+			kohlenhydrate_g: Math.round((gesamt.kohlenhydrate_g / portionen) * 10) / 10,
+			ballaststoffe_g: Math.round((gesamt.ballaststoffe_g / portionen) * 10) / 10
+		};
+	}
+
+	$: if (rezept && selectedVariant) {
+		activeIngredients =
+			selectedVariant === 'standard'
+				? rezept.basis_zutaten
+				: [...rezept.basis_zutaten, ...(rezept.varianten_zutaten[selectedVariant] || [])];
+
+		totalCO2 = calculateCO2Total(activeIngredients, lebensmittel, rezept.portionen);
+		regionalScore = calculateRegionalScore(activeIngredients, lebensmittel);
+		naehrwerteProPortion = berechneNaehrwerte();
+	}
+
+	onMount(() => {
+		const id = parseInt($page.params.id);
+		rezept = rezepte.find((r) => r.id === id);
+	});
 </script>
 
 <svelte:head>
-  <title>{rezept ? `${rezept.name} - inSeason Rezepte` : 'Rezept nicht gefunden'}</title>
+	<title>{rezept ? rezept.name : 'Rezept'} - inSeason Rezepte</title>
 </svelte:head>
 
-<div class="page-container">
-  {#if rezept && isVegan}
-    <div class="back-link">
-      <a href="/rezepte">← Zurück zu Rezepten</a>
-    </div>
+{#if !rezept}
+	<div class="loading">
+		<p>Rezept wird geladen...</p>
+	</div>
+{:else}
+	<div class="container">
+		<!-- HERO SECTION mit Nährwerten -->
+		<section class="hero">
+			<div class="hero-content">
+				<div class="hero-header">
+					<span class="badge" style="background: {getCategoryColor(rezept.kategorie)}">
+						{rezept.kategorie}
+					</span>
+					<h1>{rezept.name}</h1>
+					<p class="description">{rezept.beschreibung}</p>
+				</div>
 
-    <!-- Header: Name + Meta + Nachhaltigkeit -->
-    <div class="rezept-header">
-      <div class="title-row">
-        <h1>{rezept.name}</h1>
-        <span class="badge" style="background: {getCategoryColor(rezept.kategorie)}">
-          {rezept.kategorie}
-        </span>
-      </div>
-      
-      <!-- Meta Info + Nachhaltigkeit Grid -->
-      <div class="hero-grid">
-        <!-- Meta Info -->
-        <div class="hero-section">
-          <div class="meta-item">
-            <span class="m-icon">⏱️</span>
-            <span class="m-text">{rezept.zeit} Minuten</span>
-          </div>
-          <div class="meta-item">
-            <span class="m-icon">{schwierigkeitEmoji[rezept.schwierigkeit]}</span>
-            <span class="m-text">{rezept.schwierigkeit}</span>
-          </div>
-          <div class="meta-item">
-            <span class="m-icon">👥</span>
-            <span class="m-text">{rezept.portionen} Portionen</span>
-          </div>
-          <div class="meta-item">
-            <span class="m-icon">📅</span>
-            <span class="m-text">{getMonthRangeDisplay(rezept.saison.monate)}</span>
-          </div>
-        </div>
-        
-        <!-- Nachhaltigkeit -->
-        {#if co2Data && co2Data.regionalScore !== null}
-          <div class="hero-section sustainability">
-            <div class="sus-row">
-              <div class="score-large" style="border-color: {getScoreColor(co2Data.regionalScore)}; color: {getScoreColor(co2Data.regionalScore)}">
-                {co2Data.regionalScore}<span class="score-max">/10</span>
-              </div>
-              <div class="co2-info">
-                <div class="co2-total">🌍 {co2Data.totalCO2} kg CO₂</div>
-                <div class="co2-portion">({co2Data.co2PerPortion} kg/Portion)</div>
-              </div>
-            </div>
-            <div class="regional-info">
-              <span class="regional-text">
-                {co2Data.regionalCount} von {co2Data.totalZutaten} Zutaten regional
-              </span>
-            </div>
-          </div>
-        {/if}
-      </div>
-    </div>
+				<div class="hero-grid">
+					<!-- Schnellinfos -->
+					<div class="info-card">
+						<h3>📊 Übersicht</h3>
+						<div class="info-grid">
+							<div class="info-item">
+								<span class="icon">⏱️</span>
+								<div>
+									<span class="label">Zeit</span>
+									<span class="value">{rezept.zeit} Min</span>
+								</div>
+							</div>
+							<div class="info-item">
+								<span class="icon">👥</span>
+								<div>
+									<span class="label">Portionen</span>
+									<span class="value">{rezept.portionen}</span>
+								</div>
+							</div>
+							<div class="info-item">
+								<span class="icon">{schwierigkeitEmoji[rezept.schwierigkeit].split(' ')[0]}</span>
+								<div>
+									<span class="label">Schwierigkeit</span>
+									<span class="value">{schwierigkeitEmoji[rezept.schwierigkeit].split(' ')[1]}</span
+									>
+								</div>
+							</div>
+							<div class="info-item">
+								<span class="icon">📅</span>
+								<div>
+									<span class="label">Saison</span>
+									<span class="value"
+										>{rezept.saison.monate
+											.map((m) => getMonthName(m))
+											.slice(0, 3)
+											.join(', ')}</span
+									>
+								</div>
+							</div>
+						</div>
+					</div>
 
-    <!-- 2-Spalten Grid -->
-    <div class="details-grid">
-      
-      <!-- Zutaten -->
-      <div class="info-card">
-        <h2>🛒 Zutaten</h2>
-        <p class="card-subtitle">für {rezept.portionen} Portionen</p>
-        <ul class="zutaten-liste">
-          {#each zutatenMitProdukten as zutat}
-            <li>
-              <span class="menge">{zutat.menge}</span>
-              {#if zutat.produktId && zutat.produkt}
-                <a href={`/produkt/${zutat.produktId}`} class="zutat-link">
-                  {zutat.name}
-                </a>
-                {#if zutat.produkt.regional_data}
-                  <span class="zutat-flag">
-                    {getFlagEmoji(zutat.produkt.regional_data.origin_country)}
-                  </span>
-                {/if}
-              {:else}
-                <span class="zutat-name">{zutat.name}</span>
-              {/if}
-            </li>
-          {/each}
-        </ul>
-      </div>
+					<!-- Nährwerte PRO PORTION -->
+					{#if naehrwerteProPortion}
+						<div class="info-card nutrition">
+							<h3>🍽️ Nährwerte pro Portion</h3>
+							<div class="nutrition-grid">
+								<div class="nutrition-item">
+									<span class="label">Kalorien</span>
+									<span class="value">{naehrwerteProPortion.energie_kcal} kcal</span>
+								</div>
+								<div class="nutrition-item">
+									<span class="label">Eiweiß</span>
+									<span class="value">{naehrwerteProPortion.protein_g}g</span>
+								</div>
+								<div class="nutrition-item">
+									<span class="label">Fett</span>
+									<span class="value">{naehrwerteProPortion.fett_g}g</span>
+								</div>
+								<div class="nutrition-item">
+									<span class="label">Kohlenhydrate</span>
+									<span class="value">{naehrwerteProPortion.kohlenhydrate_g}g</span>
+								</div>
+								<div class="nutrition-item">
+									<span class="label">Ballaststoffe</span>
+									<span class="value">{naehrwerteProPortion.ballaststoffe_g}g</span>
+								</div>
+							</div>
+						</div>
+					{/if}
 
-      <!-- Zubereitung -->
-      <div class="info-card zubereitung">
-        <h2>👨‍🍳 Zubereitung</h2>
-        <ol class="schritte-liste">
-          {#each alleSchritte as schritt, index}
-            <li>
-              <span class="schritt-nummer">{index + 1}</span>
-              <p>{schritt}</p>
-            </li>
-          {/each}
-        </ol>
-      </div>
+					<!-- Nachhaltigkeits-Score -->
+					<div class="info-card score">
+						<h3>🌱 Nachhaltigkeit</h3>
+						<div class="score-display">
+							<div class="score-circle" style="border-color: {getScoreColor(regionalScore)}">
+								<span class="score-value">{regionalScore}/10</span>
+							</div>
+							<div class="score-details">
+								<p class="score-label">Regional-Score</p>
+								<p class="co2-value">💨 {totalCO2.toFixed(2)} kg CO₂/Portion</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-      <!-- Nährwerte Gesamt -->
-      {#if naehrwerte}
-        <div class="info-card">
-          <h2>🥗 Nährwerte (Gesamt)</h2>
-          <p class="card-subtitle">für alle {rezept.portionen} Portionen</p>
-          <div class="nutrition-grid">
-            <div class="nutrition-item highlight">
-              <span class="n-value">{naehrwerte.gesamt.energie_kcal}</span>
-              <span class="n-label">kcal</span>
-            </div>
-            <div class="nutrition-item highlight">
-              <span class="n-value">{naehrwerte.gesamt.protein_g}g</span>
-              <span class="n-label">Protein</span>
-            </div>
-            <div class="nutrition-item">
-              <span class="n-value">{naehrwerte.gesamt.kohlenhydrate_g}g</span>
-              <span class="n-label">Kohlenhydrate</span>
-            </div>
-            <div class="nutrition-item">
-              <span class="n-value">{naehrwerte.gesamt.fett_g}g</span>
-              <span class="n-label">Fett</span>
-            </div>
-            <div class="nutrition-item">
-              <span class="n-value">{naehrwerte.gesamt.ballaststoffe_g}g</span>
-              <span class="n-label">Ballaststoffe</span>
-            </div>
-          </div>
-        </div>
+		<!-- VARIANTEN -->
+		{#if rezept.varianten_zutaten && Object.keys(rezept.varianten_zutaten).length > 0}
+			<section class="variants">
+				<h2>Variante wählen</h2>
+				<div class="variant-buttons">
+					<button
+						class="variant-btn"
+						class:active={selectedVariant === 'standard'}
+						on:click={() => (selectedVariant = 'standard')}
+					>
+						Standard
+					</button>
+					{#each Object.keys(rezept.varianten_zutaten) as variant (variant)}
+						<button
+							class="variant-btn"
+							class:active={selectedVariant === variant}
+							on:click={() => (selectedVariant = variant)}
+						>
+							{variant}
+						</button>
+					{/each}
+				</div>
+			</section>
+		{/if}
 
-        <!-- Nährwerte pro Portion -->
-        <div class="info-card">
-          <h2>🍽️ Nährwerte (pro Portion)</h2>
-          <p class="card-subtitle">bei {rezept.portionen} Portionen</p>
-          <div class="nutrition-grid">
-            <div class="nutrition-item highlight">
-              <span class="n-value">{naehrwerte.proPortion.energie_kcal}</span>
-              <span class="n-label">kcal</span>
-            </div>
-            <div class="nutrition-item highlight">
-              <span class="n-value">{naehrwerte.proPortion.protein_g}g</span>
-              <span class="n-label">Protein</span>
-            </div>
-            <div class="nutrition-item">
-              <span class="n-value">{naehrwerte.proPortion.kohlenhydrate_g}g</span>
-              <span class="n-label">Kohlenhydrate</span>
-            </div>
-            <div class="nutrition-item">
-              <span class="n-value">{naehrwerte.proPortion.fett_g}g</span>
-              <span class="n-label">Fett</span>
-            </div>
-            <div class="nutrition-item">
-              <span class="n-value">{naehrwerte.proPortion.ballaststoffe_g}g</span>
-              <span class="n-label">Ballaststoffe</span>
-            </div>
-          </div>
-        </div>
-      {/if}
-    </div>
+		<!-- ZUTATEN -->
+		<section class="ingredients">
+			<h2>Zutaten</h2>
+			<ul class="ingredient-list">
+				{#each activeIngredients as zutat, index (`${zutat.name}-${zutat.menge}-${index}`)}
+					<li class="ingredient-item">
+						{#if zutat.produktId}
+							<a
+								href={resolve('/produkt/[id]', { id: `${zutat.produktId}` })}
+								class="ingredient-link"
+							>
+								<span class="ingredient-amount">{zutat.menge}{zutat.einheit}</span>
+								<span class="ingredient-name">{zutat.name}</span>
+								<span class="link-icon">→</span>
+							</a>
+						{:else}
+							<span class="ingredient-amount">{zutat.menge}{zutat.einheit}</span>
+							<span class="ingredient-name">{zutat.name}</span>
+						{/if}
+					</li>
+				{/each}
+			</ul>
+		</section>
 
-    <!-- Tags -->
-    {#if rezept.tags && rezept.tags.length > 0}
-      <div class="tags-section">
-        {#each rezept.tags as tag}
-          <span class="tag">#{tag}</span>
-        {/each}
-      </div>
-    {/if}
+		<!-- ZUBEREITUNG -->
+		<section class="instructions">
+			<h2>Zubereitung</h2>
+			<ol class="instruction-list">
+				{#each rezept.basis_zubereitung as schritt, index (`${index}-${schritt}`)}
+					<li class="instruction-step">
+						<span class="step-number">{index + 1}</span>
+						<p>{schritt}</p>
+					</li>
+				{/each}
+			</ol>
+		</section>
 
-  {:else}
-    <div class="not-found">
-      <h1>404</h1>
-      <p>Rezept nicht gefunden</p>
-      <a href="/rezepte" class="btn-primary">← Zurück zu Rezepten</a>
-    </div>
-  {/if}
-</div>
+		<!-- TIPPS -->
+		{#if rezept.tipps && rezept.tipps.length > 0}
+			<section class="tips">
+				<h2>💡 Tipps</h2>
+				<ul class="tip-list">
+					{#each rezept.tipps as tipp (tipp)}
+						<li>{tipp}</li>
+					{/each}
+				</ul>
+			</section>
+		{/if}
+	</div>
+{/if}
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
-
-  :global(:root) {
-    --bg-primary: #f5f5f5;
-    --bg-secondary: #ffffff;
-    --bg-tertiary: #fafafa;
-    --text-primary: #212121;
-    --text-secondary: #666666;
-    --text-tertiary: #999999;
-    --accent: #4CAF50;
-    --border-color: rgba(0,0,0,0.08);
-    --shadow: rgba(0,0,0,0.08);
-  }
-
-  :global(.dark-mode) {
-    --bg-primary: #121212;
-    --bg-secondary: #1e1e1e;
-    --bg-tertiary: #2a2a2a;
-    --text-primary: #f5f5f5;
-    --text-secondary: #b0b0b0;
-    --text-tertiary: #888888;
-    --accent: #66BB6A;
-    --border-color: rgba(255,255,255,0.1);
-    --shadow: rgba(0,0,0,0.3);
-  }
-
-  .page-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 0 2rem 0;
-  }
-
-  .back-link {
-    margin-bottom: 1rem;
-    padding: 0 0.5rem;
-  }
-
-  .back-link a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-
-  .back-link a:hover {
-    text-decoration: underline;
-  }
-
-  /* Header */
-  .rezept-header {
-    background: var(--bg-secondary);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 8px var(--shadow);
-  }
-
-  .title-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .title-row h1 {
-    margin: 0;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    flex: 1;
-  }
-
-  .badge {
-    padding: 0.4rem 0.8rem;
-    border-radius: 12px;
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .hero-section {
-    background: var(--bg-tertiary);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-  }
-
-  .meta-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0;
-    font-size: 0.9rem;
-  }
-
-  .m-icon {
-    font-size: 1.1rem;
-  }
-
-  .m-text {
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-
-  /* Nachhaltigkeit */
-  .sustainability {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .sus-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .score-large {
-    font-size: 2rem;
-    font-weight: 800;
-    border: 3px solid;
-    border-radius: 12px;
-    padding: 0.5rem 0.75rem;
-    line-height: 1;
-  }
-
-  .score-max {
-    font-size: 1.2rem;
-    opacity: 0.6;
-  }
-
-  .co2-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .co2-total {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text-primary);
-  }
-
-  .co2-portion {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-  }
-
-  .regional-info {
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--border-color);
-  }
-
-  .regional-text {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-  }
-
-  /* Details Grid */
-  .details-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .info-card {
-    background: var(--bg-secondary);
-    padding: 1.25rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px var(--shadow);
-    border: 1px solid var(--border-color);
-  }
-
-  .info-card h2 {
-    margin: 0 0 0.25rem 0;
-    font-size: 1.3rem;
-    color: var(--accent);
-    font-weight: 700;
-  }
-
-  .card-subtitle {
-    margin: 0 0 1rem 0;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-  }
-
-  /* Zutaten */
-  .zutaten-liste {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .zutaten-liste li {
-    padding: 0.6rem 0;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .zutaten-liste li:last-child {
-    border-bottom: none;
-  }
-
-  .menge {
-    font-weight: 700;
-    color: var(--accent);
-    min-width: 70px;
-    font-size: 0.85rem;
-  }
-
-  .zutat-link {
-    color: var(--text-primary);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--accent);
-    transition: all 0.2s;
-    flex: 1;
-  }
-
-  .zutat-link:hover {
-    color: var(--accent);
-    border-bottom-style: solid;
-  }
-
-  .zutat-name {
-    color: var(--text-primary);
-    flex: 1;
-  }
-
-  .zutat-flag {
-    font-size: 1rem;
-  }
-
-  /* Zubereitung */
-  .zubereitung {
-    grid-column: 1;
-  }
-
-  .schritte-liste {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .schritte-liste li {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .schritte-liste li:last-child {
-    margin-bottom: 0;
-  }
-
-  .schritt-nummer {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    background: var(--accent);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.85rem;
-  }
-
-  .schritte-liste p {
-    margin: 0;
-    line-height: 1.6;
-    color: var(--text-primary);
-    font-size: 0.9rem;
-  }
-
-  /* Nährwerte */
-  .nutrition-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-
-  .nutrition-item {
-    background: var(--bg-tertiary);
-    padding: 0.75rem;
-    border-radius: 8px;
-    text-align: center;
-    border: 1px solid var(--border-color);
-  }
-
-  .nutrition-item.highlight {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-  }
-
-  .n-value {
-    display: block;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-
-  .nutrition-item.highlight .n-value {
-    color: white;
-  }
-
-  .n-label {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-secondary);
-  }
-
-  .nutrition-item.highlight .n-label {
-    color: rgba(255,255,255,0.9);
-  }
-
-  /* Tags */
-  .tags-section {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    padding: 0 0.5rem;
-  }
-
-  .tag {
-    background: var(--bg-tertiary);
-    color: var(--text-secondary);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: 1px solid var(--border-color);
-  }
-
-  /* Not Found */
-  .not-found {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: var(--bg-secondary);
-    border-radius: 12px;
-  }
-
-  .not-found h1 {
-    font-size: 4rem;
-    margin: 0 0 1rem 0;
-    color: var(--accent);
-  }
-
-  .not-found p {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    margin: 0 0 2rem 0;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background: var(--accent);
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.2s;
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow);
-  }
-
-  /* Responsive */
-  @media (min-width: 769px) {
-    .title-row h1 {
-      font-size: 2.25rem;
-    }
-
-    .details-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .zubereitung {
-      grid-column: 1 / -1;
-    }
-
-    .nutrition-grid {
-      grid-template-columns: repeat(5, 1fr);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .rezept-header {
-      padding: 1rem;
-    }
-
-    .title-row h1 {
-      font-size: 1.5rem;
-    }
-
-    .badge {
-      font-size: 0.65rem;
-      padding: 0.3rem 0.6rem;
-    }
-
-    .score-large {
-      font-size: 1.5rem;
-      padding: 0.4rem 0.6rem;
-    }
-
-    .nutrition-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+	.loading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 50vh;
+		font-size: 1.2rem;
+		color: var(--text-secondary, #666666);
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0;
+	}
+
+	/* HERO SECTION */
+	.hero {
+		background: linear-gradient(
+			135deg,
+			var(--bg-primary, #ffffff) 0%,
+			var(--bg-secondary, #f5f5f5) 100%
+		);
+		padding: 2rem 0;
+		border-bottom: 2px solid var(--border-color, rgba(0, 0, 0, 0.06));
+	}
+
+	.hero-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	.hero-header {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.badge {
+		display: inline-block;
+		padding: 0.4rem 0.8rem;
+		border-radius: 15px;
+		color: white;
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		margin-bottom: 1rem;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		font-weight: 800;
+		color: var(--text-primary, #212121);
+		margin: 0.5rem 0;
+		line-height: 1.2;
+	}
+
+	.description {
+		font-size: 1.1rem;
+		color: var(--text-secondary, #666666);
+		max-width: 700px;
+		margin: 1rem auto 0;
+		line-height: 1.6;
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+
+	.info-card {
+		background: var(--bg-secondary, #ffffff);
+		border-radius: 12px;
+		padding: 1.5rem;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		border: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+	}
+
+	.info-card h3 {
+		margin: 0 0 1rem 0;
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: var(--text-primary, #212121);
+	}
+
+	.info-grid {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.info-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.info-item .icon {
+		font-size: 1.5rem;
+	}
+
+	.info-item .label {
+		display: block;
+		font-size: 0.75rem;
+		color: var(--text-secondary, #999999);
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-weight: 600;
+	}
+
+	.info-item .value {
+		display: block;
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--text-primary, #212121);
+	}
+
+	/* Nährwerte */
+	.nutrition-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.nutrition-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.nutrition-item .label {
+		font-size: 0.75rem;
+		color: var(--text-secondary, #999999);
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-weight: 600;
+	}
+
+	.nutrition-item .value {
+		font-size: 1.3rem;
+		font-weight: 700;
+		color: var(--accent, #4caf50);
+	}
+
+	/* Score */
+	.score-display {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.score-circle {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		border: 4px solid;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.score-value {
+		font-size: 1.5rem;
+		font-weight: 800;
+	}
+
+	.score-details {
+		flex: 1;
+	}
+
+	.score-label {
+		margin: 0 0 0.5rem 0;
+		font-size: 0.85rem;
+		color: var(--text-secondary, #666666);
+		font-weight: 600;
+	}
+
+	.co2-value {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary, #212121);
+	}
+
+	/* VARIANTEN */
+	.variants {
+		padding: 2rem 1rem;
+		border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+	}
+
+	.variants h2 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		color: var(--text-primary, #212121);
+	}
+
+	.variant-buttons {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.variant-btn {
+		padding: 0.75rem 1.5rem;
+		border: 2px solid var(--border-color, rgba(0, 0, 0, 0.2));
+		border-radius: 25px;
+		background: var(--bg-secondary, #ffffff);
+		color: var(--text-primary, #212121);
+		font-size: 0.95rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		text-transform: capitalize;
+	}
+
+	.variant-btn:hover {
+		border-color: var(--accent, #4caf50);
+		transform: translateY(-2px);
+	}
+
+	.variant-btn.active {
+		background: var(--accent, #4caf50);
+		color: white;
+		border-color: var(--accent, #4caf50);
+	}
+
+	/* ZUTATEN */
+	.ingredients {
+		padding: 2rem 1rem;
+		border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+	}
+
+	.ingredients h2 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		color: var(--text-primary, #212121);
+	}
+
+	.ingredient-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.ingredient-item {
+		padding: 0.75rem;
+		background: var(--bg-secondary, #f9f9f9);
+		border-radius: 8px;
+		border-left: 3px solid var(--accent, #4caf50);
+	}
+
+	.ingredient-link {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.2s ease;
+	}
+
+	.ingredient-link:hover {
+		color: var(--accent, #4caf50);
+	}
+
+	.ingredient-link:hover .link-icon {
+		transform: translateX(4px);
+	}
+
+	.ingredient-amount {
+		font-weight: 700;
+		color: var(--accent, #4caf50);
+		min-width: 80px;
+	}
+
+	.ingredient-name {
+		flex: 1;
+		font-weight: 500;
+	}
+
+	.link-icon {
+		color: var(--accent, #4caf50);
+		font-weight: 700;
+		transition: transform 0.2s ease;
+	}
+
+	/* ZUBEREITUNG */
+	.instructions {
+		padding: 2rem 1rem;
+		border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.06));
+	}
+
+	.instructions h2 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		color: var(--text-primary, #212121);
+	}
+
+	.instruction-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.instruction-step {
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+	}
+
+	.step-number {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		background: var(--accent, #4caf50);
+		color: white;
+		border-radius: 50%;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+
+	.instruction-step p {
+		margin: 0;
+		line-height: 1.6;
+		font-size: 1rem;
+		color: var(--text-primary, #212121);
+	}
+
+	/* TIPPS */
+	.tips {
+		padding: 2rem 1rem;
+	}
+
+	.tips h2 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		color: var(--text-primary, #212121);
+	}
+
+	.tip-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.tip-list li {
+		padding: 1rem;
+		background: #fff9c4;
+		border-left: 3px solid #fdd835;
+		border-radius: 8px;
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	/* DARK MODE */
+	:global(.dark-mode) .hero {
+		background: linear-gradient(
+			135deg,
+			var(--bg-primary, #1a1a1a) 0%,
+			var(--bg-secondary, #252525) 100%
+		);
+	}
+
+	:global(.dark-mode) .info-card {
+		background: var(--bg-secondary, #2a2a2a);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+	}
+
+	:global(.dark-mode) h1,
+	:global(.dark-mode) .info-card h3,
+	:global(.dark-mode) h2 {
+		color: var(--text-primary, #f5f5f5);
+	}
+
+	:global(.dark-mode) .description,
+	:global(.dark-mode) .score-label {
+		color: var(--text-secondary, #b0b0b0);
+	}
+
+	:global(.dark-mode) .ingredient-item {
+		background: var(--bg-secondary, #2a2a2a);
+	}
+
+	:global(.dark-mode) .variant-btn {
+		background: var(--bg-secondary, #2a2a2a);
+		color: var(--text-primary, #f5f5f5);
+	}
+
+	:global(.dark-mode) .tip-list li {
+		background: #3a3a00;
+		border-left-color: #fdd835;
+	}
+
+	/* RESPONSIVE */
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 1.8rem;
+		}
+
+		.description {
+			font-size: 1rem;
+		}
+
+		.hero-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.nutrition-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.score-circle {
+			width: 70px;
+			height: 70px;
+		}
+
+		.score-value {
+			font-size: 1.3rem;
+		}
+	}
 </style>

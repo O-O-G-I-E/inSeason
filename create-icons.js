@@ -1,5 +1,4 @@
 import sharp from 'sharp';
-import fs from 'fs';
 
 const svg = `
 <svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
@@ -12,21 +11,21 @@ const buffer = Buffer.from(svg);
 
 // 512x512 Icon
 sharp(buffer)
-  .resize(512, 512)
-  .png()
-  .toFile('static/icon-512.png')
-  .then(() => console.log('✅ icon-512.png erstellt'));
+	.resize(512, 512)
+	.png()
+	.toFile('static/icon-512.png')
+	.then(() => console.log('✅ icon-512.png erstellt'));
 
 // 192x192 Icon
 sharp(buffer)
-  .resize(192, 192)
-  .png()
-  .toFile('static/icon-192.png')
-  .then(() => console.log('✅ icon-192.png erstellt'));
+	.resize(192, 192)
+	.png()
+	.toFile('static/icon-192.png')
+	.then(() => console.log('✅ icon-192.png erstellt'));
 
 // Favicon
 sharp(buffer)
-  .resize(32, 32)
-  .png()
-  .toFile('static/favicon.png')
-  .then(() => console.log('✅ favicon.png erstellt'));
+	.resize(32, 32)
+	.png()
+	.toFile('static/favicon.png')
+	.then(() => console.log('✅ favicon.png erstellt'));

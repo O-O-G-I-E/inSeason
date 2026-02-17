@@ -34,7 +34,7 @@ CONCITO_MAPPING = {
     "Feldsalat": {"total": 0.363, "agriculture": 0.157, "iluc": 0.026, "processing": 0.0, "packaging": 0.065, "transport": 0.109, "retail": 0.006},
     "Radieschen": {"total": 0.270, "agriculture": 0.097, "iluc": 0.012, "processing": 0.0, "packaging": 0.074, "transport": 0.081, "retail": 0.006},
     "Mais": {"total": 0.430, "agriculture": 0.215, "iluc": 0.025, "processing": 0.0, "packaging": 0.074, "transport": 0.110, "retail": 0.006},
-
+    
     # Obst
     "Apfel": {"total": 0.407, "agriculture": 0.184, "iluc": 0.026, "processing": 0.0, "packaging": 0.140, "transport": 0.051, "retail": 0.006},
     "Birne": {"total": 0.440, "agriculture": 0.206, "iluc": 0.033, "processing": 0.0, "packaging": 0.140, "transport": 0.055, "retail": 0.006},
@@ -46,29 +46,29 @@ CONCITO_MAPPING = {
     "Zitrone": {"total": 0.610, "agriculture": 0.235, "iluc": 0.031, "processing": 0.0, "packaging": 0.140, "transport": 0.198, "retail": 0.006},
     "Limette": {"total": 0.720, "agriculture": 0.235, "iluc": 0.031, "processing": 0.0, "packaging": 0.140, "transport": 0.308, "retail": 0.006},
     "Avocado": {"total": 0.846, "agriculture": 0.323, "iluc": 0.041, "processing": 0.0, "packaging": 0.140, "transport": 0.336, "retail": 0.006},
-
+    
     # Kräuter
     "Basilikum": {"total": 2.350, "agriculture": 1.912, "iluc": 0.077, "processing": 0.0, "packaging": 0.065, "transport": 0.290, "retail": 0.006},
     "Petersilie": {"total": 0.363, "agriculture": 0.157, "iluc": 0.026, "processing": 0.0, "packaging": 0.065, "transport": 0.109, "retail": 0.006},
     "Schnittlauch": {"total": 0.350, "agriculture": 0.144, "iluc": 0.016, "processing": 0.0, "packaging": 0.074, "transport": 0.110, "retail": 0.006},
     "Dill": {"total": 0.363, "agriculture": 0.157, "iluc": 0.026, "processing": 0.0, "packaging": 0.065, "transport": 0.109, "retail": 0.006},
-
+    
     # Pilze
     "Champignon": {"total": 1.580, "agriculture": 1.228, "iluc": 0.038, "processing": 0.0, "packaging": 0.140, "transport": 0.168, "retail": 0.006},
-
+    
     # Nüsse
     "Walnuss": {"total": 0.700, "agriculture": 0.377, "iluc": 0.034, "processing": 0.036, "packaging": 0.029, "transport": 0.218, "retail": 0.006},
     "Haselnuss": {"total": 0.850, "agriculture": 0.465, "iluc": 0.047, "processing": 0.036, "packaging": 0.029, "transport": 0.267, "retail": 0.006},
     "Cashewkerne": {"total": 2.750, "agriculture": 1.450, "iluc": 0.285, "processing": 0.520, "packaging": 0.140, "transport": 0.349, "retail": 0.006},
-
+    
     # Getreide
     "Mehl": {"total": 0.580, "agriculture": 0.280, "iluc": 0.042, "processing": 0.120, "packaging": 0.050, "transport": 0.082, "retail": 0.006},
     "Reis": {"total": 2.680, "agriculture": 1.892, "iluc": 0.358, "processing": 0.180, "packaging": 0.050, "transport": 0.194, "retail": 0.006},
     "Quinoa": {"total": 1.620, "agriculture": 0.815, "iluc": 0.142, "processing": 0.210, "packaging": 0.050, "transport": 0.397, "retail": 0.006},
-
+    
     # Öle
     "Olivenöl": {"total": 3.230, "agriculture": 2.152, "iluc": 0.312, "processing": 0.420, "packaging": 0.140, "transport": 0.200, "retail": 0.006},
-
+    
     # Gewürze
     "Ingwer": {"total": 0.850, "agriculture": 0.320, "iluc": 0.045, "processing": 0.0, "packaging": 0.140, "transport": 0.339, "retail": 0.006},
 }
@@ -135,27 +135,27 @@ def match_product(product_name):
 
 def update_co2_data(lebensmittel_path='src/lib/data/lebensmittel.json'):
     """Aktualisiert CO2-Daten in lebensmittel.json"""
-
+    
     # Prüfe ob Datei existiert
     if not os.path.exists(lebensmittel_path):
         print(f"❌ Fehler: {lebensmittel_path} nicht gefunden!")
         print(f"   Führe das Script aus dem Root-Verzeichnis aus.")
         return 0
-
+    
     print(f"🔄 Lade {lebensmittel_path}...")
     with open(lebensmittel_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-
+    
     updated = 0
     unchanged = 0
-
+    
     for product in data:
         concito_data = match_product(product['name'])
-
+        
         if concito_data and 'regional_data' in product:
             old_co2 = product['regional_data'].get('co2_per_kg', 0)
             new_co2 = concito_data['total']
-
+            
             if abs(old_co2 - new_co2) > 0.001:  # Nur bei Änderung
                 product['regional_data']['co2_per_kg'] = new_co2
                 product['regional_data']['co2_breakdown'] = {
@@ -168,27 +168,27 @@ def update_co2_data(lebensmittel_path='src/lib/data/lebensmittel.json'):
                 }
                 product['regional_data']['data_source'] = "CONCITO Big Climate Database v1.2"
                 product['regional_data']['last_updated'] = datetime.now().strftime("%Y-%m-%d")
-
+                
                 print(f"  ✏️  {product['name']:30s}: {old_co2:.3f} → {new_co2:.3f} kg/kg")
                 updated += 1
             else:
                 unchanged += 1
-
+    
     if updated > 0:
         # Backup erstellen
         backup_path = lebensmittel_path.replace('.json', f'_backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json')
         with open(backup_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         print(f"\n💾 Backup erstellt: {backup_path}")
-
+        
         # Speichern
         with open(lebensmittel_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
-
+        
         print(f"\n✅ {updated} Produkte aktualisiert!")
     else:
         print(f"\n✅ Alle {unchanged} Produkte sind bereits aktuell!")
-
+    
     return updated
 
 if __name__ == "__main__":
