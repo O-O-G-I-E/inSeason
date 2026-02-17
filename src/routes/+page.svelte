@@ -107,6 +107,7 @@
     selectedTransport = 'Alle';
     showOnlyRegional = false;
     searchQuery = '';
+    sortBy = 'name';
   }
 </script>
 
@@ -203,7 +204,7 @@
       </select>
     </div>
     
-    {#if selectedCategory !== 'Alle' || showOnlyRegional || searchQuery}
+    {#if searchQuery !== '' || selectedCategory !== 'Alle' || showOnlyRegional || selectedTransport !== 'Alle' || selectedNutritionFilter !== 'Alle' || sortBy !== 'name'}
       <button class="reset-btn" on:click={resetFilters}>✕ Zurücksetzen</button>
     {/if}
   </div>
