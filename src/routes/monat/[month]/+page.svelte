@@ -1,21 +1,20 @@
 <script>
   import { page } from '$app/stores';
-  import { goto } from '$app/navigation';
   import lebensmittelData from '$lib/data/lebensmittel.json';
   import ProductCard from '$lib/components/ProductCard.svelte';
-  import { filterByMonth, getMonthName, getShortMonthName, getAllCategories, searchProducts } from '$lib/utils/seasonHelper.js';
-  import { swipe } from '$lib/utils/swipe.js';
+  import { filterByMonth, getMonthName, getShortMonthName, getAllCategories, searchProducts, getCurrentMonth } from '$lib/utils/seasonHelper.js';
 
   $: month = parseInt($page.params.month);
   $: monthName = getMonthName(month);
   $: produkte = filterByMonth(lebensmittelData, month);
+  
+  const currentMonth = getCurrentMonth();
   
   let searchQuery = '';
   let selectedCategory = 'Alle';
   let selectedNutritionFilter = 'Alle';
   let sortBy = 'name';
   
-  // Regional & Transport Filter
   let showOnlyRegional = false;
   let selectedTransport = 'Alle';
   
@@ -107,31 +106,12 @@
     return results;
   })();
   
-  $: avgCO2 = filteredProdukte.length > 0
-    ? (filteredProdukte.reduce((sum, p) => sum + (p.regional_data?.co2_per_kg || 0), 0) / filteredProdukte.length).toFixed(2)
-    : 0;
-  
-  $: regionalCount = filteredProdukte.filter(p => p.regional_data && !p.regional_data.is_import).length;
-  
-  // Navigation
-  $: prevMonth = month === 1 ? 12 : month - 1;
-  $: nextMonth = month === 12 ? 1 : month + 1;
-  
   function resetFilters() {
     selectedNutritionFilter = 'Alle';
     selectedCategory = 'Alle';
     selectedTransport = 'Alle';
     showOnlyRegional = false;
     searchQuery = '';
-  }
-  
-  // Swipe Handlers
-  function handleSwipeLeft() {
-    goto(`/monat/${nextMonth}`);
-  }
-  
-  function handleSwipeRight() {
-    goto(`/monat/${prevMonth}`);
   }
 </script>
 
@@ -143,46 +123,10 @@
   <a href="/">← Übersicht</a>
 </div>
 
-<!-- Swipeable Month Header -->
-<div 
-  class="month-header" 
-  use:swipe={{ onSwipeLeft: handleSwipeLeft, onSwipeRight: handleSwipeRight }}
->
-  <div class="swipe-indicator">👈 Swipe 👉</div>
-  
-  <div class="month-nav-compact">
-    <a href="/monat/{prevMonth}" class="nav-arrow">
-      ← {getShortMonthName(prevMonth)}
-    </a>
-    
-    <div class="current-month">
-      <h1>{monthName}</h1>
-      <div class="month-stats">
-        <span class="stat-item">
-          <span class="stat-value">{filteredProdukte.length}</span>
-          <span class="stat-label">Produkte</span>
-        </span>
-        <span class="stat-divider">•</span>
-        <span class="stat-item">
-          <span class="stat-value">{regionalCount}</span>
-          <span class="stat-label">🌱</span>
-        </span>
-        <span class="stat-divider">•</span>
-        <span class="stat-item">
-          <span class="stat-value">Ø {avgCO2}</span>
-          <span class="stat-label">CO₂</span>
-        </span>
-      </div>
-    </div>
-    
-    <a href="/monat/{nextMonth}" class="nav-arrow">
-      {getShortMonthName(nextMonth)} →
-    </a>
-  </div>
-  
-  {#if selectedCategory !== 'Alle' || showOnlyRegional || searchQuery}
-    <button class="reset-btn-hero" on:click={resetFilters}>✕ Filter zurücksetzen</button>
-  {/if}
+<!-- Minimal Hero -->
+<div class="hero">
+  <h1>{monthName}</h1>
+  <p class="count">{filteredProdukte.length} Produkte</p>
 </div>
 
 <!-- Suche -->
@@ -195,15 +139,16 @@
   />
 </div>
 
-<!-- Alle 12 Monate zum schnellen Springen -->
-<div class="month-selector">
+<!-- Schnellwahl mit aktuellem Monat hervorgehoben -->
+<div class="month-section">
   <h2 class="section-title">Schnellwahl</h2>
-  <div class="months-grid-compact">
+  <div class="months-grid">
     {#each Array(12) as _, i}
       <a 
         href="/monat/{i + 1}" 
         class="month-btn"
-        class:current={i + 1 === month}
+        class:selected={i + 1 === month}
+        class:current={i + 1 === currentMonth}
       >
         {getShortMonthName(i + 1)}
       </a>
@@ -211,7 +156,7 @@
   </div>
 </div>
 
-<!-- Kategorien horizontal -->
+<!-- Kategorien -->
 <div class="categories-section">
   <h2 class="section-title">Kategorien</h2>
   <div class="categories-scroll">
@@ -227,7 +172,7 @@
   </div>
 </div>
 
-<!-- Filter kollapsierbar -->
+<!-- Filter -->
 <details class="advanced-filters">
   <summary class="filter-toggle">⚙️ Filter & Sortierung</summary>
   
@@ -267,10 +212,14 @@
         {/each}
       </select>
     </div>
+    
+    {#if selectedCategory !== 'Alle' || showOnlyRegional || searchQuery}
+      <button class="reset-btn" on:click={resetFilters}>✕ Zurücksetzen</button>
+    {/if}
   </div>
 </details>
 
-<!-- 2-Spalten Grid -->
+<!-- Grid -->
 <div class="products-grid">
   {#each filteredProdukte as produkt (produkt.id)}
     <ProductCard {produkt} />
@@ -286,6 +235,7 @@
 
   :global(body) {
     overflow-x: hidden;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
 
   :global(:root) {
@@ -325,124 +275,29 @@
     font-size: 0.9rem;
   }
 
-  .back-link a:hover {
-    text-decoration: underline;
-  }
-
-  /* Swipeable Month Header */
-  .month-header {
+  .hero {
+    text-align: center;
+    padding: 1rem;
     background: var(--bg-secondary);
     border-radius: 12px;
-    padding: 1.25rem 1rem 1rem;
     margin-bottom: 1rem;
     box-shadow: 0 2px 6px var(--shadow);
-    position: relative;
-    touch-action: pan-y;
   }
 
-  .swipe-indicator {
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
-    margin-bottom: 0.5rem;
-    opacity: 0.7;
-  }
-
-  .month-nav-compact {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .current-month {
-    text-align: center;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .current-month h1 {
-    margin: 0 0 0.5rem 0;
+  .hero h1 {
+    margin: 0 0 0.25rem 0;
+    color: var(--accent);
     font-size: 1.75rem;
     font-weight: 700;
-    color: var(--accent);
   }
 
-  .month-stats {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-
-  .stat-value {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
-  .stat-label {
-    font-size: 0.65rem;
+  .count {
+    margin: 0;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
+    font-weight: 500;
   }
 
-  .stat-divider {
-    color: var(--border-color);
-    font-size: 0.7rem;
-  }
-
-  .nav-arrow {
-    padding: 0.5rem 0.75rem;
-    background: var(--bg-tertiary);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 0.8rem;
-    transition: all 0.2s;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .nav-arrow:active {
-    transform: scale(0.95);
-  }
-
-  .nav-arrow:hover {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-  }
-
-  .reset-btn-hero {
-    margin-top: 0.75rem;
-    padding: 0.5rem 1rem;
-    background: #f44336;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    width: 100%;
-  }
-
-  .reset-btn-hero:hover {
-    background: #d32f2f;
-  }
-
-  /* Suche */
   .search-container {
     margin-bottom: 1rem;
   }
@@ -464,7 +319,7 @@
   }
 
   .section-title {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary);
     margin: 0 0 0.75rem 0;
@@ -472,12 +327,11 @@
     letter-spacing: 0.5px;
   }
 
-  /* Month Selector */
-  .month-selector {
+  .month-section {
     margin-bottom: 1rem;
   }
 
-  .months-grid-compact {
+  .months-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 0.5rem;
@@ -503,13 +357,18 @@
     transform: scale(0.95);
   }
 
-  .month-btn.current {
+  .month-btn.selected {
     background: var(--accent);
     color: white;
     border-color: var(--accent);
   }
 
-  /* Kategorien */
+  /* Aktueller Monat: Outline für Wiedererkennung */
+  .month-btn.current:not(.selected) {
+    border-color: var(--accent);
+    border-width: 3px;
+  }
+
   .categories-section {
     margin-bottom: 1rem;
   }
@@ -556,7 +415,6 @@
     border-color: var(--accent);
   }
 
-  /* Filter */
   .advanced-filters {
     margin-bottom: 1rem;
     background: var(--bg-secondary);
@@ -629,11 +487,26 @@
     border-color: var(--accent);
   }
 
-  /* 2-Spalten Grid */
+  .reset-btn {
+    padding: 0.65rem 1rem;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .reset-btn:hover {
+    background: #d32f2f;
+  }
+
   .products-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.625rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
     margin-bottom: 2rem;
   }
 
@@ -645,26 +518,16 @@
     font-size: 0.95rem;
   }
 
-  /* Desktop */
   @media (min-width: 769px) {
-    .swipe-indicator {
-      display: none;
-    }
-
-    .current-month h1 {
+    .hero h1 {
       font-size: 2.5rem;
     }
 
-    .month-stats {
+    .count {
       font-size: 1.1rem;
     }
 
-    .nav-arrow {
-      font-size: 0.95rem;
-      padding: 0.75rem 1.5rem;
-    }
-
-    .months-grid-compact {
+    .months-grid {
       grid-template-columns: repeat(12, 1fr);
     }
 
@@ -674,7 +537,7 @@
     }
 
     .products-grid {
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 1rem;
     }
 
@@ -687,31 +550,20 @@
       flex: 1;
       min-width: 200px;
     }
-
-    .reset-btn-hero {
-      width: auto;
-      margin-left: auto;
-      margin-right: auto;
-    }
   }
 
   @media (max-width: 400px) {
-    .months-grid-compact {
-      gap: 0.35rem;
+    .months-grid {
+      gap: 0.4rem;
     }
 
     .month-btn {
-      font-size: 0.7rem;
-      padding: 0.5rem 0.15rem;
+      font-size: 0.72rem;
+      padding: 0.55rem 0.15rem;
     }
 
     .products-grid {
-      gap: 0.5rem;
-    }
-
-    .nav-arrow {
-      font-size: 0.7rem;
-      padding: 0.4rem 0.5rem;
+      gap: 0.4rem;
     }
   }
 </style>

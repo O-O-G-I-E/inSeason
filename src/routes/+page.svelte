@@ -9,16 +9,12 @@
   let selectedNutritionFilter = 'Alle';
   let sortBy = 'name';
   
-  // Regional & Transport Filter
   let showOnlyRegional = false;
   let selectedTransport = 'Alle';
   
   $: inSaisonProdukte = filterByMonth(lebensmittelData, currentMonth);
-  
-  // Kategorien ALPHABETISCH sortiert
   $: categories = ['Alle', ...getAllCategories(lebensmittelData).sort()];
   
-  // Nährwert-Filter Optionen
   const nutritionFilters = [
     { value: 'Alle', label: 'Alle' },
     { value: 'proteinreich', label: '💪 Proteinreich' },
@@ -29,7 +25,6 @@
     { value: 'eisenreich', label: '⚡ Eisenreich' }
   ];
   
-  // Transport-Filter Optionen
   const transportFilters = [
     { value: 'Alle', label: 'Alle' },
     { value: 'local', label: '🌱 Lokal' },
@@ -38,7 +33,6 @@
     { value: 'plane', label: '✈️ Flug' }
   ];
   
-  // Sortier-Optionen
   const sortOptions = [
     { value: 'name', label: 'Name (A-Z)' },
     { value: 'co2_asc', label: '🌱 CO₂ ↑' },
@@ -107,13 +101,6 @@
     return results;
   })();
   
-  $: avgCO2 = filteredProdukte.length > 0
-    ? (filteredProdukte.reduce((sum, p) => sum + (p.regional_data?.co2_per_kg || 0), 0) / filteredProdukte.length).toFixed(2)
-    : 0;
-  
-  $: regionalCount = filteredProdukte.filter(p => p.regional_data && !p.regional_data.is_import).length;
-  $: importCount = filteredProdukte.filter(p => p.regional_data && p.regional_data.is_import).length;
-  
   function resetFilters() {
     selectedNutritionFilter = 'Alle';
     selectedCategory = 'Alle';
@@ -127,17 +114,13 @@
   <title>inSeason - Saisonkalender für regionale Lebensmittel</title>
 </svelte:head>
 
-<!-- Kompakte Hero -->
+<!-- Minimal Hero: Nur Monat + Anzahl -->
 <div class="hero">
-  <h1>{getMonthName(currentMonth)} 2026</h1>
-  <p class="stats-line">
-    <span class="stat">{inSaisonProdukte.length} 🌱</span>
-    <span class="divider">|</span>
-    <span class="stat">Ø {avgCO2} kg CO₂</span>
-  </p>
+  <h1>{getMonthName(currentMonth)}</h1>
+  <p class="count">{filteredProdukte.length} Produkte</p>
 </div>
 
-<!-- Suche direkt unter Hero -->
+<!-- Suche -->
 <div class="search-container">
   <input 
     type="search" 
@@ -147,10 +130,10 @@
   />
 </div>
 
-<!-- Kompakte Monatsnavigation: 2×6 Grid -->
+<!-- Schnellwahl: 2×6 Grid mit aktuellem Monat hervorgehoben -->
 <div class="month-section">
-  <h2 class="section-title">Andere Monate</h2>
-  <div class="months-grid-compact">
+  <h2 class="section-title">Schnellwahl</h2>
+  <div class="months-grid">
     {#each Array(12) as _, i}
       <a 
         href="/monat/{i + 1}" 
@@ -163,7 +146,7 @@
   </div>
 </div>
 
-<!-- Horizontale Kategorie-Filter -->
+<!-- Kategorien horizontal -->
 <div class="categories-section">
   <h2 class="section-title">Kategorien</h2>
   <div class="categories-scroll">
@@ -179,12 +162,11 @@
   </div>
 </div>
 
-<!-- Erweiterte Filter (kollapsierbar auf Mobile) -->
+<!-- Filter kollapsierbar -->
 <details class="advanced-filters">
   <summary class="filter-toggle">⚙️ Filter & Sortierung</summary>
   
   <div class="filter-content">
-    <!-- Regional Toggle -->
     <label class="toggle-label">
       <input 
         type="checkbox" 
@@ -194,7 +176,6 @@
       <span>🌱 Nur Regional</span>
     </label>
     
-    <!-- Transport -->
     <div class="filter-group">
       <label for="transport-select">Transport:</label>
       <select id="transport-select" bind:value={selectedTransport} class="select">
@@ -204,7 +185,6 @@
       </select>
     </div>
     
-    <!-- Nährwerte -->
     <div class="filter-group">
       <label for="nutrition-select">Nährwerte:</label>
       <select id="nutrition-select" bind:value={selectedNutritionFilter} class="select">
@@ -214,7 +194,6 @@
       </select>
     </div>
     
-    <!-- Sortierung -->
     <div class="filter-group">
       <label for="sort-select">Sortierung:</label>
       <select id="sort-select" bind:value={sortBy} class="select">
@@ -223,23 +202,14 @@
         {/each}
       </select>
     </div>
+    
+    {#if selectedCategory !== 'Alle' || showOnlyRegional || searchQuery}
+      <button class="reset-btn" on:click={resetFilters}>✕ Zurücksetzen</button>
+    {/if}
   </div>
 </details>
 
-<!-- Kompakte Ergebnis-Info -->
-<div class="result-bar">
-  <span class="result-count">{filteredProdukte.length}</span>
-  {#if filteredProdukte.length > 0}
-    <span class="result-stats">
-      🌱 {regionalCount} · 🌍 {importCount}
-    </span>
-  {/if}
-  {#if selectedCategory !== 'Alle' || showOnlyRegional || searchQuery}
-    <button class="reset-btn" on:click={resetFilters}>✕</button>
-  {/if}
-</div>
-
-<!-- 2-spaltiges Produkt-Grid auf Mobile -->
+<!-- Perfektes 2-Spalten Grid -->
 <div class="products-grid">
   {#each filteredProdukte as produkt (produkt.id)}
     <ProductCard {produkt} />
@@ -249,35 +219,32 @@
 </div>
 
 <style>
-    /* Global Box-Sizing Fix */
   * {
     box-sizing: border-box;
   }
 
-  /* Verhindere Overflow */
   :global(body) {
     overflow-x: hidden;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
-  /* CSS Variables für Light & Dark Mode */
+
   :global(:root) {
     --bg-primary: #f5f5f5;
     --bg-secondary: #ffffff;
     --bg-tertiary: #fafafa;
-    --env-bg: rgba(76, 175, 80, 0.08);
     --text-primary: #212121;
     --text-secondary: #666666;
     --text-tertiary: #999999;
     --accent: #4CAF50;
     --border-color: rgba(0,0,0,0.08);
-    --shadow: rgba(0,0,0,0.1);
-    --shadow-hover: rgba(0,0,0,0.15);
+    --shadow: rgba(0,0,0,0.08);
+    --shadow-hover: rgba(0,0,0,0.12);
   }
 
   :global(.dark-mode) {
     --bg-primary: #121212;
     --bg-secondary: #1e1e1e;
     --bg-tertiary: #2a2a2a;
-    --env-bg: rgba(76, 175, 80, 0.15);
     --text-primary: #f5f5f5;
     --text-secondary: #b0b0b0;
     --text-tertiary: #888888;
@@ -287,39 +254,28 @@
     --shadow-hover: rgba(0,0,0,0.4);
   }
 
-  /* Hero kompakt */
+  /* Minimal Hero */
   .hero {
     text-align: center;
-    padding: 1.5rem 1rem 1rem;
+    padding: 1rem;
     background: var(--bg-secondary);
     border-radius: 12px;
     margin-bottom: 1rem;
-    box-shadow: 0 2px 8px var(--shadow);
+    box-shadow: 0 2px 6px var(--shadow);
   }
 
   .hero h1 {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.25rem 0;
     color: var(--accent);
     font-size: 1.75rem;
     font-weight: 700;
   }
 
-  .stats-line {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.95rem;
+  .count {
+    margin: 0;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-  }
-
-  .stat {
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  .divider {
-    color: var(--border-color);
+    font-weight: 500;
   }
 
   /* Suche */
@@ -343,9 +299,8 @@
     border-color: var(--accent);
   }
 
-  /* Section Titles */
   .section-title {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary);
     margin: 0 0 0.75rem 0;
@@ -353,12 +308,12 @@
     letter-spacing: 0.5px;
   }
 
-  /* Monate: 2×6 Grid kompakt */
+  /* Schnellwahl: 2×6 Grid */
   .month-section {
     margin-bottom: 1rem;
   }
 
-  .months-grid-compact {
+  .months-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 0.5rem;
@@ -380,21 +335,18 @@
     justify-content: center;
   }
 
-  .month-btn:hover {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-    transform: translateY(-2px);
+  .month-btn:active {
+    transform: scale(0.95);
   }
 
   .month-btn.current {
     background: var(--accent);
     color: white;
     border-color: var(--accent);
-    box-shadow: 0 2px 8px var(--shadow-hover);
+    box-shadow: 0 2px 6px var(--shadow-hover);
   }
 
-  /* Kategorien: Horizontal Scroll */
+  /* Kategorien */
   .categories-section {
     margin-bottom: 1rem;
   }
@@ -431,8 +383,8 @@
     flex-shrink: 0;
   }
 
-  .cat-pill:hover {
-    border-color: var(--accent);
+  .cat-pill:active {
+    transform: scale(0.95);
   }
 
   .cat-pill.active {
@@ -441,7 +393,7 @@
     border-color: var(--accent);
   }
 
-  /* Erweiterte Filter (kollapsierbar) */
+  /* Filter */
   .advanced-filters {
     margin-bottom: 1rem;
     background: var(--bg-secondary);
@@ -452,6 +404,7 @@
   .filter-toggle {
     padding: 0.875rem 1rem;
     font-weight: 600;
+    font-size: 0.9rem;
     color: var(--text-primary);
     cursor: pointer;
     list-style: none;
@@ -513,37 +466,14 @@
     border-color: var(--accent);
   }
 
-  /* Ergebnis-Bar kompakt */
-  .result-bar {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    background: var(--env-bg);
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    border-left: 3px solid var(--accent);
-  }
-
-  .result-count {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .result-stats {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    flex: 1;
-  }
-
   .reset-btn {
-    padding: 0.5rem 0.75rem;
+    padding: 0.65rem 1rem;
     background: #f44336;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 600;
+    font-size: 0.85rem;
     cursor: pointer;
     transition: all 0.2s;
   }
@@ -552,30 +482,33 @@
     background: #d32f2f;
   }
 
-  /* Produkt-Grid: 2 Spalten auf Mobile */
+  /* PERFEKTES 2-Spalten Grid */
   .products-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    gap: 0.5rem;
     margin-bottom: 2rem;
-    width: 100%;
-    max-width: 100%;
   }
 
   .no-results {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 1rem;
     color: var(--text-tertiary);
+    font-size: 0.95rem;
   }
 
-  /* Desktop: Mehr Spalten */
+  /* Desktop */
   @media (min-width: 769px) {
     .hero h1 {
       font-size: 2.5rem;
     }
 
-    .months-grid-compact {
+    .count {
+      font-size: 1.1rem;
+    }
+
+    .months-grid {
       grid-template-columns: repeat(12, 1fr);
     }
 
@@ -585,8 +518,8 @@
     }
 
     .products-grid {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
     }
 
     .filter-content {
@@ -601,17 +534,17 @@
   }
 
   @media (max-width: 400px) {
-    .months-grid-compact {
-      gap: 0.35rem;
+    .months-grid {
+      gap: 0.4rem;
     }
 
     .month-btn {
-      font-size: 0.7rem;
-      padding: 0.5rem 0.15rem;
+      font-size: 0.72rem;
+      padding: 0.55rem 0.15rem;
     }
 
     .products-grid {
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
   }
 </style>

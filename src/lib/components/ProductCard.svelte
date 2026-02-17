@@ -48,8 +48,11 @@
     flex-direction: column;
     gap: 0.5rem;
     border: 2px solid transparent;
-    min-height: 110px;
     position: relative;
+    
+    /* Quadratisch: 1:1 Aspect Ratio */
+    aspect-ratio: 1 / 1;
+    width: 100%;
   }
 
   .card:active {
@@ -64,11 +67,14 @@
 
   .name {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary, #212121);
     line-height: 1.3;
     flex: 1;
+    padding-right: 3.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .badge {
@@ -114,12 +120,10 @@
   @media (max-width: 768px) {
     .card {
       padding: 0.75rem;
-      min-height: 100px;
     }
 
     .name {
-      font-size: 0.95rem;
-      padding-right: 3.5rem;
+      font-size: 0.9rem;
     }
 
     .badge {
