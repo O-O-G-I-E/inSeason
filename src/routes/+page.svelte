@@ -1,16 +1,19 @@
 <script>
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
   import lebensmittelData from '$lib/data/lebensmittel.json';
   import ProductCard from '$lib/components/ProductCard.svelte';
   import { getCurrentMonth, filterByMonth, getMonthName, getShortMonthName, getAllCategories, searchProducts } from '$lib/utils/seasonHelper.js';
 
   let currentMonth = getCurrentMonth();
-  let searchQuery = '';
-  let selectedCategory = 'Alle';
-  let selectedNutritionFilter = 'Alle';
-  let sortBy = 'name';
   
-  let showOnlyRegional = false;
-  let selectedTransport = 'Alle';
+  // Filter aus URL laden
+  $: searchQuery = $page.url.searchParams.get('q') || '';
+  $: selectedCategory = $page.url.searchParams.get('cat') || 'Alle';
+  $: selectedNutritionFilter = $page.url.searchParams.get('nutrition') || 'Alle';
+  $: sortBy = $page.url.searchParams.get('sort') || 'name';
+  $: showOnlyRegional = $page.url.searchParams.get('regional') === 'true';
+  $: selectedTransport = $page.url.searchParams.get('transport') || 'Alle';
   
   $: inSaisonProdukte = filterByMonth(lebensmittelData, currentMonth);
   $: categories = ['Alle', ...getAllCategories(lebensmittelData).sort()];
@@ -40,6 +43,36 @@
     { value: 'kalorien_asc', label: 'Kcal ↑' },
     { value: 'protein_desc', label: 'Protein ↓' }
   ];
+  
+  // Filter in URL speichern
+  function updateURL() {
+    const params = new URLSearchParams();
+    if (searchQuery) params.set('q', searchQuery);
+    if (selectedCategory !== 'Alle') params.set('cat', selectedCategory);
+    if (selectedNutritionFilter !== 'Alle') params.set('nutrition', selectedNutritionFilter);
+    if (sortBy !== 'name') params.set('sort', sortBy);
+    if (showOnlyRegional) params.set('regional', 'true');
+    if (selectedTransport !== 'Alle') params.set('transport', selectedTransport);
+    
+    const newURL = params.toString() ? `/?${params.toString()}` : '/';
+    goto(newURL, { replaceState: true, keepFocus: true, noScroll: true });
+  }
+  
+  // Reactive: Bei Änderung URL updaten
+  $: if (typeof window !== 'undefined') {
+    updateURL();
+  }
+  
+  // Funktion um aktuelle Filter als Query String zu bekommen
+  function getFilterParams() {
+    return $page.url.searchParams.toString();
+  }
+  
+  // Monatswahl mit Filtern
+  function getMonthURL(monthNum) {
+    const params = getFilterParams();
+    return params ? `/monat/${monthNum}?${params}` : `/monat/${monthNum}`;
+  }
   
   $: filteredProdukte = (() => {
     let results = inSaisonProdukte;
@@ -102,12 +135,7 @@
   })();
   
   function resetFilters() {
-    selectedNutritionFilter = 'Alle';
-    selectedCategory = 'Alle';
-    selectedTransport = 'Alle';
-    showOnlyRegional = false;
-    searchQuery = '';
-    sortBy = 'name';
+    goto('/', { replaceState: true });
   }
 </script>
 
@@ -137,7 +165,7 @@
   <div class="months-grid">
     {#each Array(12) as _, i}
       <a 
-        href="/monat/{i + 1}" 
+        href={getMonthURL(i + 1)}
         class="month-btn"
         class:current={i + 1 === currentMonth}
       >
