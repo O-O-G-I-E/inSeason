@@ -19,7 +19,7 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 4,
+        "produktId": 8,
         "menge": "500g",
         "name": "Grünkohl"
       },
@@ -29,12 +29,12 @@
         "name": "Kartoffeln"
       },
       {
-        "produktId": 3,
+        "produktId": 2,
         "menge": "1",
         "name": "Zwiebel"
       },
       {
-        "produktId": 2,
+        "produktId": 3,
         "menge": "2",
         "name": "Möhren"
       },
@@ -95,17 +95,17 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 11,
+        "produktId": 6,
         "menge": "3",
         "name": "Rote Bete"
       },
       {
-        "produktId": 43,
+        "produktId": 18,
         "menge": "50g",
         "name": "Walnüsse"
       },
       {
-        "produktId": 9,
+        "produktId": 24,
         "menge": "100g",
         "name": "Feldsalat"
       },
@@ -115,7 +115,8 @@
       },
       {
         "name": "Olivenöl",
-        "menge": "4 EL"
+        "menge": "4 EL",
+        "produktId": 187
       }
     ],
     "varianten_zutaten": {
@@ -173,12 +174,12 @@
         "name": "Kartoffeln"
       },
       {
-        "produktId": 72,
+        "produktId": 10,
         "menge": "2 Stangen",
         "name": "Lauch"
       },
       {
-        "produktId": 30,
+        "produktId": 13,
         "menge": "2",
         "name": "Äpfel"
       }
@@ -238,7 +239,7 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 18,
+        "produktId": 12,
         "menge": "1kg",
         "name": "Hokkaido Kürbis"
       },
@@ -248,13 +249,14 @@
         "name": "Kartoffeln"
       },
       {
-        "produktId": 3,
+        "produktId": 2,
         "menge": "1",
         "name": "Zwiebel"
       },
       {
         "name": "Ingwer",
-        "menge": "20g"
+        "menge": "20g",
+        "produktId": 186
       },
       {
         "name": "Kokosmilch",
@@ -309,18 +311,19 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 45,
+        "produktId": 33,
         "menge": "200g",
         "name": "Bärlauch"
       },
       {
-        "produktId": 43,
+        "produktId": 18,
         "menge": "50g",
         "name": "Walnüsse"
       },
       {
         "name": "Olivenöl",
-        "menge": "100ml"
+        "menge": "100ml",
+        "produktId": 187
       }
     ],
     "varianten_zutaten": {
@@ -370,12 +373,12 @@
     ],
     "basis_zutaten": [
       {
-        "produktId": 32,
+        "produktId": 14,
         "menge": "500g",
         "name": "Erdbeeren"
       },
       {
-        "produktId": 42,
+        "produktId": 11,
         "menge": "500g",
         "name": "Rhabarber"
       },
@@ -432,10 +435,11 @@
       },
       {
         "name": "Risotto-Reis",
-        "menge": "300g"
+        "menge": "300g",
+        "produktId": 182
       },
       {
-        "produktId": 3,
+        "produktId": 2,
         "menge": "1",
         "name": "Zwiebel"
       },
@@ -449,7 +453,8 @@
       },
       {
         "name": "Zitrone",
-        "menge": "1"
+        "menge": "1",
+        "produktId": 184
       }
     ],
     "varianten_zutaten": {
@@ -504,28 +509,32 @@
     "basis_zutaten": [
       {
         "name": "Zucchini",
-        "menge": "3 große"
+        "menge": "3 große",
+        "produktId": 17
       },
       {
         "name": "Tomaten",
         "menge": "500g"
       },
       {
-        "produktId": 3,
+        "produktId": 2,
         "menge": "1",
         "name": "Zwiebel"
       },
       {
         "name": "Knoblauch",
-        "menge": "3 Zehen"
+        "menge": "3 Zehen",
+        "produktId": 177
       },
       {
         "name": "Basilikum",
-        "menge": "1 Bund"
+        "menge": "1 Bund",
+        "produktId": 180
       },
       {
         "name": "Olivenöl",
-        "menge": "3 EL"
+        "menge": "3 EL",
+        "produktId": 187
       }
     ],
     "varianten_zutaten": {
@@ -579,24 +588,27 @@
       },
       {
         "name": "Quinoa",
-        "menge": "200g"
+        "menge": "200g",
+        "produktId": 189
       },
       {
         "name": "Zucchini",
-        "menge": "1"
+        "menge": "1",
+        "produktId": 17
       },
       {
         "name": "Tomaten",
         "menge": "2"
       },
       {
-        "produktId": 3,
+        "produktId": 2,
         "menge": "1",
         "name": "Zwiebel"
       },
       {
         "name": "Mais",
-        "menge": "150g"
+        "menge": "150g",
+        "produktId": 178
       }
     ],
     "varianten_zutaten": {
@@ -651,7 +663,8 @@
     "basis_zutaten": [
       {
         "name": "Knollensellerie",
-        "menge": "1 große Knolle"
+        "menge": "1 große Knolle",
+        "produktId": 12
       },
       {
         "produktId": 1,
@@ -660,7 +673,8 @@
       },
       {
         "name": "Mehl",
-        "menge": "100g"
+        "menge": "100g",
+        "produktId": 181
       },
       {
         "name": "Semmelbrösel",
@@ -722,23 +736,28 @@
     "basis_zutaten": [
       {
         "name": "Salatgurke",
-        "menge": "2 große"
+        "menge": "2 große",
+        "produktId": 179
       },
       {
         "name": "Avocado",
-        "menge": "2 reife"
+        "menge": "2 reife",
+        "produktId": 183
       },
       {
         "name": "Knoblauch",
-        "menge": "1 Zehe"
+        "menge": "1 Zehe",
+        "produktId": 177
       },
       {
         "name": "Limette",
-        "menge": "1"
+        "menge": "1",
+        "produktId": 185
       },
       {
         "name": "Dill",
-        "menge": "1 Bund"
+        "menge": "1 Bund",
+        "produktId": 129
       }
     ],
     "varianten_zutaten": {
@@ -800,13 +819,14 @@
         "name": "Kartoffeln"
       },
       {
-        "produktId": 3,
+        "produktId": 2,
         "menge": "1",
         "name": "Zwiebel"
       },
       {
         "name": "Knoblauch",
-        "menge": "2 Zehen"
+        "menge": "2 Zehen",
+        "produktId": 177
       },
       {
         "name": "Gemüsebrühe",
@@ -867,17 +887,19 @@
         "menge": "800g"
       },
       {
-        "produktId": 3,
+        "produktId": 2,
         "menge": "1 rote",
         "name": "Zwiebel"
       },
       {
         "name": "Basilikum",
-        "menge": "1 Bund"
+        "menge": "1 Bund",
+        "produktId": 180
       },
       {
         "name": "Olivenöl",
-        "menge": "4 EL"
+        "menge": "4 EL",
+        "produktId": 187
       },
       {
         "name": "Balsamico",
@@ -931,19 +953,23 @@
     "basis_zutaten": [
       {
         "name": "Radieschen",
-        "menge": "2 Bund"
+        "menge": "2 Bund",
+        "produktId": 20
       },
       {
         "name": "Gurke",
-        "menge": "1"
+        "menge": "1",
+        "produktId": 179
       },
       {
         "name": "Schnittlauch",
-        "menge": "1 Bund"
+        "menge": "1 Bund",
+        "produktId": 128
       },
       {
         "name": "Dill",
-        "menge": "0.5 Bund"
+        "menge": "0.5 Bund",
+        "produktId": 129
       }
     ],
     "varianten_zutaten": {
@@ -997,26 +1023,31 @@
     "basis_zutaten": [
       {
         "name": "Zucchini",
-        "menge": "2 mittelgroße"
+        "menge": "2 mittelgroße",
+        "produktId": 17
       },
       {
         "name": "Knoblauch",
-        "menge": "2 Zehen"
+        "menge": "2 Zehen",
+        "produktId": 177
       },
       {
         "name": "Zitrone",
-        "menge": "0.5"
+        "menge": "0.5",
+        "produktId": 184
       },
       {
         "name": "Olivenöl",
-        "menge": "3 EL"
+        "menge": "3 EL",
+        "produktId": 187
       }
     ],
     "varianten_zutaten": {
       "vegan": [
         {
           "name": "Cashewkerne",
-          "menge": "100g"
+          "menge": "100g",
+          "produktId": 188
         },
         {
           "name": "Hefeflocken",
